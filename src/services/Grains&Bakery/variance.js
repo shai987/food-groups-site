@@ -4,7 +4,6 @@ const variance = [
                         productName: 'קורנפלקס',
                         calculationValue: 2,
                         value: 0.5,
-                        measure: '(כוסות)',
                         gram: 20,
                         fat: 0,
                         sugar: 0,
@@ -17,13 +16,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כוס)',
+                },
         },
         {
                 details: {
                         productName: 'ברנפלקס',
                         calculationValue: 2,
                         value: 0.5,
-                        measure: '(כוסות)',
                         gram: 25,
                         fat: 0,
                         sugar: 0,
@@ -36,13 +38,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כוס)',
+                },
         },
         {
                 details: {
                         productName: 'גרנולה',
                         calculationValue: 3,
                         value: 3,
-                        measure: '(כפות)',
                         gram: 30,
                         fat: 1,
                         sugar: 0,
@@ -55,13 +60,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כף)',
+                },
         },
         {
                 details: {
                         productName: 'פצפוצי אורז',
                         calculationValue: 2,
                         value: 0.5,
-                        measure: '(כוסות)',
                         gram: 30,
                         fat: 0,
                         sugar: 0,
@@ -74,13 +82,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כוס)',
+                },
         },
         {
                 details: {
                         productName: 'בייגלה - מקלות',
                         calculationValue: 20,
                         value: 20,
-                        measure: '(יחידות)',
                         gram: 20,
                         fat: 0,
                         sugar: 0,
@@ -92,6 +103,10 @@ const variance = [
                 sugar: {
                         sugarCalculation: 0,
                         sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(יחידה)',
                 },
         },
         {
@@ -99,7 +114,6 @@ const variance = [
                         productName: 'פופקורן מוכן ללא שמן',
                         calculationValue: 3,
                         value: 3,
-                        measure: '(כוסות)',
                         gram: 20,
                         fat: 0,
                         sugar: 0,
@@ -112,13 +126,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כוס)',
+                },
         },
         {
                 details: {
                         productName: 'פופקורן מותפח בשמן',
                         calculationValue: 3,
                         value: 3,
-                        measure: '(כוסות)',
                         gram: 0,
                         fat: 1,
                         sugar: 0,
@@ -131,13 +148,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כוס)',
+                },
         },
         {
                 details: {
                         productName: 'ופלים/עוגיות',
                         calculationValue: 2,
                         value: 2,
-                        measure: '(קטנים)',
                         gram: 20,
                         fat: 1,
                         sugar: 1,
@@ -150,13 +170,16 @@ const variance = [
                         sugarCalculation: 2,
                         sugarString: '* יש להוסיף מנות סוכר',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן)',
+                },
         },
         {
                 details: {
                         productName: 'עוגה יבשה',
                         calculationValue: 1,
                         value: 1,
-                        measure: '(פרוסה קטנה)',
                         gram: 50,
                         fat: 1,
                         sugar: 2,
@@ -169,13 +192,16 @@ const variance = [
                         sugarCalculation: 0.5,
                         sugarString: '* יש להוסיף מנות סוכר',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פרוסה קטנה)',
+                },
         },
         {
                 details: {
                         productName: 'קרקרים קטנים',
                         calculationValue: 4,
                         value: 4,
-                        measure: '(יחידות)',
                         gram: 0,
                         fat: 1,
                         sugar: 0,
@@ -188,13 +214,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(יחידה)',
+                },
         },
         {
                 details: {
                         productName: 'קרקרים גדולים',
                         calculationValue: 2,
                         value: 2,
-                        measure: '(יחידות)',
                         gram: 0,
                         fat: 1,
                         sugar: 0,
@@ -207,13 +236,16 @@ const variance = [
                         sugarCalculation: 0,
                         sugarString: '',
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(יחידה)',
+                },
         },
         {
                 details: {
                         productName: 'שקדי מרק',
                         calculationValue: 3,
                         value: 3,
-                        measure: '(כפות)',
                         gram: 25,
                         fat: 1,
                         sugar: 0,
@@ -225,6 +257,10 @@ const variance = [
                 sugar: {
                         sugarCalculation: 0,
                         sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(כף)',
                 },
         },
 

@@ -4,8 +4,11 @@ const breads = [
                         productName: 'לחם לבן/שחור/חלה/חי',
                         calculationValue: 1,
                         value: 1,
-                        measure: '(פרוסה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פרוסה)',
                 },
         },
         {
@@ -16,14 +19,21 @@ const breads = [
                         measure: '(פרוסה)',
                         gram: 30,
                 },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פרוסה)',
+                },
         },
         {
                 details: {
                         productName: 'לחמנייה קטנה',
                         calculationValue: 2,
                         value: 0.5,
-                        measure: '(לחמנייה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(לחמנייה)',
                 },
         },
         {
@@ -31,8 +41,11 @@ const breads = [
                         productName: 'לחמנייה גדולה',
                         calculationValue: 4,
                         value: 0.25,
-                        measure: '(לחמנייה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(לחמנייה)',
                 },
         },
         {
@@ -40,8 +53,11 @@ const breads = [
                         productName: 'מצה רגילה',
                         calculationValue: 2,
                         value: 0.5,
-                        measure: '(מצה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(מצה)',
                 },
         },
         {
@@ -49,8 +65,11 @@ const breads = [
                         productName: 'מצה קלה',
                         calculationValue: 1,
                         value: 1,
-                        measure: '(מצה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(מצה)',
                 },
         },
         {
@@ -58,8 +77,11 @@ const breads = [
                         productName: 'פת מצה',
                         calculationValue: 2,
                         value: 2,
-                        measure: '(מצה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(מצה)',
                 },
         },
         {
@@ -67,8 +89,11 @@ const breads = [
                         productName: 'פיתה רגילה',
                         calculationValue: 3,
                         value: 0.75,
-                        measure: '(פיתה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פיתה)',
                 },
         },
         {
@@ -76,8 +101,11 @@ const breads = [
                         productName: 'פיתה גדולה',
                         calculationValue: 4,
                         value: 0.25,
-                        measure: '(פיתה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פיתה)',
                 },
         },
         {
@@ -85,8 +113,11 @@ const breads = [
                         productName: 'פיתה ביס',
                         calculationValue: 1,
                         value: 1,
-                        measure: '(פיתה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פיתה)',
                 },
         },
         {
@@ -94,8 +125,11 @@ const breads = [
                         productName: 'פריכיות אורז',
                         calculationValue: 3,
                         value: 3,
-                        measure: '(פריכית)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(פריכית)',
                 },
         },
         {
@@ -103,8 +137,11 @@ const breads = [
                         productName: 'פתית/לחמית',
                         calculationValue: 2,
                         value: 2,
-                        measure: '(לחמית)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(לחמית)',
                 },
         },
         {
@@ -112,8 +149,11 @@ const breads = [
                         productName: 'בייגלה עגול',
                         calculationValue: 4,
                         value: 0.25,
-                        measure: '(בייגלה)',
                         gram: 30,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(בייגלה)',
                 },
         },
 ];
