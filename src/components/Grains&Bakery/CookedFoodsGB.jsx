@@ -13,49 +13,23 @@ const CookedFoodsGB = () => {
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
                 const product = products.find(product => product.details?.productName === productName);
-                // For basic reasult multiplication operation
-                const productMultiplication = ` ${(amount * product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For fat reasult multiplication operation 
-                const productFatM = ` ${(amount * product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount * product.fat?.fatCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
-                // For basic reasult division operation
-                const productDivisionGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Basic calculate count reasult 
+                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count reasult  
+                const productCalculationCountFat = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                // Basic calculate gram reasult
+                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram reasult
+                const productCalculationGramFat = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
 
-                switch (productType) {
-                        case 'כמות':
-                                {
-                                        switch (productName) {
-                                                case 'אורז/אטריות/פסטה/בורגול קוסקוס/גריסי פנינה/כוסמת פתיתים/קינואה':
-                                                case 'תירס משומר מתוק (גרעינים)':
-                                                case 'תירס משומר לייט':
-                                                case 'תירס קלח':
-                                                case 'תפוח אדמה':
-                                                case 'תפוח אדמה – מחית':
-                                                case 'בטטה':
-                                                        return productMultiplication;
-                                                case `תפ"א מטוגנים (צ'יפס)`:
-                                                        return productFatM;
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        case 'גרם':
-                                {
-                                        switch (productName) {
-                                                case 'אורז/אטריות/פסטה/בורגול קוסקוס/גריסי פנינה/כוסמת פתיתים/קינואה':
-                                                case 'תירס משומר מתוק (גרעינים)':
-                                                case 'תירס משומר לייט':
-                                                case 'תירס קלח':
-                                                case 'תפוח אדמה':
-                                                case 'תפוח אדמה – מחית':
-                                                case `תפ"א מטוגנים (צ'יפס)`:
-                                                case 'בטטה':
-                                                        return product.details.gram === 0 ? 0 : productDivisionGram; // prevent infinity
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        default:
-                                return 0;
+                if (product.check.gram && product.check.fat) {
+                        return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                }
+                else if (product.check.gram) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                }
+                else {
+                        return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
                 }
         };
 

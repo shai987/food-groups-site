@@ -13,61 +13,18 @@ const Breads = () => {
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
                 const product = products.find(product => product.details?.productName === productName);
-                // For basic reasult multiplication operation
-                const productMultiplication = ` ${(amount * product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For basic reasult division operation
-                const productDivision = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For basic reasult division operation
-                const productDivisionGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count reasult
+                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram reasult
+                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                switch (productType) {
-                        case 'כמות':
-                                {
-                                        switch (productName) {
-                                                case 'לחם לבן/שחור/חלה/חי':
-                                                case 'מצה קלה':
-                                                case 'פיתה ביס':
-                                                case 'לחמנייה קטנה':
-                                                case 'מצה רגילה':
-                                                case 'לחמנייה גדולה':
-                                                case 'פיתה גדולה':
-                                                case 'בייגלה עגול':
-                                                case 'פיתה רגילה':
-                                                        return productMultiplication;
-                                                case 'לחם דל קלוריות':
-                                                case 'פת מצה':
-                                                case 'פתית/לחמית':
-                                                case 'פריכיות אורז':
-                                                        return productDivision;
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        case 'גרם':
-                                {
-                                        switch (productName) {
-                                                case 'לחם לבן/שחור/חלה/חי':
-                                                case 'מצה קלה':
-                                                case 'פיתה ביס':
-                                                case 'לחמנייה קטנה':
-                                                case 'מצה רגילה':
-                                                case 'לחמנייה גדולה':
-                                                case 'פיתה גדולה':
-                                                case 'בייגלה עגול':
-                                                case 'פיתה רגילה':
-                                                case 'לחם דל קלוריות':
-                                                case 'פת מצה':
-                                                case 'פתית/לחמית':
-                                                case 'פריכיות אורז':
-                                                        return product.details.gram === 0 ? 0 : productDivisionGram; // prevent infinity
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        default:
-                                return 0;
+                if (product.check.gram) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
                 }
-        };
+                else {
+                        return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                }
+        }
 
         const handleProduct = (event) => {
                 setProductName(event.target.value);
@@ -154,6 +111,5 @@ const Breads = () => {
                         <button type="submit">חשב</button>
                 </form >
         );
-};
-
+}
 export default Breads;

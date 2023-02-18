@@ -10,17 +10,13 @@ import {
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
-// import ListItem from "@mui/material/ListItem";
-// import ExpandMore from "@mui/material/ExpandMore";
 import Container from "@mui/material/Container";
-// import ExpandLess from "@mui/material/ExpandLess";
 import Button from "@mui/material/Button";
-// import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
-// import our components
+// import my components
 import HomepageContainer from '../components/homePage/HomepageContainer';
 import Cards from '../components/Cards';
+import MyContainer from '../components/MyContainer';
 
 import GrainsBakery from '../components/navComponents/GrainsBakery';
 import Breads from '../components/Grains&Bakery/Breads';
@@ -64,10 +60,6 @@ const MyRouter = () => {
         ];
 
         const [nav, setNav] = useState(null);
-
-        const handleClick = () => {
-                setNav(!nav);
-        };
 
         const handleCloseNavMenu = () => {
                 setNav(null);
@@ -114,7 +106,7 @@ const MyRouter = () => {
                                         <Route path='/SugarGroup' element={<SugarGroup />}></Route>
                                         <Route path='/Sugar' element={<Sugar />}></Route>
                                         <Route path='/Cards' element={<Cards />}></Route>
-
+                                        <Route path='/MyContainer' element={<MyContainer />}></Route>
 
                                         {/* If the user go to not exsist path it would take him back to "/" */}
                                         <Route path="*" element={<Navigate to="/" />}></Route>

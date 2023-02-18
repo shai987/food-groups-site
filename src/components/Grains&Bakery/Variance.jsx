@@ -13,75 +13,33 @@ const Variance = () => {
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
                 const product = products.find(product => product.details?.productName === productName);
-                // For basic reasult multiplication operation
-                const productMultiplication = ` ${(amount * product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For basic reasult division operation
-                const productDivision = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For fat reasult division operation 
-                const productFat = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.fat?.fatCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
-                // For fat and sugar reasult multiplication operation 
-                const productFatSugarM = ` ${(amount * product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount * product.fat?.fatCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
-                // For fat and sugar reasult division operation 
-                const productFatSugarD = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString?.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.fat?.fatCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString?.split(" יש להוסיף ")[1]}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
-                // For basic reasult division operation
-                const productDivisionGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Basic calculate count reasult 
+                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count fat reasult 
+                const productCalculationCountFat = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                // Calculate count fat and sugar reasult  
+                const productCalculationCountFatSugar = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString?.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString?.split(" יש להוסיף ")[1]}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                // Basic calculate gram reasult
+                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram fat reasult
+                const productCalculationGramFat = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                // Calculate gram fat and sugar reasult
+                const productCalculationGramFatSugar = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString?.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString?.split(" יש להוסיף ")[1]}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
 
-                switch (productType) {
-                        case 'כמות':
-                                {
-                                        switch (productName) {
-                                                case 'קורנפלקס':
-                                                        return productMultiplication;
-                                                case 'ברנפלקס':
-                                                        return productMultiplication;
-                                                case 'גרנולה':
-                                                        return productFat;
-                                                case 'פצפוצי אורז':
-                                                        return productMultiplication;
-                                                case 'בייגלה - מקלות':
-                                                        return productDivision;
-                                                case 'פופקורן מוכן ללא שמן':
-                                                        return productDivision;
-                                                case 'פופקורן מותפח בשמן':
-                                                        return productFat;
-                                                case 'ופלים/עוגיות':
-                                                        return productFatSugarD;
-                                                case 'עוגה יבשה':
-                                                        return productFatSugarM;
-                                                case 'קרקרים קטנים':
-                                                        return productFat;
-                                                case 'קרקרים גדולים':
-                                                        return productFat;
-                                                case 'שקדי מרק':
-                                                        return productFat;
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        case 'גרם':
-                                {
-                                        switch (productName) {
-                                                case 'קורנפלקס':
-                                                case 'ברנפלקס':
-                                                case 'גרנולה':
-                                                case 'פצפוצי אורז':
-                                                case 'בייגלה - מקלות':
-                                                case 'פופקורן מוכן ללא שמן':
-                                                case 'פופקורן מותפח בשמן':
-                                                case 'ופלים/עוגיות':
-                                                case 'עוגה יבשה':
-                                                case 'קרקרים קטנים':
-                                                case 'קרקרים גדולים':
-                                                case 'שקדי מרק':
-                                                        return product.details.gram === 0 ? 0 : productDivisionGram; // prevent infinity
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        default:
-                                return 0;
+                if (product.check.gram && product.check.fat && product.check.count && product.check.sugar) {
+                        return productType === 'כמות' ? productCalculationCountFatSugar : productCalculationGramFatSugar;
+                }
+                else if (product.check.gram && product.check.fat) {
+                        return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                }
+                else if (product.check.gram) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                }
+                else {
+                        return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
                 }
         };
+
         const handleProduct = (event) => {
                 setProductName(event.target.value);
         };

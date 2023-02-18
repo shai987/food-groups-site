@@ -1,52 +1,38 @@
+// import libraries from material-ui
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+// import react-router-dom
 import { Link } from 'react-router-dom';
 
-const Cards = () => {
+const Cards = (props) => {
 
         return (
                 <>
-                        <Card sx={{ maxWidth: 345 }}>
+                        <Card sx={{ width: 300 }}>
                                 <CardMedia
                                         sx={{ height: 140 }}
-                                        image={require('../assets/images/breads.jpg')}
-                                        title="לחמים"
-                                        alt="לחמים"
+                                        image={props.imageSrc}
+                                        title={props.title}
+                                        alt={props.alt}
                                         component='img'
                                 />
                                 <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                                לחמים
+                                                {props.name}
                                         </Typography>
                                 </CardContent>
                                 <CardActions>
-                                        <Button size="small">
-                                                <Link className='link' to={'/Breads'}>מעבר לחישוב</Link>
-                                        </Button>
-                                </CardActions>
-                        </Card>
-                        <br />
-                        <Card sx={{ maxWidth: 345 }}>
-                                <CardMedia
-                                        sx={{ height: 140 }}
-                                        image={require('../assets/images/sugar.jpg')}
-                                        title="לחמים"
-                                        alt="לחמים"
-                                        component='img'
-                                />
-                                <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                                סוכרים
-                                        </Typography>
-                                </CardContent>
-                                <CardActions>
-                                        <Button size="small">
-                                                <Link className='link' to={'/Sugar'}>מעבר לחישוב</Link>
-                                        </Button>
+                                        <Link className='link' to={props.link}>
+                                                <Button variant="contained" color="primary"
+                                                        sx={{ color: "white", display: "block" }}
+                                                >
+                                                        מעבר לחישוב
+                                                </Button>
+                                        </Link>
                                 </CardActions>
                         </Card>
                 </>

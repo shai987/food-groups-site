@@ -3,63 +3,38 @@ import flours from '../../services/Grains&Bakery/flours';
 import '../../assets/css/basic.css';
 
 const Flour = () => {
+        //  array of type calculation
         const types = ['כמות', 'גרם'];
+
+        // My states  
         const [products] = useState(flours);
         const [productName, setProductName] = useState(flours[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
                 const product = products.find(product => product.details?.productName === productName);
-                // For basic reasult division operation
-                const productDivision = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For basic reasult division operation
-                const productDivisionGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count reasult
+                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram reasult
+                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                switch (productType) {
-                        case 'כמות':
-                                {
-                                        switch (productName) {
-                                                case 'קמח חיטה לבן/מלא קמח תירס/קמח אורז':
-                                                case 'עמילן תירס/עמילן תפוחי אדמה':
-                                                case 'פרורי לחם/קמח מצה':
-                                                case 'סולת':
-                                                case 'שיבולת שועל':
-                                                        return productDivision;
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        case 'גרם':
-                                {
-                                        switch (productName) {
-                                                case 'קמח חיטה לבן/מלא קמח תירס/קמח אורז':
-                                                case 'עמילן תירס/עמילן תפוחי אדמה':
-                                                case 'פרורי לחם/קמח מצה':
-                                                case 'סולת':
-                                                case 'שיבולת שועל':
-                                                        return product.details.gram === 0 ? 0 : productDivisionGram; // prevent infinity
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        default:
-                                return 0;
-                }
+                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
         };
 
         const handleProduct = (event) => {
                 setProductName(event.target.value);
         };
 
-        const handleProductType = (event) => {
-                setProductType(event.target.value);
-        };
-
         const handleAmount = (event) => {
                 setProductAmount(event.target.value);
+        };
+
+        const handleProductType = (event) => {
+                setProductType(event.target.value);
         };
 
         // Clean input field when click it 
@@ -78,16 +53,16 @@ const Flour = () => {
                         <h1>קמחים (לא מבושל)</h1>
                         <label>
                                 חישוב לפי כמות או גרמים:
-                                <input list="productType"
+                                <input list="productTypeFlour"
                                         defaultValue={productType}
                                         onChange={handleProductType}
                                         onClick={handleClear}
                                         onFocus={handleClear}
                                 />
-                                <datalist id="productType">
+                                <datalist id="productTypeFlour">
                                         {
                                                 types.map((type) => (
-                                                        <option key={type} name="productType" value={type}>
+                                                        <option key={type} name="productTypeFlour" value={type}>
                                                                 {type}
                                                         </option>
                                                 ))
@@ -111,16 +86,17 @@ const Flour = () => {
                         <br />
                         <label>
                                 סוג הקמח:
-                                <input list="productName"
+                                <input list="productNameFlour"
+                                        name='productNameFlour'
                                         defaultValue={productName}
                                         onChange={handleProduct}
                                         onClick={handleClear}
                                         onFocus={handleClear}
                                 />
-                                <datalist id="productName">
+                                <datalist id="productNameFlour">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
+                                                        <option key={product.details?.productName} name="productNameFlour" value={product.details?.productName}>
                                                                 {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
                                                         </option>
                                                 ))
