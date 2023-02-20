@@ -7,34 +7,42 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 // import react-router-dom
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
+import { Grid } from '@mui/material';
+import '../assets/css/basic.css'
 
 const Cards = (props) => {
 
         return (
                 <>
-                        <Card sx={{ width: 300 }}>
-                                <CardMedia
-                                        sx={{ height: 140 }}
-                                        image={props.imageSrc}
-                                        title={props.title}
-                                        alt={props.alt}
-                                        component='img'
-                                />
-                                <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                                {props.name}
-                                        </Typography>
-                                </CardContent>
-                                <CardActions>
-                                        <Link className='link' to={props.link}>
-                                                <Button variant="contained" color="primary"
-                                                        sx={{ color: "white", display: "block" }}
-                                                >
-                                                        מעבר לחישוב
-                                                </Button>
-                                        </Link>
-                                </CardActions>
-                        </Card>
+                        <LazyLoad height={200} once>
+                                {/* <Grid container item xs={8.3}> */}
+                                <Card sx={{ width: 300 }}>
+                                        <CardMedia
+                                                // sx={{ height: 140 }}
+                                                image={props.imageSrc}
+                                                title={props.title}
+                                                alt={props.alt}
+                                                component='img'
+                                        />
+                                        <CardContent>
+                                                <Typography gutterBottom variant="h5" component="div">
+                                                        {props.name}
+                                                </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                                <Link className='link' to={props.link}>
+                                                        <Button variant="contained" color="primary"
+                                                                sx={{ color: "white", display: "block", }}
+                                                        >
+                                                                מעבר לחישוב
+                                                        </Button>
+                                                </Link>
+                                        </CardActions>
+                                </Card>
+
+                                {/* </Grid> */}
+                        </LazyLoad>
                 </>
         );
 }

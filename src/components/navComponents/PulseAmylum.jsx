@@ -16,7 +16,7 @@ const PulseAmylum = () => {
                                 <h2>כל מנה מכילה 90 קלוריות, 15 גר' פחמימות, 7.5 גר' חלבון ועקבות שומן.</h2>
                         </div>
                         <div >
-                                <Grid container item xs={9}>
+                                <Grid container item xs={10}>
                                         <Cards
                                                 imageSrc={require('../../assets/images/sugar.jpg')}
                                                 title='מזונות מבושלים (ללא שמן)'

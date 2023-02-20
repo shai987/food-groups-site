@@ -108,7 +108,7 @@ const breads = [
         {
                 details: {
                         productName: 'פיתה רגילה',
-                        value: 0.75,
+                        value: 0.33333,
                         gram: 0,
                 },
                 unit: {

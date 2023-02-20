@@ -2,7 +2,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'שעועית לבנה',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 60,
                         fat: 0,
@@ -19,7 +18,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'אפונה ירוקה',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 90,
                         fat: 0,
@@ -36,7 +34,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'עדשים',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 70,
                         fat: 0,
@@ -53,7 +50,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'פול',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 80,
                         fat: 0,
@@ -70,7 +66,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'פולי סויה',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 70,
                         fat: 1,
@@ -87,7 +82,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'חומוס גרגרים',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 90,
                         fat: 0,
@@ -104,7 +98,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'חומוס סלט',
-                        calculationValue: 3,
                         value: 3,
                         gram: 0,
                         fat: 1,
@@ -121,7 +114,6 @@ const cookedFoods = [
         {
                 details: {
                         productName: 'פלאפל',
-                        calculationValue: 3,
                         value: 3,
                         gram: 40,
                         fat: 1,

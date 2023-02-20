@@ -2,7 +2,6 @@ const sugars = [
         {
                 details: {
                         productName: 'דבש',
-                        calculationValue: 1,
                         value: 1,
                         gram: 7,
                 },
@@ -14,7 +13,6 @@ const sugars = [
         {
                 details: {
                         productName: 'דבש קל',
-                        calculationValue: 2,
                         value: 2,
                         gram: 10,
                 },
@@ -26,7 +24,6 @@ const sugars = [
         {
                 details: {
                         productName: 'סוכר',
-                        calculationValue: 1,
                         value: 1,
                         gram: 5,
                 },
@@ -38,7 +35,6 @@ const sugars = [
         {
                 details: {
                         productName: 'סוכריות קשות/טופי',
-                        calculationValue: 1,
                         value: 1,
                         gram: 5,
                 },
@@ -50,7 +46,6 @@ const sugars = [
         {
                 details: {
                         productName: 'ריבה',
-                        calculationValue: 2,
                         value: 2,
                         gram: 8,
                 },

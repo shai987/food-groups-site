@@ -16,7 +16,7 @@ const SugarGroup = () => {
                                 <h2>כל מנה מכילה 20 קלוריות , 5 גר' פחמימות.</h2>
                         </div>
                         <div >
-                                <Grid container item xs={9}>
+                                <Grid container item xs={10}>
                                         <Cards
                                                 imageSrc={require('../../assets/images/sugar.jpg')}
                                                 title="סוכר"

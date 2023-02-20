@@ -2,7 +2,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אבטיח',
-                        calculationValue: 1,
                         value: 1,
                         gram: 200,
                 },
@@ -14,7 +13,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אבטיח עם קליפה',
-                        calculationValue: 1,
                         value: 1,
                         gram: 400,
                 },
@@ -26,7 +24,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אגס גדול',
-                        calculationValue: 1,
                         value: 1,
                         gram: 120,
                 },
@@ -50,7 +47,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אנונה',
-                        calculationValue: 1,
                         value: 1,
                         gram: 60,
                 },
@@ -74,7 +70,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אננס משומר',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 120,
                 },
@@ -86,7 +81,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אפרסימון',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 100,
                 },
@@ -98,7 +92,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אפרסק',
-                        calculationValue: 1,
                         value: 1,
                         gram: 140,
                 },
@@ -110,7 +103,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אשכולית',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 160,
                 },
@@ -122,7 +114,6 @@ const fruits = [
         {
                 details: {
                         productName: 'בננה',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 100,
                 },
@@ -134,7 +125,6 @@ const fruits = [
         {
                 details: {
                         productName: 'גויאבה',
-                        calculationValue: 1,
                         value: 1,
                         gram: 120,
                 },
@@ -146,7 +136,6 @@ const fruits = [
         {
                 details: {
                         productName: 'דובדבנים',
-                        calculationValue: 10,
                         value: 10,
                         gram: 100,
                 },
@@ -158,7 +147,6 @@ const fruits = [
         {
                 details: {
                         productName: 'חבוש',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 90,
                 },
@@ -170,7 +158,6 @@ const fruits = [
         {
                 details: {
                         productName: 'כוכבנית/קרמבולה',
-                        calculationValue: 1,
                         value: 1,
                         gram: 200,
                 },
@@ -182,7 +169,6 @@ const fruits = [
         {
                 details: {
                         productName: `ליצ'י`,
-                        calculationValue: 8,
                         value: 8,
                         gram: 150,
                 },
@@ -194,7 +180,6 @@ const fruits = [
         {
                 details: {
                         productName: 'מיץ פרי טבעי',
-                        calculationValue: 2,
                         value: 0.5,
                         gram: 120,
                 },
@@ -206,7 +191,6 @@ const fruits = [
         {
                 details: {
                         productName: 'מלון',
-                        calculationValue: 1,
                         value: 1,
                         gram: 200,
                 },
@@ -218,8 +202,7 @@ const fruits = [
         {
                 details: {
                         productName: 'מנגו',
-                        calculationValue: 3,
-                        value: 0.75,
+                        value: 0.33333,
                         gram: 100,
                 },
                 unit: {
@@ -230,7 +213,6 @@ const fruits = [
         {
                 details: {
                         productName: 'מנדרינה/קלמטינה',
-                        calculationValue: 1,
                         value: 1,
                         gram: 150,
                 },
@@ -241,69 +223,85 @@ const fruits = [
         },
         {
                 details: {
-                        productName: 'משמש',
-                        calculationValue: 1,
+                        productName: '(עם קליפה) מנדרינה/קלמטינה',
                         value: 1,
                         gram: 200,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
+                },
+        },
+        {
+                details: {
+                        productName: 'משמש',
+                        value: 3,
+                        gram: 150,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'משמש מיובש',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 4,
+                        gram: 20,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(חצאים)',
                 },
         },
         {
                 details: {
                         productName: 'סלט פירות',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 0.5,
+                        gram: 120,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(כוס)',
                 },
         },
         {
                 details: {
                         productName: 'ענבים',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 12,
+                        gram: 100,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'פאפיה',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 0.33333,
+                        gram: 120,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני/כוס קוביות)',
+                },
+        },
+        {
+                details: {
+                        productName: '(עם קליפה) פאפיה',
+                        value: 0.33333,
+                        gram: 150,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(בינוני/כוס קוביות)',
                 },
         },
         {
                 details: {
                         productName: 'פומלה',
-                        calculationValue: 1,
-                        value: 1,
+                        value: 0.33333,
                         gram: 200,
                 },
                 unit: {
@@ -314,8 +312,7 @@ const fruits = [
         {
                 details: {
                         productName: 'פומלית (SWEETY)',
-                        calculationValue: 1,
-                        value: 1,
+                        value: 0.5,
                         gram: 200,
                 },
                 unit: {
@@ -326,57 +323,74 @@ const fruits = [
         {
                 details: {
                         productName: `פיג’ויאה`,
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 2,
+                        gram: 160,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'צבר',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 2,
+                        gram: 150,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
+                },
+        },
+        {
+                details: {
+                        productName: '(עם קליפה) צבר',
+                        value: 2,
+                        gram: 300,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'צימוקים',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 2,
+                        gram: 20,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(כף)',
                 },
         },
         {
                 details: {
                         productName: 'קיווי',
-                        calculationValue: 1,
                         value: 1,
-                        gram: 200,
+                        gram: 100,
                 },
                 unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        gramString: '(גרם, ראוי לאכילה)',
+                        measureString: '(גדול)',
                 },
         },
         {
                 details: {
                         productName: 'רימון',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 0.5,
+                        gram: 90,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כוס גרעינים)',
+                },
+        },
+        {
+                details: {
+                        productName: '(קטן) שזיף',
+                        value: 2,
+                        gram: 110,
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -385,34 +399,42 @@ const fruits = [
         },
         {
                 details: {
-                        productName: 'שזיף',
-                        calculationValue: 1,
+                        productName: '(גדול) שזיף',
                         value: 1,
-                        gram: 200,
+                        gram: 110,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(גדול)',
                 },
         },
         {
                 details: {
                         productName: 'שזיף מיובש',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 3,
+                        gram: 25,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'שסק',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 4,
+                        gram: 120,
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(בינוני)',
+                },
+        },
+        {
+                details: {
+                        productName: '(קטנים) תאנים',
+                        value: 2,
+                        gram: 80,
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -421,70 +443,64 @@ const fruits = [
         },
         {
                 details: {
-                        productName: 'תאנים',
-                        calculationValue: 1,
+                        productName: ' (גדולים) תאנים',
                         value: 1,
-                        gram: 200,
+                        gram: 80,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(גדול)',
                 },
         },
         {
                 details: {
                         productName: 'תאנה מיובשת',
-                        calculationValue: 1,
                         value: 1,
-                        gram: 200,
+                        gram: 20,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'תות שדה',
-                        calculationValue: 1,
-                        value: 1,
+                        value: 1.5,
                         gram: 200,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(כוס)',
                 },
         },
         {
                 details: {
                         productName: 'תמר לח',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 4,
+                        gram: 55,
                 },
                 unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        gramString: '(גרם, עם גלעינים)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'תמר מיובש',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        value: 2,
+                        gram: 25,
                 },
                 unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        gramString: '(גרם, עם גלעינים)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
                         productName: 'תפוז',
-                        calculationValue: 1,
                         value: 1,
-                        gram: 200,
+                        gram: 150,
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -494,25 +510,23 @@ const fruits = [
         {
                 details: {
                         productName: 'תפוח',
-                        calculationValue: 1,
                         value: 1,
-                        gram: 200,
+                        gram: 100,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(בינוני)',
                 },
         },
         {
                 details: {
-                        productName: 'תפוח עץ- רסק',
-                        calculationValue: 1,
-                        value: 1,
-                        gram: 200,
+                        productName: 'תפוח עץ - רסק',
+                        value: 0.66667,
+                        gram: 150,
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן)',
+                        measureString: '(כוס)',
                 },
         },
 

@@ -33,26 +33,26 @@ import Sugar from '../components/Sugars/Sugar';
 import '../assets/css/MyRouter.css';
 
 const MyRouter = () => {
-        const pages = [
-                { key: 'Breads', value: 'לחמים' },
-                { key: 'CookedFoodsGB', value: 'מזונות מבושלים (ללא שמן)' },
-                { key: 'Flour', value: 'קמחים (לא מבושל)' },
-                { key: 'Variance', value: 'שונות' },
-        ];
+        // const pages = [
+        //         { key: 'Breads', value: 'לחמים' },
+        //         { key: 'CookedFoodsGB', value: 'מזונות מבושלים (ללא שמן)' },
+        //         { key: 'Flour', value: 'קמחים (לא מבושל)' },
+        //         { key: 'Variance', value: 'שונות' },
+        // ];
 
-        const pages1 = [
-                { key: 'GrainsBakery', value: 'קבוצת עמילן/דגנים ומוצרי מאפה' },
-                { key: 'PulseAmylum', value: 'קבוצת עמילן/קטניות' },
-                { key: 'Variance', value: 'קבוצת הפירות' },
-                { key: 'Variance', value: 'קבוצת הבשר ותחליפיו' },
-                { key: 'Variance', value: 'קבוצת השומן' },
-                { key: 'Variance', value: 'קבוצת החלב' },
-                { key: 'Variance', value: 'קבוצת חלב דל שומן' },
-                { key: 'Variance', value: 'קבוצת הירקות' },
-                { key: 'Variance', value: 'קבוצת הסוכרים' },
-                { key: 'Variance', value: 'סיכום קבוצות תחליף' },
-                { key: 'Variance', value: 'בניית תפריט מאוזן' },
-        ];
+        // const pages1 = [
+        //         { key: 'GrainsBakery', value: 'קבוצת עמילן/דגנים ומוצרי מאפה' },
+        //         { key: 'PulseAmylum', value: 'קבוצת עמילן/קטניות' },
+        //         { key: 'Variance', value: 'קבוצת הפירות' },
+        //         { key: 'Variance', value: 'קבוצת הבשר ותחליפיו' },
+        //         { key: 'Variance', value: 'קבוצת השומן' },
+        //         { key: 'Variance', value: 'קבוצת החלב' },
+        //         { key: 'Variance', value: 'קבוצת חלב דל שומן' },
+        //         { key: 'Variance', value: 'קבוצת הירקות' },
+        //         { key: 'Variance', value: 'קבוצת הסוכרים' },
+        //         { key: 'Variance', value: 'סיכום קבוצות תחליף' },
+        //         { key: 'Variance', value: 'בניית תפריט מאוזן' },
+        // ];
         const pages12 = [
                 { key: 'GrainsBakery', value: 'קבוצת עמילן/דגנים ומוצרי מאפה' },
                 { key: 'PulseAmylum', value: 'קבוצת עמילן/קטניות' },
