@@ -88,7 +88,7 @@ const Fat = () => {
                                         }
                                 </datalist>
                         </label>
-                        <br />
+                        <br /><br />
                         <label htmlFor="productAmount">
                                 כמות נאכלת:
                                 <input
@@ -102,7 +102,7 @@ const Fat = () => {
                                         onChange={handleAmount}
                                 />
                         </label>
-                        <br />
+                        <br /><br />
                         <label>
                                 סוג המוצר:
                                 <input list="productName"

@@ -35,7 +35,10 @@ input {
         border: 1px solid gray;
         padding: 10px;
         border-radius: 5px;
+}
 
+label {
+        /* position: absolute; */
 }
 
 datalist {
