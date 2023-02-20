@@ -30,3 +30,27 @@ body {
 .shai {
         height: 140px;
 }
+
+input {
+        border: 1px solid gray;
+        padding: 10px;
+        border-radius: 5px;
+
+}
+
+datalist {
+        margin-top: 10px;
+}
+
+button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+button:hover {
+        background-color: #3e8e41;
+}

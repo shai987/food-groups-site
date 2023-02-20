@@ -17,7 +17,7 @@ const fats = [
                         measureString: '(קטן/כוס)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -40,7 +40,7 @@ const fats = [
                         measureString: '(יחידה)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -63,7 +63,7 @@ const fats = [
                         measureString: '(יחידה)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -86,7 +86,7 @@ const fats = [
                         measureString: '(יחידה)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -109,14 +109,14 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
         },
         {
                 details: {
-                        productName: '(גרעיני אבטיח (עם קליפה',
+                        productName: 'גרעיני אבטיח (עם קליפה)',
                         value: 3,
                         gram: 25,
                         sugar: 0,
@@ -132,14 +132,14 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
         },
         {
                 details: {
-                        productName: '(גרעיני דלעת (עם קליפה',
+                        productName: 'גרעיני דלעת (עם קליפה)',
                         value: 2,
                         gram: 10,
                         sugar: 0,
@@ -155,7 +155,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -178,14 +178,14 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
         },
         {
                 details: {
-                        productName: '(גרעיני חמניות (בלי קליפה',
+                        productName: 'גרעיני חמניות (בלי קליפה)',
                         value: 1,
                         gram: 8,
                         sugar: 0,
@@ -201,7 +201,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -224,7 +224,7 @@ const fats = [
                         measureString: '(בינוני)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -238,8 +238,8 @@ const fats = [
                         message: '',
                 },
                 sugar: {
-                        sugarCalculation: 0.5,
-                        sugarCalculationGram: 10,
+                        sugarCalculation: 2,
+                        sugarCalculationGram: 20,
                         sugarString: '* יש להוסיף מנות סוכר',
                 },
                 unit: {
@@ -247,7 +247,7 @@ const fats = [
                         measureString: '(פרוסה דקה)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: true,
                 },
@@ -261,8 +261,8 @@ const fats = [
                         message: '',
                 },
                 sugar: {
-                        sugarCalculation: 0.5,
-                        sugarCalculationGram: 10,
+                        sugarCalculation: 4,
+                        sugarCalculationGram: 20,
                         sugarString: '* יש להוסיף מנות סוכר',
                 },
                 unit: {
@@ -270,7 +270,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: true,
                 },
@@ -293,7 +293,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -316,7 +316,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -339,7 +339,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -362,7 +362,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -385,7 +385,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -408,7 +408,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -422,8 +422,8 @@ const fats = [
                         message: '',
                 },
                 sugar: {
-                        sugarCalculation: 0.5,
-                        sugarCalculationGram: 15,
+                        sugarCalculation: 2,
+                        sugarCalculationGram: 30,
                         sugarString: '* יש להוסיף מנות סוכר',
                 },
                 unit: {
@@ -431,7 +431,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: true,
                 },
@@ -454,7 +454,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -477,7 +477,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: false,
                         sugar: false,
                 },
@@ -500,7 +500,7 @@ const fats = [
                         measureString: '(כפית)',
                 },
                 check: {
-                        count: true,
+                        message: false,
                         gram: true,
                         sugar: false,
                 },
@@ -511,7 +511,7 @@ const fats = [
                         value: 2,
                         gram: 30,
                         sugar: 0,
-                        message: '* אינם משתייכים לקבוצת החלב מאחר ודלים מאוד בחלבון.',
+                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -523,7 +523,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: true,
                         gram: true,
                         sugar: false,
                 },
@@ -534,7 +534,7 @@ const fats = [
                         value: 2.5,
                         gram: 40,
                         sugar: 0,
-                        message: "* אינם משתייכים לקבוצת החלב מאחר ודלים מאוד בחלבון.",
+                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -546,7 +546,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: true,
                         gram: true,
                         sugar: false,
                 },
@@ -557,7 +557,7 @@ const fats = [
                         value: 3,
                         gram: 45,
                         sugar: 0,
-                        message: "* אינם משתייכים לקבוצת החלב מאחר ודלים מאוד בחלבון.",
+                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -569,7 +569,7 @@ const fats = [
                         measureString: '(כף)',
                 },
                 check: {
-                        count: true,
+                        message: true,
                         gram: true,
                         sugar: false,
                 },

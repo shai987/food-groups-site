@@ -27,7 +27,7 @@ const GrainsBakery = () => {
                         </div>
 
                         <div>
-                                <h2>כל מנה מכילה 70 קלוריות, 15 גר' פחמימות, 2.5  גר' חלבון ועקבות שומן.</h2>
+                                <h2>כל מנה מכילה 70 קלוריות, 15 גרם פחמימות, 2.5  גרם חלבון ועקבות שומן.</h2>
                         </div>
 
                         <br />
@@ -134,6 +134,8 @@ const GrainsBakery = () => {
                                 </Grid> */}
 
                         </div>
+                        {/* <LazyLoad> */}
+
                         <Grid container item xs={9}>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                                 <Cards
@@ -168,6 +170,7 @@ const GrainsBakery = () => {
                                         name="שונות"
                                 />
                         </Grid>
+                        {/* </LazyLoad> */}
                 </>
         );
 }

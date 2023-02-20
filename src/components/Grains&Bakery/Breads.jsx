@@ -3,13 +3,17 @@ import breads from '../../services/Grains&Bakery/breads';
 import '../../assets/css/basic.css';
 
 const Breads = () => {
+        //  array of type calculation
         const types = ['כמות', 'גרם'];
+
+        // My states 
         const [products] = useState(breads);
         const [productName, setProductName] = useState(breads[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
                 const product = products.find(product => product.details?.productName === productName);

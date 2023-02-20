@@ -24,8 +24,22 @@ import CookedFoodsGB from "../components/Grains&Bakery/CookedFoodsGB";
 import Flour from "../components/Grains&Bakery/Flour";
 import Variance from "../components/Grains&Bakery/Variance";
 
-import PulseAmylum from '../components/navComponents/PulseAmylum';
-import CookedFoodsPA from '../components/Pulse&Amylum/CookedFoodsPA';
+import LegumesAmylum from '../components/navComponents/LegumesAmylum';
+import CookedFoodsPA from '../components/Legumes&Amylum/CookedFoodsPA';
+
+import FruitGroup from '../components/navComponents/FruitGroup';
+import Fruit from '../components/Fruits/Fruit';
+
+import FatGroup from '../components/navComponents/FatGroup';
+import Fat from '../components/Fat/Fat';
+
+import MeatGroup from '../components/navComponents/MeatGroup';
+
+import MilkGroup from '../components/navComponents/MilkGroup';
+
+import LowFatMilkGroup from '../components/navComponents/LowFatMilkGroup';
+
+import Vegetables from '../components/navComponents/Vegetables';
 
 import SugarGroup from '../components/navComponents/SugarGroup';
 import Sugar from '../components/Sugars/Sugar';
@@ -33,29 +47,15 @@ import Sugar from '../components/Sugars/Sugar';
 import '../assets/css/MyRouter.css';
 
 const MyRouter = () => {
-        // const pages = [
-        //         { key: 'Breads', value: 'לחמים' },
-        //         { key: 'CookedFoodsGB', value: 'מזונות מבושלים (ללא שמן)' },
-        //         { key: 'Flour', value: 'קמחים (לא מבושל)' },
-        //         { key: 'Variance', value: 'שונות' },
-        // ];
-
-        // const pages1 = [
-        //         { key: 'GrainsBakery', value: 'קבוצת עמילן/דגנים ומוצרי מאפה' },
-        //         { key: 'PulseAmylum', value: 'קבוצת עמילן/קטניות' },
-        //         { key: 'Variance', value: 'קבוצת הפירות' },
-        //         { key: 'Variance', value: 'קבוצת הבשר ותחליפיו' },
-        //         { key: 'Variance', value: 'קבוצת השומן' },
-        //         { key: 'Variance', value: 'קבוצת החלב' },
-        //         { key: 'Variance', value: 'קבוצת חלב דל שומן' },
-        //         { key: 'Variance', value: 'קבוצת הירקות' },
-        //         { key: 'Variance', value: 'קבוצת הסוכרים' },
-        //         { key: 'Variance', value: 'סיכום קבוצות תחליף' },
-        //         { key: 'Variance', value: 'בניית תפריט מאוזן' },
-        // ];
-        const pages12 = [
+        const pages = [
                 { key: 'GrainsBakery', value: 'קבוצת עמילן/דגנים ומוצרי מאפה' },
-                { key: 'PulseAmylum', value: 'קבוצת עמילן/קטניות' },
+                { key: 'LegumesAmylum', value: 'קבוצת עמילן/קטניות' },
+                { key: 'FruitGroup', value: 'קבוצת הפירות' },
+                { key: 'FatGroup', value: 'קבוצת השומן' },
+                { key: 'MeatGroup', value: 'קבוצת הבשר ותחליפיו' },
+                { key: 'MilkGroup', value: 'קבוצת החלב' },
+                { key: 'LowFatMilkGroup', value: 'קבוצת חלב דל שומן' },
+                { key: 'Vegetables', value: 'קבוצת הירקות' },
                 { key: 'SugarGroup', value: 'קבוצת הסוכרים' },
         ];
 
@@ -80,7 +80,7 @@ const MyRouter = () => {
                                                                 </Button>
                                                         </Link> &nbsp; &nbsp;
 
-                                                        {pages12.map((page) => (
+                                                        {pages.map((page) => (
                                                                 <MenuItem key={page.key} onClick={handleCloseNavMenu}>
                                                                         <Link className='link' to={`/${page.key}`}>
                                                                                 <Button
@@ -101,8 +101,16 @@ const MyRouter = () => {
                                         <Route path='/CookedFoodsGB' element={<CookedFoodsGB />}></Route>
                                         <Route path='/Flour' element={<Flour />}></Route>
                                         <Route path='/Variance' element={<Variance />}></Route>
-                                        <Route path='/PulseAmylum' element={<PulseAmylum />}></Route>
+                                        <Route path='/LegumesAmylum' element={<LegumesAmylum />}></Route>
                                         <Route path='/CookedFoodsPA' element={<CookedFoodsPA />}></Route>
+                                        <Route path='/FruitGroup' element={<FruitGroup />}></Route>
+                                        <Route path='/Fruit' element={<Fruit />}></Route>
+                                        <Route path='/FatGroup' element={<FatGroup />}></Route>
+                                        <Route path='/Fat' element={<Fat />}></Route>
+                                        <Route path='/MeatGroup' element={<MeatGroup />}></Route>
+                                        <Route path='/MilkGroup' element={<MilkGroup />}></Route>
+                                        <Route path='/LowFatMilkGroup' element={<LowFatMilkGroup />}></Route>
+                                        <Route path='/Vegetables' element={<Vegetables />}></Route>
                                         <Route path='/SugarGroup' element={<SugarGroup />}></Route>
                                         <Route path='/Sugar' element={<Sugar />}></Route>
                                         <Route path='/Cards' element={<Cards />}></Route>

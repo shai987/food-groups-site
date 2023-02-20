@@ -18,7 +18,7 @@ const meats = [
                 check: {
                         count: true,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -26,7 +26,7 @@ const meats = [
                         productName: 'בשר בקר',
                         value: 0,
                         gram: 90,
-                        bread: 0,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -40,7 +40,7 @@ const meats = [
                 check: {
                         count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -48,7 +48,7 @@ const meats = [
                         productName: 'בשר הודו',
                         value: 0,
                         gram: 90,
-                        bread: 0,
+                        breadFat: 0,
                         message: '* מנות עוף/הודו ללא עור להוריד מנת שומן.',
                 },
                 breadFat: {
@@ -62,7 +62,7 @@ const meats = [
                 check: {
                         count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -70,7 +70,7 @@ const meats = [
                         productName: 'בשר עוף (עם עצם)',
                         value: 0.25,
                         gram: 150,
-                        bread: 0,
+                        breadFat: 0,
                         message: '* מנות עוף/הודו ללא עור להוריד מנת שומן.',
                 },
                 breadFat: {
@@ -84,7 +84,7 @@ const meats = [
                 check: {
                         count: true,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -92,7 +92,7 @@ const meats = [
                         productName: 'בשר עוף',
                         value: 0,
                         gram: 90,
-                        bread: 0,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -106,7 +106,7 @@ const meats = [
                 check: {
                         count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -114,7 +114,7 @@ const meats = [
                         productName: 'דג מעושן/משומר בשמן/מלוח',
                         value: 0,
                         gram: 90,
-                        bread: 0,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -128,7 +128,7 @@ const meats = [
                 check: {
                         count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
@@ -136,7 +136,7 @@ const meats = [
                         productName: 'דגים משומרים במים',
                         value: 0,
                         gram: 100,
-                        bread: 0,
+                        breadFat: 10,
                         message: '',
                 },
                 breadFat: {
@@ -145,20 +145,64 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
                         count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: true,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
+                        productName: 'דגים רזים',
+                        value: 0,
                         gram: 100,
-                        bread: 0,
+                        breadFat: 10,
+                        message: `מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                },
+                breadFat: {
+                        breadString: '',
+                        fatString: '* להוריד גרם שומן',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '',
+                },
+                check: {
+                        count: false,
+                        gram: true,
+                        breadFat: true,
+                },
+        },
+        {
+                details: {
+                        productName: 'דגים רזים (עם עצמות)',
+                        value: 0,
+                        gram: 150,
+                        breadFat: 10,
+                        message: `מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                },
+                breadFat: {
+                        breadString: '',
+                        fatString: '* להוריד גרם שומן',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '',
+                },
+                check: {
+                        count: false,
+                        gram: true,
+                        breadFat: true,
+                },
+        },
+        {
+                details: {
+                        productName: 'דגים שמנים',
+                        value: 0,
+                        gram: 100,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -167,20 +211,20 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
-                        count: true,
+                        count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
-                        gram: 100,
-                        bread: 0,
+                        productName: 'דגים שמנים (עם עצמות)',
+                        value: 0,
+                        gram: 150,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -189,20 +233,20 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
-                        count: true,
+                        count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
+                        productName: 'כבש',
+                        value: 0,
                         gram: 100,
-                        bread: 0,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -211,20 +255,20 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
-                        count: true,
+                        count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
-                        gram: 100,
-                        bread: 0,
+                        productName: 'נקניק',
+                        value: 0,
+                        gram: 90,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -233,20 +277,20 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
-                        count: true,
+                        count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
-                        gram: 100,
-                        bread: 0,
+                        productName: 'נקנקיות',
+                        value: 3,
+                        gram: 120,
+                        breadFat: 0,
                         message: '',
                 },
                 breadFat: {
@@ -255,56 +299,56 @@ const meats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: 'יחידה',
                 },
                 check: {
                         count: true,
                         gram: true,
-                        bread: false,
+                        breadFat: false,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
+                        productName: 'פסטרמה',
+                        value: 6,
                         gram: 100,
-                        bread: 0,
+                        breadFat: 10,
                         message: '',
                 },
                 breadFat: {
                         breadString: '',
-                        fatString: '',
+                        fatString: '* להוריד גרם שומן',
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: 'פרוסה',
                 },
                 check: {
                         count: true,
                         gram: true,
-                        bread: false,
+                        breadFat: true,
                 },
         },
         {
                 details: {
-                        productName: '',
-                        value: 0.5,
+                        productName: 'שניצל (עוף/הודו)',
+                        value: 0,
                         gram: 100,
-                        bread: 0,
+                        breadFat: 0.5,
                         message: '',
                 },
                 breadFat: {
-                        breadString: '',
+                        breadString: '* להוסיף מנת לחם',
                         fatString: '',
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(כוס)',
+                        measureString: '',
                 },
                 check: {
-                        count: true,
+                        count: false,
                         gram: true,
-                        bread: false,
+                        breadFat: true,
                 },
         },
 ];

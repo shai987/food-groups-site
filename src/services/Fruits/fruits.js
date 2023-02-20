@@ -12,7 +12,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: 'אבטיח עם קליפה',
+                        productName: 'אבטיח (עם קליפה)',
                         value: 1,
                         gram: 400,
                 },
@@ -25,7 +25,7 @@ const fruits = [
                 details: {
                         productName: 'אגס גדול',
                         value: 1,
-                        gram: 120,
+                        gram: 200,
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -35,7 +35,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אגס קטן',
-                        calculationValue: 2,
                         value: 2,
                         gram: 120,
                 },
@@ -58,7 +57,6 @@ const fruits = [
         {
                 details: {
                         productName: 'אננס טרי',
-                        calculationValue: 4,
                         value: 0.25,
                         gram: 120,
                 },
@@ -223,7 +221,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: '(עם קליפה) מנדרינה/קלמטינה',
+                        productName: 'מנדרינה/קלמטינה (עם קליפה)',
                         value: 1,
                         gram: 200,
                 },
@@ -289,7 +287,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: '(עם קליפה) פאפיה',
+                        productName: 'פאפיה (עם קליפה)',
                         value: 0.33333,
                         gram: 150,
                 },
@@ -344,7 +342,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: '(עם קליפה) צבר',
+                        productName: 'צבר (עם קליפה)',
                         value: 2,
                         gram: 300,
                 },
@@ -432,7 +430,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: '(קטנים) תאנים',
+                        productName: 'תאנים (קטנים)',
                         value: 2,
                         gram: 80,
                 },
@@ -443,7 +441,7 @@ const fruits = [
         },
         {
                 details: {
-                        productName: ' (גדולים) תאנים',
+                        productName: 'תאנים (גדולים)',
                         value: 1,
                         gram: 80,
                 },
