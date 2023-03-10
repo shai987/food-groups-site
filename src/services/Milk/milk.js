@@ -20,6 +20,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: true,
                 },
         },
         {
@@ -43,6 +44,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: true,
                 },
         },
         {
@@ -66,6 +68,7 @@ const milk = [
                         count: false,
                         gram: true,
                         sugar: false,
+                        message: true,
                 },
         },
         {
@@ -89,6 +92,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: true,
                 },
         },
         {
@@ -106,12 +110,13 @@ const milk = [
                 },
                 unit: {
                         gramString: '(מ"ל)',
-                        measureString: '(פרוסה)',
+                        measureString: '(כוס)',
                 },
                 check: {
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: false,
                 },
         },
         {
@@ -121,6 +126,7 @@ const milk = [
                         gram: 170,
                         sugar: 0,
                         message: '',
+                        message: false,
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -135,6 +141,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: false,
                 },
         },
         {
@@ -158,6 +165,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: false,
                 },
         },
         {
@@ -181,6 +189,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: false,
                 },
         },
         {
@@ -204,6 +213,31 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: false,
+                        message: false,
+                },
+        },
+        {
+                details: {
+                        productName: 'מעדן שוקולד/וניל',
+                        value: 1,
+                        gram: 125,
+                        sugar: 1,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 1,
+                        sugarCalculationGram: 125,
+                        sugarString: '* יש להוסיף מנות סוכר',
+                },
+                unit: {
+                        gramString: '(מ"ל)',
+                        measureString: '(גביע קטן)',
+                },
+                check: {
+                        count: true,
+                        gram: true,
+                        sugar: true,
+                        message: false,
                 },
         },
         {
@@ -216,8 +250,8 @@ const milk = [
                 },
                 sugar: {
                         sugarCalculation: 1,
-                        sugarCalculationGram: 125,
-                        sugarString: '* להוסיף מנות סוכר',
+                        sugarCalculationGram: 150,
+                        sugarString: '* יש להוסיף מנות סוכר',
                 },
                 unit: {
                         gramString: '(מ"ל)',
@@ -227,6 +261,7 @@ const milk = [
                         count: true,
                         gram: true,
                         sugar: true,
+                        message: false,
                 },
         },
 ];

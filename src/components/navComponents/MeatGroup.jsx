@@ -40,7 +40,7 @@ const MeatGroup = () => {
                                                 name="לייט"
                                         />
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
+                                                imageSrc={require('../../assets/images/eggs.jpg')}
                                                 title="תמונת ביצים"
                                                 alt="תמונת ביצים"
                                                 link='/Egg'

@@ -12,41 +12,17 @@ const Sugar = () => {
 
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
-                // For basic reasult division operation
-                const productDivision = ` ${(amount / product.details?.calculationValue).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // For basic reasult division operation
-                const productDivisionGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const product = products.find(product => product?.details?.productName === productName);
+                // Calculate count reasult
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram reasult
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                switch (productType) {
-                        case 'כמות':
-                                {
-                                        switch (productName) {
-                                                case 'דבש':
-                                                case 'דבש קל':
-                                                case 'סוכר':
-                                                case 'סוכריות קשות/טופי':
-                                                case 'ריבה':
-                                                        return productDivision;
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        case 'גרם':
-                                {
-                                        switch (productName) {
-                                                case 'דבש':
-                                                case 'דבש קל':
-                                                case 'סוכר':
-                                                case 'סוכריות קשות/טופי':
-                                                case 'ריבה':
-                                                        return product.details.gram === 0 ? 0 : productDivisionGram; // prevent infinity
-                                                default:
-                                                        return 0;
-                                        }
-                                }
-                        default:
-                                return 0;
+                if (product) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                }
+                else {
+                        return alert('המוצר לא קיים');
                 }
         };
 
@@ -111,17 +87,17 @@ const Sugar = () => {
                         <br />
                         <label>
                                 סוג הסוכר:
-                                <input list="productName"
+                                <input list="productName14"
                                         defaultValue={productName}
                                         onChange={handleProduct}
                                         onClick={handleClear}
                                         onFocus={handleClear}
                                 />
-                                <datalist id="productName">
+                                <datalist id="productName14">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

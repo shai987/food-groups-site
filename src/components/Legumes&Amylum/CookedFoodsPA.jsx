@@ -26,11 +26,16 @@ const CookedFoodsPA = () => {
                 // Basic calculate gram reasult
                 const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                if (product.check.fat) {
-                        return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                if (product) {
+                        if (product.check.fat) {
+                                return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                        }
+                        else {
+                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        }
                 }
                 else {
-                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        return alert('המוצר לא קיים');
                 }
         };
 

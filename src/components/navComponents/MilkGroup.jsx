@@ -18,9 +18,9 @@ const MilkGroup = () => {
                         <div >
                                 <Grid container item xs={10}>
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
-                                                title="חלב"
-                                                alt="חלב"
+                                                imageSrc={require('../../assets/images/milkGroup.jpg')}
+                                                title="מוצרי חלב"
+                                                alt="מוצרי חלב"
                                                 link='/Milk'
                                                 name="מוצרי חלב"
                                         />

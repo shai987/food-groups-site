@@ -16,31 +16,36 @@ const Fat = () => {
         // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count reasult + message
-                const productCalculationCountMessage = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.details?.message}`;
+                const productCalculationCountMessage = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
                 // Calculate count sugar reasult  
-                const productCalculationCountSugar = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountSugar = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
                 // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram sugar reasult
-                const productCalculationGramSugar = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationGramSugar = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
                 // Calculate gram sugar reasult + message
-                const productCalculationGramSugarMessage = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.details?.message} `;
+                const productCalculationGramSugarMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
 
-                if (product.check.gram && product.check.sugar) {
-                        return productType === 'כמות' ? productCalculationCountSugar : productCalculationGramSugar;
-                }
-                else if (product.check.gram && product.check.message) {
-                        return productType === 'כמות' ? productCalculationCountMessage : productCalculationGramSugarMessage;
-                }
-                else if (product.check.gram) {
-                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                if (product) {
+                        if (product?.check?.gram && product?.check?.sugar) {
+                                return productType === 'כמות' ? productCalculationCountSugar : productCalculationGramSugar;
+                        }
+                        else if (product?.check?.gram && product?.check?.message) {
+                                return productType === 'כמות' ? productCalculationCountMessage : productCalculationGramSugarMessage;
+                        }
+                        else if (product?.check?.gram) {
+                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        }
+                        else {
+                                return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName} `;
+                        }
                 }
                 else {
-                        return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName} `;
+                        return alert('המוצר לא קיים');
                 }
         };
 
@@ -114,8 +119,8 @@ const Fat = () => {
                                 <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

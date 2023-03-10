@@ -18,7 +18,7 @@ const LowFatMilkGroup = () => {
                         <div >
                                 <Grid container item xs={10}>
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
+                                                imageSrc={require('../../assets/images/milkGroup.jpg')}
                                                 title="חלב דל שומן"
                                                 alt="חלב דל שומן"
                                                 link='/LowFatMilk'

@@ -4,11 +4,14 @@ const lowFatMilk = [
                         productName: `גבינה לבנה/קוטג' (0.5%)`,
                         value: 6,
                         gram: 120,
-                        message: 'דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
+                        message: '* דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
                 },
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                },
+                check: {
+                        message: true,
                 },
         },
         {
@@ -16,11 +19,14 @@ const lowFatMilk = [
                         productName: 'גבינה צהובה לייט',
                         value: 2,
                         gram: 40,
-                        message: 'דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
+                        message: '* דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
                 },
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(פרוסה)',
+                },
+                check: {
+                        message: true,
                 },
         },
         {
@@ -34,6 +40,9 @@ const lowFatMilk = [
                         gramString: '(מ"ל)',
                         measureString: '(כוס)',
                 },
+                check: {
+                        message: false,
+                },
         },
         {
                 details: {
@@ -45,6 +54,9 @@ const lowFatMilk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
+                },
+                check: {
+                        message: false,
                 },
         },
         {
@@ -58,6 +70,9 @@ const lowFatMilk = [
                         gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
                 },
+                check: {
+                        message: false,
+                },
         },
         {
                 details: {
@@ -70,6 +85,9 @@ const lowFatMilk = [
                         gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
                 },
+                check: {
+                        message: false,
+                },
         },
         {
                 details: {
@@ -81,6 +99,9 @@ const lowFatMilk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(כוס)',
+                },
+                check: {
+                        message: false,
                 },
         },
 ];

@@ -19,10 +19,10 @@ const Vegetables = () => {
                         <div >
                                 <Grid container item xs={10}>
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
+                                                imageSrc={require('../../assets/images/Vegetables.jpg')}
                                                 title="תמונת ירקות"
                                                 alt="תמונת ירקות"
-                                                link='/Vegetables'
+                                                link='/Vegetable'
                                                 name="ירקות"
                                         />
                                 </Grid>

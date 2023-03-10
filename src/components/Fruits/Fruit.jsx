@@ -16,13 +16,18 @@ const Fruit = () => {
         // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+                const product = products.find(product => product?.details?.productName === productName);
                 // Calculate count reasult
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                if (product) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                }
+                else {
+                        return alert('המוצר לא קיים');
+                }
         };
 
         const handleProduct = (event) => {
@@ -95,8 +100,8 @@ const Fruit = () => {
                                 <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

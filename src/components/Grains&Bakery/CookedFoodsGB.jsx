@@ -16,24 +16,29 @@ const CookedFoodsGB = () => {
         // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count reasult  
-                const productCalculationCountFat = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
                 // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
-                const productCalculationGramFat = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
 
-                if (product.check.gram && product.check.fat) {
-                        return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
-                }
-                else if (product.check.gram) {
-                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                if (product) {
+                        if (product?.check?.gram && product?.check?.fat) {
+                                return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                        }
+                        else if (product?.check?.gram) {
+                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        }
+                        else {
+                                return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                        }
                 }
                 else {
-                        return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                        return alert('המוצר לא קיים');
                 }
         };
 
@@ -107,8 +112,8 @@ const CookedFoodsGB = () => {
                                 <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

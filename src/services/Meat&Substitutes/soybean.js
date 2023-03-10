@@ -7,6 +7,7 @@ const soybean = [
                 },
                 bread: {
                         breadString: '* יש להוסיף מנות לחם',
+                        breadCalculation: 3,
                 },
                 unit: {
                         measureString: '(יחידה)',
@@ -23,6 +24,7 @@ const soybean = [
                 },
                 bread: {
                         breadString: '',
+                        breadCalculation: 0,
                 },
                 unit: {
                         measureString: '(יחידה)',
@@ -39,6 +41,7 @@ const soybean = [
                 },
                 bread: {
                         breadString: '* יש להוסיף מנות לחם',
+                        breadCalculation: 6,
                 },
                 unit: {
                         measureString: '(יחידה)',
@@ -55,6 +58,7 @@ const soybean = [
                 },
                 bread: {
                         breadString: '* יש להוסיף מנות לחם',
+                        breadCalculation: 2,
                 },
                 unit: {
                         measureString: '(יחידה)',
@@ -71,6 +75,7 @@ const soybean = [
                 },
                 bread: {
                         breadString: '* יש להוסיף מנות לחם',
+                        breadCalculation: 3,
                 },
                 unit: {
                         measureString: '(יחידה)',

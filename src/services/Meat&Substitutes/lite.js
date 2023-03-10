@@ -39,4 +39,4 @@ const lite = [
                 },
         },
 ];
-export default variance;  
+export default lite;  

@@ -34,12 +34,19 @@ import FatGroup from '../components/navComponents/FatGroup';
 import Fat from '../components/Fat/Fat';
 
 import MeatGroup from '../components/navComponents/MeatGroup';
+import Meat from '../components/Meat&Substitutes/Meat';
+import Soybean from '../components/Meat&Substitutes/Soybean';
+import Lite from '../components/Meat&Substitutes/Lite';
+import Egg from '../components/Meat&Substitutes/Egg';
 
 import MilkGroup from '../components/navComponents/MilkGroup';
+import Milk from '../components/Milk/Milk';
 
 import LowFatMilkGroup from '../components/navComponents/LowFatMilkGroup';
+import LowFatMilk from '../components/LowFatMilk/LowFatMilk';
 
 import Vegetables from '../components/navComponents/Vegetables';
+import Vegetable from '../components/Vegetables/Vegetable';
 
 import SugarGroup from '../components/navComponents/SugarGroup';
 import Sugar from '../components/Sugars/Sugar';
@@ -108,9 +115,16 @@ const MyRouter = () => {
                                         <Route path='/FatGroup' element={<FatGroup />}></Route>
                                         <Route path='/Fat' element={<Fat />}></Route>
                                         <Route path='/MeatGroup' element={<MeatGroup />}></Route>
+                                        <Route path='/Meat' element={<Meat />}></Route>
+                                        <Route path='/Soybean' element={<Soybean />}></Route>
+                                        <Route path='/Lite' element={<Lite />}></Route>
+                                        <Route path='/Egg' element={<Egg />}></Route>
                                         <Route path='/MilkGroup' element={<MilkGroup />}></Route>
+                                        <Route path='/Milk' element={<Milk />}></Route>
                                         <Route path='/LowFatMilkGroup' element={<LowFatMilkGroup />}></Route>
+                                        <Route path='/LowFatMilk' element={<LowFatMilk />}></Route>
                                         <Route path='/Vegetables' element={<Vegetables />}></Route>
+                                        <Route path='/Vegetable' element={<Vegetable />}></Route>
                                         <Route path='/SugarGroup' element={<SugarGroup />}></Route>
                                         <Route path='/Sugar' element={<Sugar />}></Route>
                                         <Route path='/Cards' element={<Cards />}></Route>

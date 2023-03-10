@@ -16,13 +16,18 @@ const Flour = () => {
         // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+                const product = products.find(product => product?.details?.productName === productName);
                 // Calculate count reasult
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                if (product) {
+                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                }
+                else {
+                        return alert('המוצר לא קיים');
+                }
         };
 
         const handleProduct = (event) => {
@@ -53,23 +58,23 @@ const Flour = () => {
                         <h1>קמחים (לא מבושל)</h1>
                         <label>
                                 חישוב לפי כמות או גרמים:
-                                <input list="productTypeFlour"
+                                <input list="productType"
                                         defaultValue={productType}
                                         onChange={handleProductType}
                                         onClick={handleClear}
                                         onFocus={handleClear}
                                 />
-                                <datalist id="productTypeFlour">
+                                <datalist id="productType">
                                         {
                                                 types.map((type) => (
-                                                        <option key={type} name="productTypeFlour" value={type}>
+                                                        <option key={type} name="productType" value={type}>
                                                                 {type}
                                                         </option>
                                                 ))
                                         }
                                 </datalist>
                         </label>
-                        <br />
+                        <br /><br />
                         <label htmlFor="productAmount">
                                 כמות נצרכת:
                                 <input
@@ -83,21 +88,20 @@ const Flour = () => {
                                         onChange={handleAmount}
                                 />
                         </label>
-                        <br />
+                        <br /><br />
                         <label>
                                 סוג הקמח:
-                                <input list="productNameFlour"
-                                        name='productNameFlour'
+                                <input list="productName"
                                         defaultValue={productName}
                                         onChange={handleProduct}
                                         onClick={handleClear}
                                         onFocus={handleClear}
                                 />
-                                <datalist id="productNameFlour">
+                                <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productNameFlour" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }
