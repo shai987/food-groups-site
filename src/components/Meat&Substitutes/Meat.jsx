@@ -16,32 +16,47 @@ const Meat = () => {
         // My handlers
         const calculateValue = (productName, amount, productType) => {
                 // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count reasult + message
-                const productCalculationCountMessage = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.details?.message}`;
-                // Calculate count sugar reasult  
-                const productCalculationCountSugar = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountMessage = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                // Calculate count portionFat reasult  
+                const productCalculationCountPortionFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.portionFatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.breadFat?.portionFatCalculationCount).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.portionFatString.split(" יש להוריד ")[1]}`;
+                // Calculate count fat reasult  
+                const productCalculationCountFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.breadFat?.fatCalculationCount).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.fatString.split(" יש להוריד ")[1]}`;
                 // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // Calculate gram sugar reasult
-                const productCalculationGramSugar = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate gram portionFat reasult  
+                const productCalculationGramPortionFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.portionFatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.breadFat?.portionFatCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.portionFatString.split(" יש להוריד ")[1]}`;
+                // Calculate gram fat reasult  
+                const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.fat).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.fatString.split(" יש להוריד ")[1]}`;
+                // Calculate gram bread reasult  
+                const productCalculationGramBread = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.breadString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.breadFat?.breadCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.breadString.split(" יש להוסיף ")[1]}`;
                 // Calculate gram sugar reasult + message
-                const productCalculationGramSugarMessage = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.details?.message} `;
+                const productCalculationGramSugarMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
 
                 if (product) {
-                        if (product.check.gram && product.check.count && product.check.breadFat) {
-                                return productType === 'כמות' ? productCalculationCountSugar : productCalculationGramSugar;
+                        if (product?.check?.count && product?.check?.gram && product?.check?.portionFat) {
+                                return productType === 'כמות' ? productCalculationCountPortionFat : productCalculationGramPortionFat;
                         }
-                        else if (product.check.gram && product.check.message) {
-                                return productType === 'כמות' ? productCalculationCountMessage : productCalculationGramSugarMessage;
+                        else if (product?.check?.count && product?.check?.gram && product?.check?.fat) {
+                                return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
                         }
-                        else if (product.check.gram) {
+                        else if (product?.check?.count && product?.check?.gram) {
                                 return productType === 'כמות' ? productCalculationCount : productCalculationGram;
                         }
+                        else if (product?.check?.gram && product?.check?.portionFat) {
+                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramPortionFat;
+                        }
+                        else if (product?.check?.gram && product?.check?.fat) {
+                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFat;
+                        }
+                        else if (product?.check?.gram && product?.check?.bread) {
+                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramBread;
+                        }
                         else {
-                                return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName} `;
+                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGram;
                         }
                 }
                 else {
@@ -74,7 +89,7 @@ const Meat = () => {
 
         return (
                 <form onSubmit={handleSubmit}>
-                        <h1>שומן</h1>
+                        <h1>בשר</h1>
                         <label>
                                 חישוב לפי כמות או גרמים:
                                 <input list="productType"
@@ -109,7 +124,7 @@ const Meat = () => {
                         </label>
                         <br /><br />
                         <label>
-                                סוג המוצר:
+                                סוג הבשר:
                                 <input list="productName"
                                         defaultValue={productName}
                                         onChange={handleProduct}

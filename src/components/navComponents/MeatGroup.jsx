@@ -18,6 +18,7 @@ const MeatGroup = () => {
                         </div>
                         <div >
                                 <Grid container item xs={9}>
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
                                                 imageSrc={require('../../assets/images/Meat.jpg')}
                                                 title="תמונת בשר"
@@ -25,6 +26,7 @@ const MeatGroup = () => {
                                                 link='/Meat'
                                                 name="בשרים"
                                         />
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
                                                 imageSrc={require('../../assets/images/sugar.jpg')}
                                                 title="תמונת תחליפי בשר"
@@ -32,6 +34,7 @@ const MeatGroup = () => {
                                                 link='/Soybean'
                                                 name="מוצרי סויה מוכנים"
                                         />
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
                                                 imageSrc={require('../../assets/images/sugar.jpg')}
                                                 title="תמונת תחליפי בשר"
@@ -39,6 +42,7 @@ const MeatGroup = () => {
                                                 link='/Lite'
                                                 name="לייט"
                                         />
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
                                                 imageSrc={require('../../assets/images/eggs.jpg')}
                                                 title="תמונת ביצים"
