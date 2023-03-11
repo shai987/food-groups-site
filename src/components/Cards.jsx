@@ -7,19 +7,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 // import react-router-dom
 import { Link } from 'react-router-dom';
+// import react-lazyload
 import LazyLoad from 'react-lazyload';
-import { Grid } from '@mui/material';
+// import css
 import '../assets/css/basic.css'
 
 const Cards = (props) => {
-
         return (
                 <>
                         <LazyLoad height={200} once>
-                                {/* <Grid container item xs={8.3}> */}
                                 <Card sx={{ width: 300 }}>
                                         <CardMedia
-                                                // sx={{ height: 140 }}
                                                 image={props.imageSrc}
                                                 title={props.title}
                                                 alt={props.alt}
@@ -40,8 +38,6 @@ const Cards = (props) => {
                                                 </Link>
                                         </CardActions>
                                 </Card>
-
-                                {/* </Grid> */}
                         </LazyLoad>
                 </>
         );
