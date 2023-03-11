@@ -17,37 +17,37 @@ import MenuItem from "@mui/material/MenuItem";
 import HomepageContainer from '../components/homePage/HomepageContainer';
 import Cards from '../components/Cards';
 import MyContainer from '../components/MyContainer';
-
+// GrainsBakery
 import GrainsBakery from '../components/navComponents/GrainsBakery';
 import Breads from '../components/Grains&Bakery/Breads';
 import CookedFoodsGB from "../components/Grains&Bakery/CookedFoodsGB";
 import Flour from "../components/Grains&Bakery/Flour";
 import Variance from "../components/Grains&Bakery/Variance";
-
+// LegumesAmylum
 import LegumesAmylum from '../components/navComponents/LegumesAmylum';
 import CookedFoodsPA from '../components/Legumes&Amylum/CookedFoodsPA';
-
+// FruitGroup
 import FruitGroup from '../components/navComponents/FruitGroup';
 import Fruit from '../components/Fruits/Fruit';
-
+// FatGroup
 import FatGroup from '../components/navComponents/FatGroup';
 import Fat from '../components/Fat/Fat';
-
+// MeatGroup
 import MeatGroup from '../components/navComponents/MeatGroup';
 import Meat from '../components/Meat&Substitutes/Meat';
 import Soybean from '../components/Meat&Substitutes/Soybean';
 import Lite from '../components/Meat&Substitutes/Lite';
 import Egg from '../components/Meat&Substitutes/Egg';
-
+// MilkGroup
 import MilkGroup from '../components/navComponents/MilkGroup';
 import Milk from '../components/Milk/Milk';
-
+// LowFatMilkGroup
 import LowFatMilkGroup from '../components/navComponents/LowFatMilkGroup';
 import LowFatMilk from '../components/LowFatMilk/LowFatMilk';
-
+// Vegetables
 import Vegetables from '../components/navComponents/Vegetables';
 import Vegetable from '../components/Vegetables/Vegetable';
-
+// SugarGroup
 import SugarGroup from '../components/navComponents/SugarGroup';
 import Sugar from '../components/Sugars/Sugar';
 // import css
@@ -69,7 +69,7 @@ const MyRouter = () => {
         const [nav, setNav] = useState(null);
 
         const handleCloseNavMenu = () => {
-                setNav(null);
+                setNav(nav);
         };
 
         return (
