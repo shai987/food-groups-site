@@ -23,7 +23,7 @@ const Flour = () => {
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
                 if (product) {
-                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        return productType === types[0] ? productCalculationCount : productCalculationGram;
                 }
                 else {
                         return alert('המוצר לא קיים');

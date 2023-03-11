@@ -19,7 +19,7 @@ const Sugar = () => {
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
                 if (product) {
-                        return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                        return productType === types[0] ? productCalculationCount : productCalculationGram;
                 }
                 else {
                         return alert('המוצר לא קיים');
@@ -97,7 +97,7 @@ const Sugar = () => {
                                         {
                                                 products.map((product) => (
                                                         <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

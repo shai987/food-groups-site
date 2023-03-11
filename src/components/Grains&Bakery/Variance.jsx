@@ -32,16 +32,16 @@ const Variance = () => {
 
                 if (product) {
                         if (product?.check?.gram && product?.check?.fat && product?.check?.count && product?.check?.sugar) {
-                                return productType === 'כמות' ? productCalculationCountFatSugar : productCalculationGramFatSugar;
+                                return productType === types[0] ? productCalculationCountFatSugar : productCalculationGramFatSugar;
                         }
                         else if (product?.check?.gram && product?.check?.fat) {
-                                return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                                return productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
                         }
                         else if (product?.check?.gram) {
-                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                                return productType === types[0] ? productCalculationCount : productCalculationGram;
                         }
                         else {
-                                return productType === 'כמות' ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                                return productType === types[0] ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
                         }
                 }
                 else {
@@ -120,7 +120,7 @@ const Variance = () => {
                                         {
                                                 products.map((product) => (
                                                         <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

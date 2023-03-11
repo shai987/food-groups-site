@@ -28,10 +28,10 @@ const LowFatMilk = () => {
 
                 if (product) {
                         if (product?.check?.message) {
-                                return productType === 'כמות' ? productCalculationCountMessage : productCalculationGramMessage;
+                                return productType === types[0] ? productCalculationCountMessage : productCalculationGramMessage;
                         }
                         else {
-                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                                return productType === types[0] ? productCalculationCount : productCalculationGram;
                         }
                 }
                 else {
@@ -110,7 +110,7 @@ const LowFatMilk = () => {
                                         {
                                                 products.map((product) => (
                                                         <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

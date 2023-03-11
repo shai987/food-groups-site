@@ -36,28 +36,28 @@ const Meat = () => {
 
                 if (product) {
                         if (product?.check?.count && product?.check?.gram && product?.check?.portionFat) {
-                                return productType === 'כמות' ? productCalculationCountPortionFat : productCalculationGramPortionFat;
+                                return productType === types[0] ? productCalculationCountPortionFat : productCalculationGramPortionFat;
                         }
                         else if (product?.check?.count && product?.check?.gram && product?.check?.fat) {
-                                return productType === 'כמות' ? productCalculationCountFat : productCalculationGramFat;
+                                return productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
                         }
                         else if (product?.check?.count && product?.check?.gram) {
-                                return productType === 'כמות' ? productCalculationCount : productCalculationGram;
+                                return productType === types[0] ? productCalculationCount : productCalculationGram;
                         }
                         else if (product?.check?.gram && product?.check?.portionFat) {
-                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramPortionFat;
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramPortionFat;
                         }
                         else if (product?.check?.gram && product?.check?.fat && product?.check?.message) {
-                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFatMessage;
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFatMessage;
                         }
                         else if (product?.check?.gram && product?.check?.fat) {
-                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFat;
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFat;
                         }
                         else if (product?.check?.gram && product?.check?.bread) {
-                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramBread;
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramBread;
                         }
                         else {
-                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGram;
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGram;
                         }
                 }
                 else {
@@ -136,7 +136,7 @@ const Meat = () => {
                                         {
                                                 products.map((product) => (
                                                         <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === 'כמות' ? product.unit?.measureString : product.unit?.gramString}
+                                                                {productType === types[0] ? product.unit?.measureString : product.unit?.gramString}
                                                         </option>
                                                 ))
                                         }
