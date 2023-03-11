@@ -74,7 +74,10 @@ const milk = [
         {
                 details: {
                         productName: `גבינה לבנה/קוטג' (5%)`,
-                        value: 0.5 || 5,
+                        value: {
+                                value1: 0.5,
+                                value2: 5,
+                        },
                         gram: 125,
                         sugar: 0,
                         message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
@@ -195,7 +198,10 @@ const milk = [
         {
                 details: {
                         productName: 'לבנה (4.5% שומן)',
-                        value: 1 || 0.75,
+                        value: {
+                                value1: 1,
+                                value2: 0.75,
+                        },
                         gram: 150,
                         sugar: 0,
                         message: '',

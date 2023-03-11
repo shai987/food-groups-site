@@ -2,7 +2,10 @@ const fats = [
         {
                 details: {
                         productName: 'אבוקדו',
-                        value: 0.16667,
+                        value: {
+                                value1: 0.16667,
+                                value2: 2,
+                        },
                         gram: 25,
                         sugar: 0,
                         message: '',
@@ -20,6 +23,7 @@ const fats = [
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: true,
                 },
         },
         {

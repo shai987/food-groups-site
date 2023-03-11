@@ -5,29 +5,34 @@ import '../../assets/css/basic.css';
 const Fat = () => {
         //  array of type calculation
         const types = ['כמות', 'גרם'];
-
+        const values = ['קטן', 'כוס']
         // My states 
         const [products] = useState(fats);
         const [productName, setProductName] = useState(fats[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
+        const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
         // My handlers
-        const calculateValue = (productName, amount, productType) => {
+        const calculateValue = (productName, amount, productType, productValues) => {
                 // Get the product object 
                 const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // Calculate count reasult + message
+                // Calculate count message reasult
                 const productCalculationCountMessage = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
                 // Calculate count sugar reasult  
                 const productCalculationCountSugar = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                // Calculate count value1 reasult  
+                const productCalculationCountValue1 = ` ${(amount / product?.details?.value?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count value2 reasult  
+                const productCalculationCountValue2 = ` ${(amount / product?.details?.value?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Basic calculate gram reasult
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram sugar reasult
                 const productCalculationGramSugar = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
-                // Calculate gram sugar reasult + message
+                // Calculate gram sugar message reasult 
                 const productCalculationGramSugarMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
 
                 if (product) {
@@ -36,6 +41,12 @@ const Fat = () => {
                         }
                         else if (product?.check?.gram && product?.check?.message) {
                                 return productType === types[0] ? productCalculationCountMessage : productCalculationGramSugarMessage;
+                        }
+                        else if (product?.check?.gram && product?.check?.value) {
+                                if (productType === types[0])
+                                        return productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
+                                else
+                                        return productCalculationGram;
                         }
                         else if (product?.check?.gram) {
                                 return productType === types[0] ? productCalculationCount : productCalculationGram;
@@ -61,6 +72,17 @@ const Fat = () => {
                 setProductType(event.target.value);
         };
 
+        const handleProductValues = (event) => {
+                setProductValues(event.target.value);
+        };
+
+        const handleProductValuesOptions = (product) => {
+                products.map((product) => (
+                        product = product.details.productName
+                ))
+                return product;
+        }
+
         // Clean input field when click it 
         const handleClear = (event) => {
                 event.target.value = "";
@@ -69,7 +91,7 @@ const Fat = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType));
+                setResult(calculateValue(productName, productAmount, productType, productValues));
         };
 
         return (
@@ -127,6 +149,27 @@ const Fat = () => {
                                 </datalist>
                         </label>
                         <br /><br />
+                        {handleProductValuesOptions(productName) === 'אבוקדו' && productType === types[0] && <div>
+                                <label>
+                                        בחירת סוג חישוב כמות
+                                        <input list="productValues"
+                                                defaultValue={productValues}
+                                                onChange={handleProductValues}
+                                                onClick={handleClear}
+                                                onFocus={handleClear}
+                                        />
+                                        <datalist id="productValues">
+                                                {
+                                                        values.map((type) => (
+                                                                <option key={type} name="productValues" value={type}>
+                                                                        {type}
+                                                                </option>
+                                                        ))
+                                                }
+                                        </datalist>
+                                </label>
+                        </div>}
+                        <br />
                         <div className='div1'>
                                 מספר מנות:
                                 {result}
