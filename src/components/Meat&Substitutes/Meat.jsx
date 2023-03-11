@@ -19,8 +19,6 @@ const Meat = () => {
                 const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // Calculate count reasult + message
-                const productCalculationCountMessage = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
                 // Calculate count portionFat reasult  
                 const productCalculationCountPortionFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.portionFatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.breadFat?.portionFatCalculationCount).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.portionFatString.split(" יש להוריד ")[1]}`;
                 // Calculate count fat reasult  
@@ -33,8 +31,8 @@ const Meat = () => {
                 const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.fat).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.fatString.split(" יש להוריד ")[1]}`;
                 // Calculate gram bread reasult  
                 const productCalculationGramBread = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.breadString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.breadFat?.breadCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.breadString.split(" יש להוסיף ")[1]}`;
-                // Calculate gram sugar reasult + message
-                const productCalculationGramSugarMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
+                // Calculate gram fat message reasult 
+                const productCalculationGramFatMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.fat).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.fatString.split(" יש להוריד ")[1]}\n ${product?.details?.message}`;
 
                 if (product) {
                         if (product?.check?.count && product?.check?.gram && product?.check?.portionFat) {
@@ -48,6 +46,9 @@ const Meat = () => {
                         }
                         else if (product?.check?.gram && product?.check?.portionFat) {
                                 return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramPortionFat;
+                        }
+                        else if (product?.check?.gram && product?.check?.fat && product?.check?.message) {
+                                return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFatMessage;
                         }
                         else if (product?.check?.gram && product?.check?.fat) {
                                 return productType === 'כמות' ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName} ` : productCalculationGramFat;

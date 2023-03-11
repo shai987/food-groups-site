@@ -7,6 +7,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -27,6 +28,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -37,6 +39,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -57,6 +60,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -67,6 +71,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 1,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -87,6 +92,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: true,
+                        message: false,
                 },
         },
         {
@@ -97,6 +103,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -117,6 +124,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -127,6 +135,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 1,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -147,6 +156,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: true,
+                        message: false,
                 },
         },
         {
@@ -157,6 +167,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -177,6 +188,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -187,6 +199,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -207,6 +220,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -217,6 +231,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -237,6 +252,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -247,6 +263,7 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -267,6 +284,7 @@ const meats = [
                         bread: false,
                         fat: true,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -277,7 +295,7 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
-                        message: `מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                        message: `* מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
                 },
                 breadFat: {
                         breadString: '',
@@ -298,6 +316,7 @@ const meats = [
                         bread: false,
                         fat: true,
                         portionFat: false,
+                        message: true,
                 },
         },
         {
@@ -308,7 +327,7 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
-                        message: `מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                        message: `* מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
                 },
                 breadFat: {
                         breadString: '',
@@ -329,6 +348,7 @@ const meats = [
                         bread: false,
                         fat: true,
                         portionFat: false,
+                        message: true,
                 },
         },
         {
@@ -339,6 +359,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -359,6 +380,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -369,6 +391,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -389,6 +412,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -399,6 +423,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -419,6 +444,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -429,6 +455,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -449,6 +476,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -459,6 +487,7 @@ const meats = [
                         bread: 0,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -479,6 +508,7 @@ const meats = [
                         bread: false,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -489,6 +519,7 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '',
@@ -509,6 +540,7 @@ const meats = [
                         bread: false,
                         fat: true,
                         portionFat: false,
+                        message: false,
                 },
         },
         {
@@ -519,6 +551,7 @@ const meats = [
                         bread: 0.5,
                         fat: 0,
                         portionFat: 0,
+                        message: '',
                 },
                 breadFat: {
                         breadString: '* יש להוסיף מנת לחם',
@@ -539,6 +572,7 @@ const meats = [
                         bread: true,
                         fat: false,
                         portionFat: false,
+                        message: false,
                 },
         },
 ];
