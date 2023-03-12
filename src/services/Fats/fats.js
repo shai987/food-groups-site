@@ -1,6 +1,122 @@
 const fats = [
         {
                 details: {
+                        productName: 'גדששדאבוקדו',
+                        value: {
+                                value1: 0.16667,
+                                value2: 2,
+                        },
+                        gram: 25,
+                        sugar: 0,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 0,
+                        sugarCalculationGram: 0,
+                        sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'קטן',
+                        measureString2: 'כף',
+                },
+                check: {
+                        message: false,
+                        gram: true,
+                        sugar: false,
+                        value: false,
+                },
+        },
+        {
+                details: {
+                        productName: 'שע',
+                        value: {
+                                value1: 0.16667,
+                                value2: 2,
+                        },
+                        gram: 25,
+                        sugar: 0,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 0,
+                        sugarCalculationGram: 0,
+                        sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'קטן',
+                        measureString2: 'כף',
+                },
+                check: {
+                        message: false,
+                        gram: true,
+                        sugar: false,
+                        value: false,
+                },
+        },
+        {
+                details: {
+                        productName: 'גד',
+                        value: {
+                                value1: 0.16667,
+                                value2: 2,
+                        },
+                        gram: 25,
+                        sugar: 0,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 0,
+                        sugarCalculationGram: 0,
+                        sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'קטן',
+                        measureString2: 'כף',
+                },
+                check: {
+                        message: false,
+                        gram: true,
+                        sugar: false,
+                        value: false,
+                },
+        },
+        {
+                details: {
+                        productName: 'ההה',
+                        value: {
+                                value1: 0.16667,
+                                value2: 2,
+                        },
+                        gram: 25,
+                        sugar: 0,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 0,
+                        sugarCalculationGram: 0,
+                        sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'קטן',
+                        measureString2: 'כף',
+                },
+                check: {
+                        message: false,
+                        gram: true,
+                        sugar: false,
+                        value: false,
+                },
+        },
+        {
+                details: {
                         productName: 'אבוקדו',
                         value: {
                                 value1: 0.16667,
@@ -17,7 +133,38 @@ const fats = [
                 },
                 unit: {
                         gramString: '(גרם)',
-                        measureString: '(קטן/כוס)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'קטן',
+                        measureString2: 'כף',
+                },
+                check: {
+                        message: false,
+                        gram: true,
+                        sugar: false,
+                        value: true,
+                },
+        },
+        {
+                details: {
+                        productName: 'אבוdsadasקדו',
+                        value: {
+                                value1: 1,
+                                value2: 3,
+                        },
+                        gram: 25,
+                        sugar: 0,
+                        message: '',
+                },
+                sugar: {
+                        sugarCalculation: 0,
+                        sugarCalculationGram: 0,
+                        sugarString: '',
+                },
+                unit: {
+                        gramString: '(גרם)',
+                        measureString: '(קטן/כף)',
+                        measureString1: 'ב',
+                        measureString2: 'ק',
                 },
                 check: {
                         message: false,
@@ -42,11 +189,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -65,11 +215,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -88,11 +241,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -111,11 +267,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -134,11 +293,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -157,11 +319,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -180,11 +345,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -203,11 +371,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -226,11 +397,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(בינוני)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -249,11 +423,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(פרוסה דקה)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: true,
+                        value: false,
                 },
         },
         {
@@ -272,11 +449,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: true,
+                        value: false,
                 },
         },
         {
@@ -295,11 +475,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -318,11 +501,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -341,11 +527,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -364,11 +553,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -387,11 +579,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -410,11 +605,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -433,11 +631,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: true,
+                        value: false,
                 },
         },
         {
@@ -456,11 +657,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -479,11 +683,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: false,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -502,11 +709,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: false,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -525,11 +735,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: true,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -548,11 +761,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: true,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
         {
@@ -571,11 +787,14 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
+                        measureString1: '',
+                        measureString2: '',
                 },
                 check: {
                         message: true,
                         gram: true,
                         sugar: false,
+                        value: false,
                 },
         },
 ];

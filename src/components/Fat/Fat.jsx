@@ -5,11 +5,13 @@ import '../../assets/css/basic.css';
 const Fat = () => {
         //  array of type calculation
         const types = ['כמות', 'גרם'];
-        const values = ['קטן', 'כוס']
         // My states 
         const [products] = useState(fats);
         const [productName, setProductName] = useState(fats[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        const values = [product?.unit?.measureString1, product?.unit?.measureString2];
         const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
@@ -76,12 +78,10 @@ const Fat = () => {
                 setProductValues(event.target.value);
         };
 
-        const handleProductValuesOptions = (product) => {
-                products.map((product) => (
-                        product = product.details.productName
-                ))
-                return product;
-        }
+        /*     const handleProductValuesOptions = (productName) => {
+                    const product = products.find(product => product?.details?.productName === productName);
+                    return product.check.value;
+            } */
 
         // Clean input field when click it 
         const handleClear = (event) => {
@@ -149,7 +149,7 @@ const Fat = () => {
                                 </datalist>
                         </label>
                         <br /><br />
-                        {handleProductValuesOptions(productName) === 'אבוקדו' && productType === types[0] && <div>
+                        {product?.check?.value === true && productType === types[0] && <div>
                                 <label>
                                         בחירת סוג חישוב כמות
                                         <input list="productValues"
