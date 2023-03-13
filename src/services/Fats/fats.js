@@ -16,8 +16,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(קטן/כף)',
-                        measureString1: 'קטן',
-                        measureString2: 'כף',
+                        measures: ['קטן', 'כף'],
                 },
                 check: {
                         message: false,
@@ -42,8 +41,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['יחידה', ''],
                 },
                 check: {
                         message: false,
@@ -68,8 +66,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['יחידה', ''],
                 },
                 check: {
                         message: false,
@@ -94,8 +91,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(יחידה)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['יחידה', ''],
                 },
                 check: {
                         message: false,
@@ -120,8 +116,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -146,8 +141,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -172,8 +166,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -198,8 +191,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -224,8 +216,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -250,8 +241,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(בינוני)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['בינוני', ''],
                 },
                 check: {
                         message: false,
@@ -276,8 +266,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(פרוסה דקה)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['פרוסה דקה', ''],
                 },
                 check: {
                         message: false,
@@ -302,8 +291,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -328,8 +316,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -354,8 +341,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -380,8 +366,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -406,8 +391,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -432,8 +416,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -458,8 +441,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -484,8 +466,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -510,8 +491,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -536,8 +516,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: false,
@@ -562,8 +541,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כפית)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כפית', ''],
                 },
                 check: {
                         message: false,
@@ -588,8 +566,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: true,
@@ -614,8 +591,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: true,
@@ -640,8 +616,7 @@ const fats = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(כף)',
-                        measureString1: '',
-                        measureString2: '',
+                        measures: ['כף', ''],
                 },
                 check: {
                         message: true,

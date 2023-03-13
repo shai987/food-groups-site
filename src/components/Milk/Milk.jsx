@@ -3,8 +3,9 @@ import milk from '../../services/Milk/milk';
 import '../../assets/css/basic.css';
 
 const Milk = () => {
-        //  array of type calculation
+        // array of type calculation
         const types = ['כמות', 'גרם'];
+
         // My states 
         const [products] = useState(milk);
         const [productName, setProductName] = useState(milk[0]['details']['productName']);
@@ -12,18 +13,22 @@ const Milk = () => {
         // Get the product object 
         const product = products.find(product => product?.details?.productName === productName);
         //  array of value calculation
-        const values = [product?.unit?.measureString1, product?.unit?.measureString2];
+        const values = [product?.unit?.measures[0], product?.unit?.measures[1]];
         const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get array of type
+        const type = types.find(type => type === productType);
+        // Get array of value
+        const value = values.find(value => value === productValues);
+
         useEffect(() => {
-                const newValues = [product?.unit?.measureString1, product?.unit?.measureString2];
-                if (newValues[0]) {
-                        setProductValues(newValues[0]);
+                if (values[0]) {
+                        setProductValues(values[0]);
                 }
                 else {
-                        setProductValues(newValues[1]);
+                        setProductValues(values[1]);
                 }
         }, [productType, product]);
 
@@ -48,7 +53,7 @@ const Milk = () => {
                 // Calculate gram message reasult
                 const productCalculationGramMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
 
-                if (product) {
+                if (product && type && value) {
                         if (product?.check?.sugar) {
                                 return productType === types[0] ? productCalculationCountSugar : productCalculationGramSugar;
                         }
@@ -78,7 +83,7 @@ const Milk = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 

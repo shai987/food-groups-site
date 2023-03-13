@@ -1,25 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import fats from '../../services/Fats/fats';
 import '../../assets/css/basic.css';
 
 const Fat = () => {
         //  array of type calculation
         const types = ['כמות', 'גרם'];
+
         // My states 
         const [products] = useState(fats);
         const [productName, setProductName] = useState(fats[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
         // Get the product object 
         const product = products.find(product => product?.details?.productName === productName);
-        const values = [product?.unit?.measureString1, product?.unit?.measureString2];
+        //  array of value calculation
+        const values = [product?.unit?.measures[0], product?.unit?.measures[1]];
         const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get array of type
+        const type = types.find(type => type === productType);
+        // Get array of value
+        const value = values.find(value => value === productValues);
+
+        useEffect(() => {
+                if (values[0]) {
+                        setProductValues(values[0]);
+                }
+                else {
+                        setProductValues(values[1]);
+                }
+        }, [productType, product]);
+
         // My handlers
         const calculateValue = (productName, amount, productType, productValues) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count message reasult
@@ -37,7 +51,7 @@ const Fat = () => {
                 // Calculate gram sugar message reasult 
                 const productCalculationGramSugarMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
 
-                if (product) {
+                if (product && type && value) {
                         if (product?.check?.gram && product?.check?.sugar) {
                                 return productType === types[0] ? productCalculationCountSugar : productCalculationGramSugar;
                         }
@@ -58,7 +72,7 @@ const Fat = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -77,11 +91,6 @@ const Fat = () => {
         const handleProductValues = (event) => {
                 setProductValues(event.target.value);
         };
-
-        /*     const handleProductValuesOptions = (productName) => {
-                    const product = products.find(product => product?.details?.productName === productName);
-                    return product.check.value;
-            } */
 
         // Clean input field when click it 
         const handleClear = (event) => {
@@ -153,16 +162,16 @@ const Fat = () => {
                                 <label>
                                         בחירת סוג חישוב כמות
                                         <input list="productValues"
-                                                defaultValue={productValues}
+                                                value={productValues || ''}
                                                 onChange={handleProductValues}
                                                 onClick={handleClear}
                                                 onFocus={handleClear}
                                         />
                                         <datalist id="productValues">
                                                 {
-                                                        values.map((type) => (
-                                                                <option key={type} name="productValues" value={type}>
-                                                                        {type}
+                                                        values.map((value) => (
+                                                                <option key={value} name="productValues" value={value || ''}>
+                                                                        {value}
                                                                 </option>
                                                         ))
                                                 }

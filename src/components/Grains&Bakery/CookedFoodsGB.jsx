@@ -13,10 +13,13 @@ const CookedFoodsGB = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        // Get array of type
+        const type = types.find(type => type === productType);
+
         // My handlers
         const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count reasult  
@@ -26,7 +29,7 @@ const CookedFoodsGB = () => {
                 // Calculate gram reasult
                 const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
 
-                if (product) {
+                if (product && type) {
                         if (product?.check?.gram && product?.check?.fat) {
                                 return productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
                         }
@@ -38,7 +41,7 @@ const CookedFoodsGB = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 

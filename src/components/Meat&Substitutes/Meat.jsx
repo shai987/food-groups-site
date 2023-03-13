@@ -13,10 +13,13 @@ const Meat = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        // Get array of type
+        const type = types.find(type => type === productType);
+
         // My handlers
         const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count portionFat reasult  
@@ -34,7 +37,7 @@ const Meat = () => {
                 // Calculate gram fat message reasult 
                 const productCalculationGramFatMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.breadFat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.fat).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.breadFat?.fatString.split(" יש להוריד ")[1]}\n ${product?.details?.message}`;
 
-                if (product) {
+                if (product && type) {
                         if (product?.check?.count && product?.check?.gram && product?.check?.portionFat) {
                                 return productType === types[0] ? productCalculationCountPortionFat : productCalculationGramPortionFat;
                         }
@@ -61,7 +64,7 @@ const Meat = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -135,8 +138,8 @@ const Meat = () => {
                                 <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === types[0] ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

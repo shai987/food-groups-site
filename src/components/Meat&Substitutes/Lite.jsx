@@ -9,18 +9,19 @@ const Lite = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+
         // My handlers
-        const calculateValue = (productName, amount) => {
-                // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
+        const calculateValue = (amount) => {
                 // Calculate count bread reasult  
-                const productCalculationCountBread = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוריד ")[1]}`;
+                const productCalculationCountBread = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוריד ")[1]}`;
 
                 if (product) {
                         return productCalculationCountBread;
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -40,7 +41,7 @@ const Lite = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount));
+                setResult(calculateValue(productAmount));
         };
 
         return (
@@ -72,7 +73,7 @@ const Lite = () => {
                                         {
                                                 products.map((product) => (
                                                         <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                {product.unit?.measureString}
+                                                                {product?.unit?.measureString}
                                                         </option>
                                                 ))
                                         }

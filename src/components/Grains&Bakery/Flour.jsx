@@ -13,20 +13,23 @@ const Flour = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        // Get array of type
+        const type = types.find(type => type === productType);
+
         // My handlers
-        const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
+        const calculateValue = (amount, productType) => {
                 // Calculate count reasult
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                if (product) {
+                if (product && type) {
                         return productType === types[0] ? productCalculationCount : productCalculationGram;
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -50,7 +53,7 @@ const Flour = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType));
+                setResult(calculateValue(productAmount, productType));
         };
 
         return (

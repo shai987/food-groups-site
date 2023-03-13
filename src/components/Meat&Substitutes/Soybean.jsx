@@ -9,10 +9,11 @@ const Soybean = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+
         // My handlers
-        const calculateValue = (productName, amount) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
+        const calculateValue = (amount) => {
                 // Basic calculate count reasult 
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count bread reasult  
@@ -27,7 +28,7 @@ const Soybean = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -47,7 +48,7 @@ const Soybean = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount));
+                setResult(calculateValue(productAmount));
         };
 
         return (

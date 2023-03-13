@@ -9,10 +9,11 @@ const Vegetable = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get typeName object 
+        const type = typesName.find(type => type?.details?.typeName === typeName);
+
         // My handlers
-        const calculateValue = (typeName, amount) => {
-                // Get typeName object 
-                const type = typesName.find(type => type?.details?.typeName === typeName);
+        const calculateValue = (amount) => {
                 // Calculate count reasult
                 const productCalculationCount = ` ${(amount / type?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
@@ -20,7 +21,7 @@ const Vegetable = () => {
                         return productCalculationCount;
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -40,7 +41,7 @@ const Vegetable = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(typeName, productAmount));
+                setResult(calculateValue(productAmount));
         };
 
         return (
@@ -58,7 +59,7 @@ const Vegetable = () => {
                                         {
                                                 typesName.map((type) => (
                                                         <option key={type?.details?.typeName} name="typeName" value={type?.details?.typeName}>
-                                                                {type.details.typeName}
+                                                                {type?.details?.typeName}
                                                         </option>
                                                 ))
                                         }

@@ -9,17 +9,19 @@ const Egg = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+
         // My handlers
-        const calculateValue = (productName, amount) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
+        const calculateValue = (amount) => {
                 // Calculate count reasult
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
                 if (product) {
                         return productCalculationCount;
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -39,9 +41,7 @@ const Egg = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                if (productName) {
-                        setResult(calculateValue(productName, productAmount));
-                }
+                setResult(calculateValue(productAmount));
         };
 
         return (

@@ -3,7 +3,7 @@ import breads from '../../services/Grains&Bakery/breads';
 import '../../assets/css/basic.css';
 
 const Breads = () => {
-        //  array of type calculation
+        // array of type calculation
         const types = ['כמות', 'גרם'];
 
         // My states 
@@ -13,16 +13,19 @@ const Breads = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        // Get array of type
+        const type = types.find(type => type === productType);
+
         // My handlers
         const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
                 // Calculate count reasult
                 const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                if (product) {
+                if (product && type) {
                         if (product?.check?.gram) {
                                 return productType === types[0] ? productCalculationCount : productCalculationGram;
                         }
@@ -31,7 +34,7 @@ const Breads = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         }
 

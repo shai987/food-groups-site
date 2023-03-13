@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import fruits from '../../services/Fruits/fruits';
 import '../../assets/css/basic.css';
 
@@ -10,23 +10,50 @@ const Fruit = () => {
         const [products] = useState(fruits);
         const [productName, setProductName] = useState(fruits[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        //  array of value calculation
+        const values = [product?.unit?.measures[0], product?.unit?.measures[1]];
+        const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        // Get array of type
+        const type = types.find(type => type === productType);
+        // Get array of value
+        const value = values.find(value => value === productValues);
+
+        useEffect(() => {
+                if (values[0]) {
+                        setProductValues(values[0]);
+                }
+                else {
+                        setProductValues(values[1]);
+                }
+        }, [productType, product]);
+
         // My handlers
-        const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
-                // Calculate count reasult
-                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        const calculateValue = (amount, productType, productValues) => {
+                // Calculate count value1 reasult
+                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count value1 reasult
+                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram reasult
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-                if (product) {
-                        return productType === types[0] ? productCalculationCount : productCalculationGram;
+                if (product && type && value) {
+                        if (product?.check?.value) {
+                                if (productType === types[0])
+                                        return productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
+                                else
+                                        return productCalculationGram;
+                        }
+                        else {
+                                return productType === types[0] ? productCalculationCountValue1 : productCalculationGram;
+                        }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -42,6 +69,10 @@ const Fruit = () => {
                 setProductType(event.target.value);
         };
 
+        const handleProductValues = (event) => {
+                setProductValues(event.target.value);
+        };
+
         // Clean input field when click it 
         const handleClear = (event) => {
                 event.target.value = "";
@@ -50,7 +81,7 @@ const Fruit = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType));
+                setResult(calculateValue(productAmount, productType, productValues));
         };
 
         return (
@@ -107,7 +138,28 @@ const Fruit = () => {
                                         }
                                 </datalist>
                         </label>
-                        <br /><br />
+                        <br />
+                        {product?.check?.value === true && productType === types[0] && <div>
+                                <label>
+                                        בחירת סוג חישוב כמות
+                                        <input list="productValues"
+                                                value={productValues || ''}
+                                                onChange={handleProductValues}
+                                                onClick={handleClear}
+                                                onFocus={handleClear}
+                                        />
+                                        <datalist id="productValues">
+                                                {
+                                                        values.map((value) => (
+                                                                <option key={value} name="productValues" value={value || ''}>
+                                                                        {value}
+                                                                </option>
+                                                        ))
+                                                }
+                                        </datalist>
+                                </label>
+                        </div>}
+                        <br />
                         <div className='div1'>
                                 מספר מנות:
                                 {result}

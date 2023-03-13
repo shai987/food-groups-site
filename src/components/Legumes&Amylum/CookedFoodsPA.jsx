@@ -13,21 +13,24 @@ const CookedFoodsPA = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
-        // My handlers
-        const calculateValue = (productName, amount, productType) => {
-                // Get the product object 
-                const product = products.find(product => product.details?.productName === productName);
-                // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // Calculate count fat reasult 
-                const productCalculationCountFat = ` ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
-                // Calculate gram fat reasult
-                const productCalculationGramFat = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product.fat?.fatString.split(" יש להוסיף ")[1]}`;
-                // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        // Get the product object 
+        const product = products.find(product => product?.details?.productName === productName);
+        // Get array of type
+        const type = types.find(type => type === productType);
 
-                if (product) {
-                        if (product.check.fat) {
+        // My handlers
+        const calculateValue = (amount, productType) => {
+                // Basic calculate count reasult 
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count fat reasult 
+                const productCalculationCountFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                // Calculate gram fat reasult
+                const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                // Basic calculate gram reasult
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+                if (product && type) {
+                        if (product?.check?.fat) {
                                 return productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
                         }
                         else {
@@ -35,7 +38,7 @@ const CookedFoodsPA = () => {
                         }
                 }
                 else {
-                        return alert('המוצר לא קיים');
+                        return alert('הערך שהוזן אינו קיים');
                 }
         };
 
@@ -59,7 +62,7 @@ const CookedFoodsPA = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType));
+                setResult(calculateValue(productAmount, productType));
         };
 
         return (
@@ -109,8 +112,8 @@ const CookedFoodsPA = () => {
                                 <datalist id="productName">
                                         {
                                                 products.map((product) => (
-                                                        <option key={product.details?.productName} name="productName" value={product.details?.productName}>
-                                                                {productType === types[0] ? product.unit?.measureString : product.unit?.gramString}
+                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                         </option>
                                                 ))
                                         }

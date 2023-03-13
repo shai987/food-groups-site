@@ -16,10 +16,7 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(משולש)',
-                        measureString1: 'משולש',
-                        measureString2: '',
                         measures: ['משולש', ''],
-
                 },
                 check: {
                         count: true,
@@ -46,8 +43,6 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(פרוסה)',
-                        measureString1: 'פרוסה',
-                        measureString2: '',
                         measures: ['פרוסה', ''],
                 },
                 check: {
@@ -105,8 +100,6 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(חבילה/כף)',
-                        measureString1: 'חבילה',
-                        measureString2: 'כף',
                         measures: ['חבילה', 'כף'],
                 },
                 check: {
@@ -134,8 +127,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(כוס)',
-                        measureString1: 'כוס',
-                        measureString2: '',
                         measures: ['כוס', ''],
                 },
                 check: {
@@ -163,8 +154,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע קטן)',
-                        measureString1: 'גביע קטן',
-                        measureString2: '',
                         measures: ['גביע קטן', ''],
                 },
                 check: {
@@ -192,8 +181,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
-                        measureString1: 'גביע',
-                        measureString2: 'כוס',
                         measures: ['גביע', 'כוס'],
 
                 },
@@ -222,8 +209,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
-                        measureString1: 'גביע',
-                        measureString2: 'כוס',
                         measures: ['גביע', 'כוס'],
                 },
                 check: {
@@ -251,8 +236,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע קטן/כוס)',
-                        measureString1: 'גביע קטן',
-                        measureString2: 'כוס',
                         measures: ['גביע קטן', 'כוס'],
                 },
                 check: {
@@ -280,8 +263,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע קטן)',
-                        measureString1: 'גביע קטן',
-                        measureString2: '',
                         measures: ['גביע קטן', ''],
                 },
                 check: {
@@ -309,8 +290,6 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע)',
-                        measureString1: 'גביע',
-                        measureString2: '',
                         measures: ['גביע', ''],
                 },
                 check: {
