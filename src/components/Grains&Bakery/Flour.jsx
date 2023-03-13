@@ -20,13 +20,16 @@ const Flour = () => {
 
         // My handlers
         const calculateValue = (amount, productType) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Calculate count reasult
-                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}`;
                 // Calculate gram reasult
-                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}`;
 
                 if (product && type) {
-                        return productType === types[0] ? productCalculationCount : productCalculationGram;
+                        const answer = productType === types[0] ? productCalculationCount : productCalculationGram;
+                        return answer >= negligibleNumber ? answer : ' זניח';
                 }
                 else {
                         return alert('הערך שהוזן אינו קיים');
