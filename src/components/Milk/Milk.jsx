@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import milk from '../../services/Milk/milk';
 import '../../assets/css/basic.css';
 
@@ -17,20 +17,30 @@ const Milk = () => {
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
+        useEffect(() => {
+                const newValues = [product?.unit?.measureString1, product?.unit?.measureString2];
+                if (newValues[0]) {
+                        setProductValues(newValues[0]);
+                }
+                else {
+                        setProductValues(newValues[1]);
+                }
+        }, [productType, product]);
+
         // My handlers
         const calculateValue = (productName, amount, productType, productValues) => {
-                // Get the product object 
-                const product = products.find(product => product?.details?.productName === productName);
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                // Calculate count reasult + message
-                const productCalculationCountMessage = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                // Calculate count message+/value1 reasult 
+                const productCalculationCountMessage = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                // Calculate count value2 message reasult 
+                const productCalculationCountValue2Message = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
                 // Calculate count-sugar reasult  
-                const productCalculationCountSugar = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountSugar = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
                 // Calculate count value1 reasult  
-                const productCalculationCountValue1 = ` ${(amount / product?.details?.value?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate count value2 reasult  
-                const productCalculationCountValue2 = ` ${(amount / product?.details?.value?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Basic calculate gram reasult
                 const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 // Calculate gram-sugar reasult
@@ -50,9 +60,9 @@ const Milk = () => {
                         }
                         else if (product?.check?.value && product?.check?.message) {
                                 if (productType === types[0])
-                                        return productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
+                                        return productValues === values[0] ? productCalculationCountMessage : productCalculationCountValue2Message;
                                 else
-                                        return productCalculationGram;
+                                        return productCalculationGramMessage;
                         }
                         else if (product?.check?.value) {
                                 if (productType === types[0])
@@ -158,16 +168,16 @@ const Milk = () => {
                                 <label>
                                         בחירת סוג חישוב כמות
                                         <input list="productValues"
-                                                defaultValue={productValues}
+                                                value={productValues || ''}
                                                 onChange={handleProductValues}
                                                 onClick={handleClear}
                                                 onFocus={handleClear}
                                         />
                                         <datalist id="productValues">
                                                 {
-                                                        values.map((type) => (
-                                                                <option key={type} name="productValues" value={type}>
-                                                                        {type}
+                                                        values.map((value) => (
+                                                                <option key={value} id="productValues" name="productValues" value={value || ''}>
+                                                                        {value}
                                                                 </option>
                                                         ))
                                                 }

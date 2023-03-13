@@ -2,7 +2,8 @@ const milk = [
         {
                 details: {
                         productName: 'גבינה מותכת',
-                        value: 2,
+                        value1: 2,
+                        value2: 0,
                         gram: 60,
                         sugar: 0,
                         message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
@@ -15,8 +16,10 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(משולש)',
-                        measureString1: '',
+                        measureString1: 'משולש',
                         measureString2: '',
+                        measures: ['משולש', ''],
+
                 },
                 check: {
                         count: true,
@@ -29,7 +32,8 @@ const milk = [
         {
                 details: {
                         productName: 'גבינה צהובה (22%)',
-                        value: 2,
+                        value1: 2,
+                        value2: 0,
                         gram: 40,
                         sugar: 0,
                         message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
@@ -42,8 +46,9 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(פרוסה)',
-                        measureString1: '',
+                        measureString1: 'פרוסה',
                         measureString2: '',
+                        measures: ['פרוסה', ''],
                 },
                 check: {
                         count: true,
@@ -56,7 +61,8 @@ const milk = [
         {
                 details: {
                         productName: 'גבינה מלוחה (16%)',
-                        value: 0,
+                        value1: 0,
+                        value2: 0,
                         gram: 60,
                         sugar: 0,
                         message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
@@ -69,8 +75,10 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '',
-                        measureString1: '',
+                        measureString1: '-',
                         measureString2: '',
+                        measures: ['-', ''],
+
                 },
                 check: {
                         count: false,
@@ -83,10 +91,8 @@ const milk = [
         {
                 details: {
                         productName: `גבינה לבנה/קוטג' (5%)`,
-                        value: {
-                                value1: 0.5,
-                                value2: 5,
-                        },
+                        value1: 0.5,
+                        value2: 5,
                         gram: 125,
                         sugar: 0,
                         message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
@@ -101,6 +107,7 @@ const milk = [
                         measureString: '(חבילה/כף)',
                         measureString1: 'חבילה',
                         measureString2: 'כף',
+                        measures: ['חבילה', 'כף'],
                 },
                 check: {
                         count: true,
@@ -113,7 +120,8 @@ const milk = [
         {
                 details: {
                         productName: 'חלב (3% שומן)',
-                        value: 1,
+                        value1: 1,
+                        value2: 0,
                         gram: 200,
                         sugar: 0,
                         message: '',
@@ -126,8 +134,9 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(כוס)',
-                        measureString1: '',
+                        measureString1: 'כוס',
                         measureString2: '',
+                        measures: ['כוס', ''],
                 },
                 check: {
                         count: true,
@@ -139,8 +148,9 @@ const milk = [
         },
         {
                 details: {
-                        productName: 'יוגורט (22%)',
-                        value: 1,
+                        productName: 'יוגורט (3%)',
+                        value1: 1,
+                        value2: 0,
                         gram: 170,
                         sugar: 0,
                         message: '',
@@ -153,8 +163,9 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע קטן)',
-                        measureString1: '',
+                        measureString1: 'גביע קטן',
                         measureString2: '',
+                        measures: ['גביע קטן', ''],
                 },
                 check: {
                         count: true,
@@ -167,7 +178,8 @@ const milk = [
         {
                 details: {
                         productName: 'יוגורט/קפיר',
-                        value: 1,
+                        value1: 1,
+                        value2: 1,
                         gram: 170,
                         sugar: 0,
                         message: '',
@@ -178,23 +190,26 @@ const milk = [
                         sugarString: '',
                 },
                 unit: {
-                        gramString: '(גרם)',
+                        gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
-                        measureString1: '',
-                        measureString2: '',
+                        measureString1: 'גביע',
+                        measureString2: 'כוס',
+                        measures: ['גביע', 'כוס'],
+
                 },
                 check: {
                         count: true,
                         gram: true,
                         sugar: false,
                         message: false,
-                        value: false,
+                        value: true,
                 },
         },
         {
                 details: {
                         productName: 'לבן (3% שומן)',
-                        value: 1,
+                        value1: 1,
+                        value2: 1,
                         gram: 170,
                         sugar: 0,
                         message: '',
@@ -205,26 +220,25 @@ const milk = [
                         sugarString: '',
                 },
                 unit: {
-                        gramString: '(גרם)',
+                        gramString: '(מ"ל)',
                         measureString: '(גביע/כוס)',
-                        measureString1: '',
-                        measureString2: '',
+                        measureString1: 'גביע',
+                        measureString2: 'כוס',
+                        measures: ['גביע', 'כוס'],
                 },
                 check: {
                         count: true,
                         gram: true,
                         sugar: false,
                         message: false,
-                        value: false,
+                        value: true,
                 },
         },
         {
                 details: {
                         productName: 'לבנה (4.5% שומן)',
-                        value: {
-                                value1: 1,
-                                value2: 0.75,
-                        },
+                        value1: 1,
+                        value2: 0.75,
                         gram: 150,
                         sugar: 0,
                         message: '',
@@ -235,10 +249,11 @@ const milk = [
                         sugarString: '',
                 },
                 unit: {
-                        gramString: '(גרם)',
+                        gramString: '(מ"ל)',
                         measureString: '(גביע קטן/כוס)',
                         measureString1: 'גביע קטן',
                         measureString2: 'כוס',
+                        measures: ['גביע קטן', 'כוס'],
                 },
                 check: {
                         count: true,
@@ -251,7 +266,8 @@ const milk = [
         {
                 details: {
                         productName: 'מעדן שוקולד/וניל',
-                        value: 1,
+                        value1: 1,
+                        value2: 0,
                         gram: 125,
                         sugar: 1,
                         message: '',
@@ -264,8 +280,9 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע קטן)',
-                        measureString1: '',
+                        measureString1: 'גביע קטן',
                         measureString2: '',
+                        measures: ['גביע קטן', ''],
                 },
                 check: {
                         count: true,
@@ -278,7 +295,8 @@ const milk = [
         {
                 details: {
                         productName: 'פריגורט',
-                        value: 1,
+                        value1: 1,
+                        value2: 0,
                         gram: 150,
                         sugar: 1,
                         message: '',
@@ -291,8 +309,9 @@ const milk = [
                 unit: {
                         gramString: '(מ"ל)',
                         measureString: '(גביע)',
-                        measureString1: '',
+                        measureString1: 'גביע',
                         measureString2: '',
+                        measures: ['גביע', ''],
                 },
                 check: {
                         count: true,

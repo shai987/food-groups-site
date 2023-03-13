@@ -1,127 +1,9 @@
 const fats = [
         {
                 details: {
-                        productName: 'גדששדאבוקדו',
-                        value: {
-                                value1: 0.16667,
-                                value2: 2,
-                        },
-                        gram: 25,
-                        sugar: 0,
-                        message: '',
-                },
-                sugar: {
-                        sugarCalculation: 0,
-                        sugarCalculationGram: 0,
-                        sugarString: '',
-                },
-                unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן/כף)',
-                        measureString1: 'קטן',
-                        measureString2: 'כף',
-                },
-                check: {
-                        message: false,
-                        gram: true,
-                        sugar: false,
-                        value: false,
-                },
-        },
-        {
-                details: {
-                        productName: 'שע',
-                        value: {
-                                value1: 0.16667,
-                                value2: 2,
-                        },
-                        gram: 25,
-                        sugar: 0,
-                        message: '',
-                },
-                sugar: {
-                        sugarCalculation: 0,
-                        sugarCalculationGram: 0,
-                        sugarString: '',
-                },
-                unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן/כף)',
-                        measureString1: 'קטן',
-                        measureString2: 'כף',
-                },
-                check: {
-                        message: false,
-                        gram: true,
-                        sugar: false,
-                        value: false,
-                },
-        },
-        {
-                details: {
-                        productName: 'גד',
-                        value: {
-                                value1: 0.16667,
-                                value2: 2,
-                        },
-                        gram: 25,
-                        sugar: 0,
-                        message: '',
-                },
-                sugar: {
-                        sugarCalculation: 0,
-                        sugarCalculationGram: 0,
-                        sugarString: '',
-                },
-                unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן/כף)',
-                        measureString1: 'קטן',
-                        measureString2: 'כף',
-                },
-                check: {
-                        message: false,
-                        gram: true,
-                        sugar: false,
-                        value: false,
-                },
-        },
-        {
-                details: {
-                        productName: 'ההה',
-                        value: {
-                                value1: 0.16667,
-                                value2: 2,
-                        },
-                        gram: 25,
-                        sugar: 0,
-                        message: '',
-                },
-                sugar: {
-                        sugarCalculation: 0,
-                        sugarCalculationGram: 0,
-                        sugarString: '',
-                },
-                unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן/כף)',
-                        measureString1: 'קטן',
-                        measureString2: 'כף',
-                },
-                check: {
-                        message: false,
-                        gram: true,
-                        sugar: false,
-                        value: false,
-                },
-        },
-        {
-                details: {
                         productName: 'אבוקדו',
-                        value: {
-                                value1: 0.16667,
-                                value2: 2,
-                        },
+                        value1: 0.16667,
+                        value2: 2,
                         gram: 25,
                         sugar: 0,
                         message: '',
@@ -136,35 +18,6 @@ const fats = [
                         measureString: '(קטן/כף)',
                         measureString1: 'קטן',
                         measureString2: 'כף',
-                },
-                check: {
-                        message: false,
-                        gram: true,
-                        sugar: false,
-                        value: true,
-                },
-        },
-        {
-                details: {
-                        productName: 'אבוdsadasקדו',
-                        value: {
-                                value1: 1,
-                                value2: 3,
-                        },
-                        gram: 25,
-                        sugar: 0,
-                        message: '',
-                },
-                sugar: {
-                        sugarCalculation: 0,
-                        sugarCalculationGram: 0,
-                        sugarString: '',
-                },
-                unit: {
-                        gramString: '(גרם)',
-                        measureString: '(קטן/כף)',
-                        measureString1: 'ב',
-                        measureString2: 'ק',
                 },
                 check: {
                         message: false,
@@ -176,7 +29,7 @@ const fats = [
         {
                 details: {
                         productName: 'אגוזי לוז/פיסטוק/קשיו',
-                        value: 6,
+                        value1: 6,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -202,7 +55,7 @@ const fats = [
         {
                 details: {
                         productName: 'אגוזי פקאן/מלך',
-                        value: 2,
+                        value1: 2,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -228,7 +81,7 @@ const fats = [
         {
                 details: {
                         productName: 'בוטנים/שקדים',
-                        value: 6,
+                        value1: 6,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -254,7 +107,7 @@ const fats = [
         {
                 details: {
                         productName: 'גבינת שמנת (30%)',
-                        value: 1,
+                        value1: 1,
                         gram: 15,
                         sugar: 0,
                         message: '',
@@ -280,7 +133,7 @@ const fats = [
         {
                 details: {
                         productName: 'גרעיני אבטיח (עם קליפה)',
-                        value: 3,
+                        value1: 3,
                         gram: 25,
                         sugar: 0,
                         message: '',
@@ -306,7 +159,7 @@ const fats = [
         {
                 details: {
                         productName: 'גרעיני דלעת (עם קליפה)',
-                        value: 2,
+                        value1: 2,
                         gram: 10,
                         sugar: 0,
                         message: '',
@@ -332,7 +185,7 @@ const fats = [
         {
                 details: {
                         productName: 'גרעיני חמניות (עם קליפה)',
-                        value: 3,
+                        value1: 3,
                         gram: 15,
                         sugar: 0,
                         message: '',
@@ -358,7 +211,7 @@ const fats = [
         {
                 details: {
                         productName: 'גרעיני חמניות (בלי קליפה)',
-                        value: 1,
+                        value1: 1,
                         gram: 8,
                         sugar: 0,
                         message: '',
@@ -384,7 +237,7 @@ const fats = [
         {
                 details: {
                         productName: 'זיתים',
-                        value: 10,
+                        value1: 10,
                         gram: 30,
                         sugar: 0,
                         message: '',
@@ -410,7 +263,7 @@ const fats = [
         {
                 details: {
                         productName: 'חלבה',
-                        value: 1,
+                        value1: 1,
                         gram: 10,
                         sugar: 0.5,
                         message: '',
@@ -436,7 +289,7 @@ const fats = [
         {
                 details: {
                         productName: 'חמאת בוטנים',
-                        value: 2,
+                        value1: 2,
                         gram: 10,
                         sugar: 0.5,
                         message: '',
@@ -462,7 +315,7 @@ const fats = [
         {
                 details: {
                         productName: 'טחינה גולמית',
-                        value: 1,
+                        value1: 1,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -488,7 +341,7 @@ const fats = [
         {
                 details: {
                         productName: 'טחינה מוכנה',
-                        value: 1,
+                        value1: 1,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -514,7 +367,7 @@ const fats = [
         {
                 details: {
                         productName: 'מיונז',
-                        value: 1,
+                        value1: 1,
                         gram: 7,
                         sugar: 0,
                         message: '',
@@ -540,7 +393,7 @@ const fats = [
         {
                 details: {
                         productName: 'מיונז דיאטטי',
-                        value: 3,
+                        value1: 3,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -566,7 +419,7 @@ const fats = [
         {
                 details: {
                         productName: 'מרגרינה/חמאה',
-                        value: 1,
+                        value1: 1,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -592,7 +445,7 @@ const fats = [
         {
                 details: {
                         productName: 'קלורינה/מזולה (לייט)',
-                        value: 1,
+                        value1: 1,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -618,7 +471,7 @@ const fats = [
         {
                 details: {
                         productName: 'קצפת משמנת מתוקה',
-                        value: 1,
+                        value1: 1,
                         gram: 15,
                         sugar: 0.5,
                         message: '',
@@ -644,7 +497,7 @@ const fats = [
         {
                 details: {
                         productName: 'רוטב לסלט',
-                        value: 2,
+                        value1: 2,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -670,7 +523,7 @@ const fats = [
         {
                 details: {
                         productName: 'רוטב לסלט לייט',
-                        value: 2,
+                        value1: 2,
                         gram: 0,
                         sugar: 0,
                         message: '',
@@ -696,7 +549,7 @@ const fats = [
         {
                 details: {
                         productName: 'שמן מכל סוג',
-                        value: 1,
+                        value1: 1,
                         gram: 5,
                         sugar: 0,
                         message: '',
@@ -722,7 +575,7 @@ const fats = [
         {
                 details: {
                         productName: 'שמנת חמוצה (15%)',
-                        value: 2,
+                        value1: 2,
                         gram: 30,
                         sugar: 0,
                         message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
@@ -748,7 +601,7 @@ const fats = [
         {
                 details: {
                         productName: 'שמנת לקפה (10%)',
-                        value: 2.5,
+                        value1: 2.5,
                         gram: 40,
                         sugar: 0,
                         message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
@@ -774,7 +627,7 @@ const fats = [
         {
                 details: {
                         productName: 'שמנת קלה (8%)',
-                        value: 3,
+                        value1: 3,
                         gram: 45,
                         sugar: 0,
                         message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
