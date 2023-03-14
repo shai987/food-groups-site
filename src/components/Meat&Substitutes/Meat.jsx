@@ -110,7 +110,11 @@ const Meat = () => {
 
         return (
                 <form onSubmit={handleSubmit}>
-                        <h1>בשר</h1>
+                        <div>
+                                <h1>בשר</h1>
+                                <h3>*כ-100 גרם בשר מבושל הם שווה ערך ל-130 גרם בשר טרי. הערכים הינם לאחר בישול.</h3>
+                        </div>
+                        <br />
                         <label>
                                 חישוב לפי כמות או גרמים:
                                 <input list="productType"

@@ -14,7 +14,6 @@ const MeatGroup = () => {
 
                         <div>
                                 <h2>כל מנה מכילה 210 קלוריות, 19 גר' חלבון ו-15 גר' שומן.</h2>
-                                <h3>*כ-100 גרם בשר מבושל הם שווה ערך ל-130 גרם בשר טרי. הערכים הינם לאחר בישול.</h3>
                         </div>
                         <div >
                                 <Grid container item xs={9}>
@@ -28,19 +27,19 @@ const MeatGroup = () => {
                                         />
                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
+                                                imageSrc={require('../../assets/images/SoyLite.jpg')}
                                                 title="תמונת תחליפי בשר"
                                                 alt="תמונת תחליפי בשר"
                                                 link='/Soybean'
-                                                name="מוצרי סויה מוכנים"
+                                                name="תחליפי בשר - סויה "
                                         />
                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
-                                                imageSrc={require('../../assets/images/sugar.jpg')}
+                                                imageSrc={require('../../assets/images/SoyLite.jpg')}
                                                 title="תמונת תחליפי בשר"
                                                 alt="תמונת תחליפי בשר"
                                                 link='/Lite'
-                                                name="לייט"
+                                                name="תחליפי בשר - לייט"
                                         />
                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
