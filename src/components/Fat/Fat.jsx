@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import fats from '../../services/Fats/fats';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Fat = () => {
         //  array of type calculation
@@ -109,7 +111,12 @@ const Fat = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType, productValues));
+                try {
+                        setResult(toFraction(calculateValue(productName, productAmount, productType, productValues), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -190,7 +197,7 @@ const Fat = () => {
                         <br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

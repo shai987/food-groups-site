@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import lite from '../../services/Meat&Substitutes/lite';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Lite = () => {
         // My states 
@@ -43,7 +45,12 @@ const Lite = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount));
+                try {
+                        setResult(toFraction(calculateValue(productAmount), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -84,7 +91,7 @@ const Lite = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

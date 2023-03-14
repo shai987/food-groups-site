@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import soybean from '../../services/Meat&Substitutes/soybean';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Soybean = () => {
         // My states 
@@ -50,7 +52,12 @@ const Soybean = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount));
+                try {
+                        setResult(toFraction(calculateValue(productAmount), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -91,7 +98,7 @@ const Soybean = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

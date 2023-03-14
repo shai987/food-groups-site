@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import eggs from '../../services/Meat&Substitutes/eggs';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Egg = () => {
         // My states 
@@ -43,7 +45,12 @@ const Egg = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount));
+                try {
+                        setResult(toFraction(calculateValue(productAmount), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -55,8 +62,8 @@ const Egg = () => {
                                         name='productAmount'
                                         type="number"
                                         id="productAmount"
-                                        min="0"
-                                        max="1000"
+                                        min="0.00000001"
+                                        // max="1000"
                                         step="any"
                                         value={productAmount}
                                         onChange={handleAmount}
@@ -84,7 +91,7 @@ const Egg = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

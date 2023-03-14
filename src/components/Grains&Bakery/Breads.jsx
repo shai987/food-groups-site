@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import breads from '../../services/Grains&Bakery/breads';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Breads = () => {
         // array of type calculation
@@ -62,7 +64,12 @@ const Breads = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productName, productAmount, productType));
+                try {
+                        setResult(toFraction(calculateValue(productName, productAmount, productType), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -122,7 +129,7 @@ const Breads = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

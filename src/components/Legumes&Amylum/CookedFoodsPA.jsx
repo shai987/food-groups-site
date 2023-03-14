@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import cookedFoods from '../../services/Legumes&Amylum/cookedFoods';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const CookedFoodsPA = () => {
         //  array of type calculation
@@ -66,7 +68,12 @@ const CookedFoodsPA = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount, productType));
+                try {
+                        setResult(toFraction(calculateValue(productAmount, productType), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -126,7 +133,7 @@ const CookedFoodsPA = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

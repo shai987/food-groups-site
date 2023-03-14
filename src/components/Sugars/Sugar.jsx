@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import sugars from '../../services/Sugars/sugars';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Sugar = () => {
         const types = ['כמות', 'גרם'];
@@ -52,7 +54,12 @@ const Sugar = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount, productType));
+                try {
+                        setResult(toFraction(calculateValue(productAmount, productType), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -112,7 +119,7 @@ const Sugar = () => {
                         <br /><br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >

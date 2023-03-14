@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import fruits from '../../services/Fruits/fruits';
 import '../../assets/css/basic.css';
+// Library that parse decimals into fractions  
+import { toFraction } from 'fraction-parser';
 
 const Fruit = () => {
         //  array of type calculation
@@ -87,7 +89,12 @@ const Fruit = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
-                setResult(calculateValue(productAmount, productType, productValues));
+                try {
+                        setResult(toFraction(calculateValue(productAmount, productType, productValues), { useUnicodeVulgar: true }));
+                }
+                catch {
+                        setResult('זניח');
+                }
         };
 
         return (
@@ -168,7 +175,7 @@ const Fruit = () => {
                         <br />
                         <div className='div1'>
                                 מספר מנות:
-                                {result}
+                                <p className='result'>{result}</p>
                         </div>
                         <button type="submit">חשב</button>
                 </form >
