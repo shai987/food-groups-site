@@ -14,17 +14,19 @@ const Soybean = () => {
 
         // My handlers
         const calculateValue = (amount) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}`;
                 // Calculate count bread reasult  
-                const productCalculationCountBread = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.bread?.breadString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.bread?.breadCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.bread?.breadString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountBread = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}\n ${product?.bread?.breadString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.bread?.breadCalculation).toLocaleString(numberFormat)} ${product?.bread?.breadString.split(" יש להוסיף ")[1]}`;
 
                 if (product) {
                         if (product?.check?.bread) {
-                                return productCalculationCountBread;
+                                return productCalculationCountBread >= negligibleNumber ? productCalculationCountBread : ' זניח';
                         }
                         else {
-                                return productCalculationCount;
+                                return productCalculationCount >= negligibleNumber ? productCalculationCount : ' זניח';
                         }
                 }
                 else {

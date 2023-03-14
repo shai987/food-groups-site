@@ -14,11 +14,13 @@ const Lite = () => {
 
         // My handlers
         const calculateValue = (amount) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Calculate count bread reasult  
-                const productCalculationCountBread = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוריד ")[1]}`;
+                const productCalculationCountBread = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}\n ${product?.fat?.fatString.split(" יש להוריד ")[0]} יש להוריד ${(amount / product?.details?.value).toLocaleString(numberFormat)} ${product?.fat?.fatString.split(" יש להוריד ")[1]}`;
 
                 if (product) {
-                        return productCalculationCountBread;
+                        return productCalculationCountBread >= negligibleNumber ? productCalculationCountBread : ' זניח';
                 }
                 else {
                         return alert('הערך שהוזן אינו קיים');

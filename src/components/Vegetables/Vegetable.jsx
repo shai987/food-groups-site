@@ -14,11 +14,13 @@ const Vegetable = () => {
 
         // My handlers
         const calculateValue = (amount) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Calculate count reasult
-                const productCalculationCount = ` ${(amount / type?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / type?.details?.value).toLocaleString(numberFormat)}`;
 
                 if (type) {
-                        return productCalculationCount;
+                        return productCalculationCount >= negligibleNumber ? productCalculationCount : ' זניח';
                 }
                 else {
                         return alert('הערך שהוזן אינו קיים');

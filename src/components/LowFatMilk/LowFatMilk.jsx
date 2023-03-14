@@ -34,31 +34,38 @@ const LowFatMilk = () => {
 
         // My handlers
         const calculateValue = (productName, amount, productType) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Get the product object 
                 const product = products.find(product => product?.details?.productName === productName);
                 // Calculate count value1 reasult
-                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}`;
                 // Calculate count value2 reasult
-                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString(numberFormat)}`;
                 // Calculate count message reasult 
-                const productCalculationCountMessage = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                const productCalculationCountMessage = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}\n ${product?.details?.message}`;
                 // Calculate gram reasult
-                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}`;
                 // Calculate gram-sugar message reasult 
-                const productCalculationGramMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
+                const productCalculationGramMessage = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}\n ${product?.details?.message} `;
 
                 if (product && type && value) {
                         if (product?.check?.message) {
-                                return productType === types[0] ? productCalculationCountMessage : productCalculationGramMessage;
+                                const answer = productType === types[0] ? productCalculationCountMessage : productCalculationGramMessage;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else if (product?.check?.value) {
-                                if (productType === types[0])
-                                        return productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
-                                else
-                                        return productCalculationGram;
+                                if (productType === types[0]) {
+                                        const answer = productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
+                                        return answer >= negligibleNumber ? answer : ' זניח';
+                                }
+                                else {
+                                        return productCalculationGram >= negligibleNumber ? productCalculationGram : ' זניח';
+                                }
                         }
                         else {
-                                return productType === types[0] ? productCalculationCountValue1 : productCalculationGram;
+                                const answer = productType === types[0] ? productCalculationCountValue1 : productCalculationGram;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                 }
                 else {

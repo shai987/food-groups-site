@@ -34,52 +34,65 @@ const Milk = () => {
 
         // My handlers
         const calculateValue = (productName, amount, productType, productValues) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}`;
                 // Calculate count message+/value1 reasult 
-                const productCalculationCountMessage = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                const productCalculationCountMessage = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}\n ${product?.details?.message}`;
                 // Calculate count value2 message reasult 
-                const productCalculationCountValue2Message = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message}`;
+                const productCalculationCountValue2Message = ` ${(amount / product?.details?.value2).toLocaleString(numberFormat)}\n ${product?.details?.message}`;
                 // Calculate count-sugar reasult  
-                const productCalculationCountSugar = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountSugar = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculation).toLocaleString(numberFormat)} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
                 // Calculate count value1 reasult  
-                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}`;
                 // Calculate count value2 reasult  
-                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString(numberFormat)}`;
                 // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}`;
                 // Calculate gram-sugar reasult
-                const productCalculationGramSugar = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
+                const productCalculationGramSugar = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}\n ${product?.sugar?.sugarString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.sugar?.sugarCalculationGram).toLocaleString(numberFormat)} ${product?.sugar?.sugarString.split(" יש להוסיף ")[1]}`;
                 // Calculate gram message reasult
-                const productCalculationGramMessage = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.details?.message} `;
+                const productCalculationGramMessage = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}\n ${product?.details?.message} `;
 
                 if (product && type && value) {
                         if (product?.check?.sugar) {
-                                return productType === types[0] ? productCalculationCountSugar : productCalculationGramSugar;
+                                const answer = productType === types[0] ? productCalculationCountSugar : productCalculationGramSugar;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else if (product?.check?.count && product?.check?.message && !product?.check?.value) {
-                                return productType === types[0] ? productCalculationCountMessage : productCalculationGramMessage;
+                                const answer = productType === types[0] ? productCalculationCountMessage : productCalculationGramMessage;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else if (!product?.check?.count && product?.check?.message) {
-                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName}` : productCalculationGramMessage;
+                                const answer = productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName}` : productCalculationGramMessage;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else if (product?.check?.value && product?.check?.message) {
-                                if (productType === types[0])
-                                        return productValues === values[0] ? productCalculationCountMessage : productCalculationCountValue2Message;
-                                else
-                                        return productCalculationGramMessage;
+                                if (productType === types[0]) {
+                                        const answer = productValues === values[0] ? productCalculationCountMessage : productCalculationCountValue2Message;
+                                        return answer >= negligibleNumber ? answer : ' זניח';
+                                }
+                                else {
+                                        return productCalculationGramMessage >= negligibleNumber ? productCalculationGramMessage : ' זניח';
+                                }
                         }
                         else if (product?.check?.value) {
-                                if (productType === types[0])
-                                        return productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
-                                else
-                                        return productCalculationGram;
+                                if (productType === types[0]) {
+                                        const answer = productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
+                                        return answer >= negligibleNumber ? answer : ' זניח';
+                                }
+                                else {
+                                        return productCalculationGram >= negligibleNumber ? productCalculationGram : ' זניח';
+                                }
                         }
                         else if (product?.check?.count) {
-                                return productType === types[0] ? productCalculationCount : productCalculationGram;
+                                const answer = productType === types[0] ? productCalculationCount : productCalculationGram;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else {
-                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName}` : productCalculationGram;
+                                const answer = productType === types[0] ? ` לא ניתן לבצע חישוב לפי כמות לערך ${productName}` : productCalculationGram;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                 }
                 else {

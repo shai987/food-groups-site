@@ -20,24 +20,29 @@ const CookedFoodsGB = () => {
 
         // My handlers
         const calculateValue = (productName, amount, productType) => {
+                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+                const negligibleNumber = 0.25;
                 // Basic calculate count reasult 
-                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationCount = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}`;
                 // Calculate count reasult  
-                const productCalculationCountFat = ` ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.value).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                const productCalculationCountFat = ` ${(amount / product?.details?.value).toLocaleString(numberFormat)}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.value).toLocaleString(numberFormat)} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
                 // Basic calculate gram reasult
-                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}`;
                 // Calculate gram reasult
-                const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n ${product?.fat?.fatString.split(" יש להוסיף ")[0]} יש להוסיף ${(amount / product?.details?.gram).toLocaleString({ minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
+                const productCalculationGramFat = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)} ${product?.fat?.fatString.split(" יש להוסיף ")[1]}`;
 
                 if (product && type) {
                         if (product?.check?.gram && product?.check?.fat) {
-                                return productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
+                                const answer = productType === types[0] ? productCalculationCountFat : productCalculationGramFat;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else if (product?.check?.gram) {
-                                return productType === types[0] ? productCalculationCount : productCalculationGram;
+                                const answer = productType === types[0] ? productCalculationCount : productCalculationGram;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                         else {
-                                return productType === types[0] ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                                const answer = productType === types[0] ? productCalculationCount : ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName}`;
+                                return answer >= negligibleNumber ? answer : ' זניח';
                         }
                 }
                 else {
