@@ -5,7 +5,7 @@ const lowFatMilk = [
                         value1: 6,
                         value2: 0,
                         gram: 120,
-                        message: '* דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
+                        message: ' .דל בפחמימות ומכיל יותר חלבון (80 קלוריות) *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -23,7 +23,7 @@ const lowFatMilk = [
                         value1: 2,
                         value2: 0,
                         gram: 40,
-                        message: '* דל בפחמימות ומכיל יותר חלבון (80 קלוריות).',
+                        message: ' .דל בפחמימות ומכיל יותר חלבון (80 קלוריות) *',
                 },
                 unit: {
                         gramString: '(גרם)',

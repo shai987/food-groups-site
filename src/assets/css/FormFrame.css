@@ -1,0 +1,20 @@
+.form-frame {
+        /* add a border */
+        border: 4px solid #ddd;
+        /* add a box-shadow */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        /* add some padding */
+        padding: 40px;
+        /* add some rounded corners */
+        border-radius: 70px;
+}
+
+.form-frame-container {
+        display: flex;
+        /* enable flexbox layout */
+        justify-content: center;
+        /* center the form horizontally */
+        align-items: center;
+        height: 70vh;
+
+}

@@ -11,12 +11,18 @@ import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
+// import icon from react-icons
+import { AiFillHome } from 'react-icons/ai';
 // import my components
 import HomepageContainer from '../components/homePage/HomepageContainer';
-import Cards from '../components/Cards';
-import MyContainer from '../components/MyContainer';
+import Footer from '../components/footer/Footer';
+import ScrollToTopPage from '../components/ScrollToTopPage';
 // GrainsBakery
 import GrainsBakery from '../components/navComponents/GrainsBakery';
 import Breads from '../components/Grains&Bakery/Breads';
@@ -69,35 +75,96 @@ const MyRouter = () => {
         const [nav, setNav] = useState(null);
 
         const handleCloseNavMenu = () => {
-                setNav(nav);
+                setNav(null);
+        };
+
+        const handleOpenNavMenu = (event) => {
+                setNav(event.currentTarget);
         };
 
         return (
                 <>
                         <Router>
                                 {/* sticky position allows the menu to be displayed even when scrolling */}
-                                <AppBar className="appBar" position="sticky" color="secondary">
+                                <AppBar position="sticky" sx={{ backgroundColor: '#333333' }}>
                                         <Container maxWidth="xl" sx={{ mr: '2px', ml: '2px', display: 'grid' }}>
                                                 <Toolbar disableGutters>
-                                                        <Link className='link' to='/'>
-                                                                <Button
-                                                                        sx={{ my: 2, color: "white", display: "block" }}
-                                                                >
-                                                                        בית
-                                                                </Button>
-                                                        </Link> &nbsp; &nbsp;
 
-                                                        {pages.map((page) => (
-                                                                <MenuItem key={page.key} onClick={handleCloseNavMenu}>
-                                                                        <Link className='link' to={`/${page.key}`}>
-                                                                                <Button
-                                                                                        sx={{ my: 2, color: "white", display: "block" }}
-                                                                                >
+                                                        {/* Default menu */}
+                                                        <MenuItem>
+                                                                <Link className='linkDefault' to='/'>
+                                                                        <Typography
+                                                                                sx={{
+                                                                                        display: { xs: 'none', md: 'flex' },
+                                                                                }}
+                                                                        >
+                                                                                <AiFillHome className="menu__icon" />
+                                                                        </Typography>
+                                                                </Link> &nbsp;
+                                                        </MenuItem>
+
+                                                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                                                {pages.map((page) => (
+                                                                        <MenuItem key={page.key} onClick={handleCloseNavMenu}>
+                                                                                <Link className='linkDefault' to={`/${page.key}`}>
                                                                                         {page.value}
-                                                                                </Button>
-                                                                        </Link>
-                                                                </MenuItem>
-                                                        ))}
+                                                                                </Link>
+                                                                        </MenuItem>
+                                                                ))}
+                                                        </Box>
+
+                                                        {/* Zoom menu */}
+
+                                                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                                                                <IconButton
+                                                                        size="large"
+                                                                        aria-label="current page"
+                                                                        aria-controls="menu-appbar"
+                                                                        aria-haspopup="true"
+                                                                        onClick={handleOpenNavMenu}
+                                                                        color="inherit"
+                                                                >
+                                                                        <MenuIcon />
+                                                                </IconButton>
+                                                                <Menu
+                                                                        id="menu-appbar"
+                                                                        anchorEl={nav}
+                                                                        anchorOrigin={{
+                                                                                vertical: 'bottom',
+                                                                                horizontal: 'left',
+                                                                        }}
+                                                                        keepMounted
+                                                                        transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'left',
+                                                                        }}
+                                                                        open={Boolean(nav)}
+                                                                        onClose={handleCloseNavMenu}
+                                                                        sx={{
+                                                                                display: { xs: 'block', md: 'none' },
+                                                                        }}
+                                                                >
+                                                                        {pages.map((page) => (
+                                                                                <MenuItem key={page.key} onClick={handleCloseNavMenu}>
+                                                                                        <Link className='link' to={`/${page.key}`}>
+                                                                                                {page.value}
+                                                                                        </Link>
+                                                                                </MenuItem>
+                                                                        ))}
+                                                                </Menu>
+                                                        </Box>
+
+                                                        <MenuItem>
+                                                                <Link className='linkDefault' to='/'>
+                                                                        <Typography
+                                                                                sx={{
+                                                                                        display: { xs: 'flex', md: 'none' },
+                                                                                }}
+                                                                        >
+                                                                                <AiFillHome className="menu__icon" />
+                                                                        </Typography>
+                                                                </Link>
+                                                        </MenuItem>
                                                 </Toolbar>
                                         </Container>
                                 </AppBar>
@@ -127,12 +194,12 @@ const MyRouter = () => {
                                         <Route path='/Vegetable' element={<Vegetable />}></Route>
                                         <Route path='/SugarGroup' element={<SugarGroup />}></Route>
                                         <Route path='/Sugar' element={<Sugar />}></Route>
-                                        <Route path='/Cards' element={<Cards />}></Route>
-                                        <Route path='/MyContainer' element={<MyContainer />}></Route>
 
                                         {/* If the user go to not exsist path it would take him back to "/" */}
                                         <Route path="*" element={<Navigate to="/" />}></Route>
                                 </Routes>
+                                <Footer />
+                                <ScrollToTopPage />
                         </Router >
                 </>
         );

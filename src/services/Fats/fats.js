@@ -2,7 +2,7 @@ const fats = [
         {
                 details: {
                         productName: 'אבוקדו',
-                        value1: 0.16667,
+                        value1: 1 / 6,
                         value2: 2,
                         gram: 25,
                         sugar: 0,
@@ -261,7 +261,7 @@ const fats = [
                 sugar: {
                         sugarCalculation: 2,
                         sugarCalculationGram: 20,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -286,7 +286,7 @@ const fats = [
                 sugar: {
                         sugarCalculation: 4,
                         sugarCalculationGram: 20,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -461,7 +461,7 @@ const fats = [
                 sugar: {
                         sugarCalculation: 2,
                         sugarCalculationGram: 30,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -556,7 +556,7 @@ const fats = [
                         value1: 2,
                         gram: 30,
                         sugar: 0,
-                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
+                        message: " .אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון *",
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -581,7 +581,7 @@ const fats = [
                         value1: 2.5,
                         gram: 40,
                         sugar: 0,
-                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
+                        message: " .אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון *",
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -606,7 +606,7 @@ const fats = [
                         value1: 3,
                         gram: 45,
                         sugar: 0,
-                        message: "* אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון.",
+                        message: " .אינו משתייך לקבוצת החלב מאחר ודל מאוד בחלבון *",
                 },
                 sugar: {
                         sugarCalculation: 0,

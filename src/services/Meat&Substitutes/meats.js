@@ -76,7 +76,7 @@ const meats = [
                 breadFat: {
                         breadString: '',
                         fatString: '',
-                        portionFatString: '* יש להוריד מנת שומן',
+                        portionFatString: ' יש להוריד מנת שומן *',
                         fatCalculationCount: 0,
                         portionFatCalculationGram: 90,
                         portionFatCalculationCount: 0,
@@ -140,7 +140,7 @@ const meats = [
                 breadFat: {
                         breadString: '',
                         fatString: '',
-                        portionFatString: '* יש להוריד מנת שומן',
+                        portionFatString: ' יש להוריד מנת שומן *',
                         fatCalculationCount: 0,
                         portionFatCalculationGram: 150,
                         portionFatCalculationCount: 0.25,
@@ -267,7 +267,7 @@ const meats = [
                 },
                 breadFat: {
                         breadString: '',
-                        fatString: '* יש להוריד גרם שומן',
+                        fatString: ' יש להוריד גרם שומן *',
                         portionFatString: '',
                         fatCalculationCount: 0,
                         portionFatCalculationGram: 0,
@@ -295,11 +295,11 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
-                        message: `* מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                        message: `.(מכיל עד 5 גר' שומן ב-100 גרם (מבושל *`,
                 },
                 breadFat: {
                         breadString: '',
-                        fatString: '* יש להוריד גרם שומן',
+                        fatString: ' יש להוריד גרם שומן *',
                         portionFatString: '',
                         fatCalculationCount: 0,
                         portionFatCalculationGram: 0,
@@ -327,11 +327,11 @@ const meats = [
                         bread: 0,
                         fat: 10,
                         portionFat: 0,
-                        message: `* מכיל עד 5 גר' שומן ב-100 גרם (מבושל).`,
+                        message: `.(מכיל עד 5 גר' שומן ב-100 גרם (מבושל *`,
                 },
                 breadFat: {
                         breadString: '',
-                        fatString: '* יש להוריד גרם שומן',
+                        fatString: ' יש להוריד גרם שומן *',
                         portionFatString: '',
                         fatCalculationCount: 0,
                         portionFatCalculationGram: 0,
@@ -523,7 +523,7 @@ const meats = [
                 },
                 breadFat: {
                         breadString: '',
-                        fatString: '* יש להוריד גרם שומן',
+                        fatString: ' יש להוריד גרם שומן *',
                         portionFatString: '',
                         fatCalculationCount: 0.6,
                         portionFatCalculationGram: 0,
@@ -554,7 +554,7 @@ const meats = [
                         message: '',
                 },
                 breadFat: {
-                        breadString: '* יש להוסיף מנת לחם',
+                        breadString: ' יש להוסיף מנת לחם *',
                         fatString: '',
                         portionFatString: '',
                         fatCalculationCount: 0,

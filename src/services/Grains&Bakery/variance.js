@@ -62,7 +62,7 @@ const variance = [
                         sugar: 0,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -170,7 +170,7 @@ const variance = [
                         sugar: 0,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -197,12 +197,12 @@ const variance = [
                         sugar: 1,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 2,
                         sugarCalculationGram: 20,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -224,12 +224,12 @@ const variance = [
                         sugar: 2,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0.5,
                         sugarCalculationGram: 25,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -251,7 +251,7 @@ const variance = [
                         sugar: 0,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -278,7 +278,7 @@ const variance = [
                         sugar: 0,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -305,7 +305,7 @@ const variance = [
                         sugar: 0,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 sugar: {
                         sugarCalculation: 0,

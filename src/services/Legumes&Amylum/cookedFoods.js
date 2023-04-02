@@ -15,6 +15,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: false,
+                        gram: true,
                 },
         },
         {
@@ -33,6 +34,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: false,
+                        gram: true,
                 },
         },
         {
@@ -51,6 +53,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: false,
+                        gram: true,
                 },
         },
         {
@@ -69,6 +72,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: false,
+                        gram: true,
                 },
         },
         {
@@ -79,7 +83,7 @@ const cookedFoods = [
                         fat: 1,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -87,6 +91,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: true,
+                        gram: true,
                 },
         },
         {
@@ -105,6 +110,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: false,
+                        gram: true,
                 },
         },
         {
@@ -115,7 +121,7 @@ const cookedFoods = [
                         fat: 1,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -123,6 +129,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: true,
+                        gram: false,
                 },
         },
         {
@@ -133,7 +140,7 @@ const cookedFoods = [
                         fat: 1,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 unit: {
                         gramString: '(גרם)',
@@ -141,6 +148,7 @@ const cookedFoods = [
                 },
                 check: {
                         fat: true,
+                        gram: true,
                 },
         },
 ];

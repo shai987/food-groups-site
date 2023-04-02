@@ -1,8 +1,13 @@
+// import react states
 import { useState, useEffect } from 'react';
+// import service 
 import fruits from '../../services/Fruits/fruits';
+// import variables 
+import { variables } from '../variables';
+// import container 
+import FormFrame from '../FormFrame';
+// import css
 import '../../assets/css/basic.css';
-// Library that parse decimals into fractions  
-import { toFraction } from 'fraction-parser';
 
 const Fruit = () => {
         //  array of type calculation
@@ -32,32 +37,46 @@ const Fruit = () => {
                 else {
                         setProductValues(values[1]);
                 }
-        }, [productType, product]);
+        }, [product]);
 
         // My handlers
         const calculateValue = (amount, productType, productValues) => {
-                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-                const negligibleNumber = 0.25;
-                // Calculate count value1 reasult
-                const productCalculationCountValue1 = ` ${(amount / product?.details?.value1).toLocaleString(numberFormat)}`;
-                // Calculate count value1 reasult
-                const productCalculationCountValue2 = ` ${(amount / product?.details?.value2).toLocaleString(numberFormat)}`;
-                // Calculate gram reasult
-                const productCalculationGram = ` ${(amount / product?.details?.gram).toLocaleString(numberFormat)}`;
+                // Calculate count
+                const count = (amount / product?.details?.value1).toLocaleString(variables?.numberFormat);
+                // Calculate countValue2
+                const countValue2 = (amount / product?.details?.value2).toLocaleString(variables?.numberFormat);
+                // Calculate gram
+                const gram = (amount / product?.details?.gram).toLocaleString(variables?.numberFormat);
+
+                // Match count with NEGLIGIBLE_NUMBER
+                const calculationCountFraction = ` ${count}`;
+                // Calculate count reasult using toFraction 
+                const calculationCount = ` ${variables?.fractionCalculation(count)}`;
+                // Use to comparison count value with NEGLIGIBLE_NUMBER
+                const calculationCountValueFraction = ` ${countValue2}`;
+                // Calculate count value2 reasult using toFraction 
+                const calculationCountValue2 = ` ${variables?.fractionCalculation(countValue2)}`;
+
+                // Match gram with NEGLIGIBLE_NUMBER
+                const calculationGramFraction = ` ${gram}`;
+                // Calculate gram reasult using toFraction 
+                const calculationGram = ` ${variables?.fractionCalculation(gram)}`;
 
                 if (product && type && value) {
                         if (product?.check?.value) {
                                 if (productType === types[0]) {
-                                        const answer = productValues === values[0] ? productCalculationCountValue1 : productCalculationCountValue2;
-                                        return answer >= negligibleNumber ? answer : ' זניח';
+                                        return productValues === values[0] && calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount
+                                                : productValues === values[1] && calculationCountValueFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCountValue2
+                                                        : ' זניח';
                                 }
                                 else {
-                                        return productCalculationGram >= negligibleNumber ? productCalculationGram : ' זניח';
+                                        return calculationGramFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationGram : ' זניח';
                                 }
                         }
                         else {
-                                const answer = productType === types[0] ? productCalculationCountValue1 : productCalculationGram;
-                                return answer >= negligibleNumber ? answer : ' זניח';
+                                return productType === types[0] && calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount
+                                        : productType === types[1] && calculationGramFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationGram
+                                                : 'זניח';
                         }
                 }
                 else {
@@ -89,96 +108,103 @@ const Fruit = () => {
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
+
                 try {
-                        setResult(toFraction(calculateValue(productAmount, productType, productValues), { useUnicodeVulgar: true }));
+                        setResult(calculateValue(productAmount, productType, productValues));
                 }
-                catch {
-                        setResult('זניח');
+                catch (err) {
+                        console.log(err.message);
+                        setResult('קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר');
                 }
         };
 
         return (
-                <form onSubmit={handleSubmit}>
-                        <h1>פירות</h1>
-                        <label>
-                                חישוב לפי כמות או גרמים:
-                                <input list="productType"
-                                        defaultValue={productType}
-                                        onChange={handleProductType}
-                                        onClick={handleClear}
-                                        onFocus={handleClear}
-                                />
-                                <datalist id="productType">
-                                        {
-                                                types.map((type) => (
-                                                        <option key={type} name="productType" value={type}>
-                                                                {type}
-                                                        </option>
-                                                ))
-                                        }
-                                </datalist>
-                        </label>
-                        <br />
-                        <label htmlFor="productAmount">
-                                כמות נאכלת:
-                                <input
-                                        name='productAmount'
-                                        type="number"
-                                        id="productAmount"
-                                        min="0"
-                                        max="1000"
-                                        step="any"
-                                        value={productAmount}
-                                        onChange={handleAmount}
-                                />
-                        </label>
-                        <br />
-                        <label>
-                                סוג הפרי:
-                                <input list="productName"
-                                        defaultValue={productName}
-                                        onChange={handleProduct}
-                                        onClick={handleClear}
-                                        onFocus={handleClear}
-                                />
-                                <datalist id="productName">
-                                        {
-                                                products.map((product) => (
-                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
-                                                        </option>
-                                                ))
-                                        }
-                                </datalist>
-                        </label>
-                        <br />
-                        {product?.check?.value === true && productType === types[0] && <div>
-                                <label>
-                                        בחירת סוג חישוב כמות
-                                        <input list="productValues"
-                                                value={productValues || ''}
-                                                onChange={handleProductValues}
-                                                onClick={handleClear}
-                                                onFocus={handleClear}
-                                        />
-                                        <datalist id="productValues">
-                                                {
-                                                        values.map((value) => (
-                                                                <option key={value} name="productValues" value={value || ''}>
-                                                                        {value}
-                                                                </option>
-                                                        ))
-                                                }
-                                        </datalist>
-                                </label>
-                        </div>}
-                        <br />
-                        <div className='div1'>
-                                מספר מנות:
-                                <p className='result'>{result}</p>
-                        </div>
-                        <button type="submit">חשב</button>
-                </form >
+                <>
+                        <FormFrame>
+                                <form onSubmit={handleSubmit}>
+                                        <h1>פירות</h1>
+                                        <label>
+                                                חישוב לפי כמות או גרמים:
+                                                <input list="productType"
+                                                        defaultValue={productType}
+                                                        onChange={handleProductType}
+                                                        onClick={handleClear}
+                                                        onFocus={handleClear}
+                                                />
+                                                <datalist id="productType">
+                                                        {
+                                                                types.map((type) => (
+                                                                        <option key={type} name="productType" value={type}>
+                                                                                {type}
+                                                                        </option>
+                                                                ))
+                                                        }
+                                                </datalist>
+                                        </label>
+                                        <br />
+                                        <label htmlFor="productAmount">
+                                                כמות נאכלת:
+                                                <input
+                                                        name='productAmount'
+                                                        type="number"
+                                                        id="productAmount"
+                                                        min="0"
+                                                        max="1000"
+                                                        step="any"
+                                                        value={productAmount}
+                                                        onChange={handleAmount}
+                                                />
+                                        </label>
+                                        <br />
+                                        <label>
+                                                סוג הפרי:
+                                                <input list="productName"
+                                                        defaultValue={productName}
+                                                        onChange={handleProduct}
+                                                        onClick={handleClear}
+                                                        onFocus={handleClear}
+                                                />
+                                                <datalist id="productName">
+                                                        {
+                                                                products.map((product) => (
+                                                                        <option
+                                                                                key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                        </option>
+                                                                ))
+                                                        }
+                                                </datalist>
+                                        </label>
+                                        <br />
+                                        {product?.check?.value === true && productType === types[0] && <div>
+                                                <label>
+                                                        בחירת סוג חישוב כמות
+                                                        <input list="productValues"
+                                                                value={productValues || ''}
+                                                                onChange={handleProductValues}
+                                                                onClick={handleClear}
+                                                                onFocus={handleClear}
+                                                        />
+                                                        <datalist id="productValues">
+                                                                {
+                                                                        values.map((value) => (
+                                                                                <option key={value} name="productValues" value={value || ''}>
+                                                                                        {value}
+                                                                                </option>
+                                                                        ))
+                                                                }
+                                                        </datalist>
+                                                </label>
+                                        </div>}
+                                        <br />
+                                        <div className='div1'>
+                                                מספר מנות:
+                                                <p className='result'>{result}</p>
+                                        </div>
+                                        <button type="submit">חשב</button>
+                                </form >
+                        </FormFrame>
+                </>
         );
 };
 

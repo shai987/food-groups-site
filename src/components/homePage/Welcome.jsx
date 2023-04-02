@@ -3,7 +3,8 @@ const Welcome = () => {
 
         return (
                 <div className="welcome" >
-                        <h1 className="welcome">ברוך הבא לאתר של הקטנים</h1>
+                        <h1>ברוך הבא לאתר קבוצות תחליף</h1>
+                        <p>האתר מסייע בחישוב כמות מנות לפי קטגוריות</p>
                 </div>
         );
 }

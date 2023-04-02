@@ -127,7 +127,7 @@ const cookedFoods = [
                         fat: 1,
                 },
                 fat: {
-                        fatString: '* יש להוסיף מנות שומן',
+                        fatString: ' יש להוסיף מנות שומן *',
                 },
                 unit: {
                         gramString: '(גרם)',

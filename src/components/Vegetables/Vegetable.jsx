@@ -1,8 +1,13 @@
+// import react state
 import { useState } from 'react';
+// import service 
 import vegetables from '../../services/Vegetables/vegetables';
+// import variables 
+import { variables } from '../variables';
+// import container 
+import FormFrame from '../FormFrame';
+// import css
 import '../../assets/css/basic.css';
-// Library that parse decimals into fractions  
-import { toFraction } from 'fraction-parser';
 
 const Vegetable = () => {
         // My states 
@@ -16,13 +21,15 @@ const Vegetable = () => {
 
         // My handlers
         const calculateValue = (amount) => {
-                const numberFormat = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-                const negligibleNumber = 0.25;
-                // Calculate count reasult
-                const productCalculationCount = ` ${(amount / type?.details?.value).toLocaleString(numberFormat)}`;
+                // Calculate count 
+                const count = (amount / type?.details?.value).toLocaleString(variables?.numberFormat);
+                // Match count with NEGLIGIBLE_NUMBER
+                const calculationCountFraction = ` ${count}`;
+                // Calculate count reasult using toFraction 
+                const calculationCount = ` ${variables?.fractionCalculation(count)}`;
 
                 if (type) {
-                        return productCalculationCount >= negligibleNumber ? productCalculationCount : ' זניח';
+                        return calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount : ' זניח';
                 }
                 else {
                         return alert('הערך שהוזן אינו קיים');
@@ -46,55 +53,60 @@ const Vegetable = () => {
                 // Prevent reload the page
                 e.preventDefault();
                 try {
-                        setResult(toFraction(calculateValue(productAmount), { useUnicodeVulgar: true }));
+                        setResult(calculateValue(productAmount));
                 }
-                catch {
-                        setResult('זניח');
+                catch (err) {
+                        console.log(err.message);
+                        setResult('קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר');
                 }
         };
 
         return (
-                <form onSubmit={handleSubmit}>
-                        <h1>ירקות</h1>
-                        <label>
-                                חישוב לפי כמות:
-                                <input list="typeName"
-                                        defaultValue={typeName}
-                                        onChange={handleProductType}
-                                        onClick={handleClear}
-                                        onFocus={handleClear}
-                                />
-                                <datalist id="typeName">
-                                        {
-                                                typesName.map((type) => (
-                                                        <option key={type?.details?.typeName} name="typeName" value={type?.details?.typeName}>
-                                                                {type?.details?.typeName}
-                                                        </option>
-                                                ))
-                                        }
-                                </datalist>
-                        </label>
-                        <br /><br />
-                        <label htmlFor="productAmount">
-                                כמות נאכלת:
-                                <input
-                                        name='productAmount'
-                                        type="number"
-                                        id="productAmount"
-                                        min="0.00000001"
-                                        // max="1000"
-                                        step="any"
-                                        value={productAmount}
-                                        onChange={handleAmount}
-                                />
-                        </label>
-                        <br /><br />
-                        <div className='div1'>
-                                מספר מנות:
-                                <p className='result'>{result}</p>
-                        </div>
-                        <button type="submit">חשב</button>
-                </form >
+                <>
+                        <FormFrame>
+                                <form onSubmit={handleSubmit}>
+                                        <h1>ירקות</h1>
+                                        <label>
+                                                חישוב לפי כמות:
+                                                <input list="typeName"
+                                                        defaultValue={typeName}
+                                                        onChange={handleProductType}
+                                                        onClick={handleClear}
+                                                        onFocus={handleClear}
+                                                />
+                                                <datalist id="typeName">
+                                                        {
+                                                                typesName.map((type) => (
+                                                                        <option key={type?.details?.typeName} name="typeName" value={type?.details?.typeName}>
+                                                                                {type?.details?.typeName}
+                                                                        </option>
+                                                                ))
+                                                        }
+                                                </datalist>
+                                        </label>
+                                        <br /><br />
+                                        <label htmlFor="productAmount">
+                                                כמות נאכלת:
+                                                <input
+                                                        name='productAmount'
+                                                        type="number"
+                                                        id="productAmount"
+                                                        min="0.00000001"
+                                                        // max="1000"
+                                                        step="any"
+                                                        value={productAmount}
+                                                        onChange={handleAmount}
+                                                />
+                                        </label>
+                                        <br /><br />
+                                        <div className='div1'>
+                                                מספר מנות:
+                                                <p className='result'>{result}</p>
+                                        </div>
+                                        <button type="submit">חשב</button>
+                                </form >
+                        </FormFrame >
+                </>
         );
 };
 

@@ -1,7 +1,23 @@
 .link {
         text-decoration: none;
+        color: black;
+
 }
 
-.r {
-        direction: ltr;
+.link:hover {
+        opacity: 0.8;
+}
+
+.linkDefault {
+        text-decoration: none;
+        color: white;
+}
+
+.linkDefault:hover {
+        opacity: 0.8;
+}
+
+.menu__icon {
+        font-size: 1.5rem;
+        color: white;
 }

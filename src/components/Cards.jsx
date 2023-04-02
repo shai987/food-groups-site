@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 // import react-lazyload
 import LazyLoad from 'react-lazyload';
+// import prop-types
+import PropTypes from 'prop-types'
 // import css
 import '../assets/css/basic.css'
 
@@ -30,9 +32,7 @@ const Cards = (props) => {
                                         </CardContent>
                                         <CardActions>
                                                 <Link className='link' to={props.link}>
-                                                        <Button variant="contained" color="primary"
-                                                                sx={{ color: "white", display: "block", }}
-                                                        >
+                                                        <Button variant="contained" color="primary">
                                                                 מעבר לחישוב
                                                         </Button>
                                                 </Link>
@@ -41,6 +41,14 @@ const Cards = (props) => {
                         </LazyLoad>
                 </>
         );
+}
+
+Cards.propTypes = {
+        imageSrc: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired,
 }
 
 export default Cards; 

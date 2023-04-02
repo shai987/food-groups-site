@@ -6,7 +6,7 @@ const soybean = [
                         bread: 0.5,
                 },
                 bread: {
-                        breadString: '* יש להוסיף מנות לחם',
+                        breadString: ' יש להוסיף מנות לחם *',
                         breadCalculation: 3,
                 },
                 unit: {
@@ -40,7 +40,7 @@ const soybean = [
                         bread: 0.5,
                 },
                 bread: {
-                        breadString: '* יש להוסיף מנות לחם',
+                        breadString: ' יש להוסיף מנות לחם *',
                         breadCalculation: 6,
                 },
                 unit: {
@@ -57,7 +57,7 @@ const soybean = [
                         bread: 0.5,
                 },
                 bread: {
-                        breadString: '* יש להוסיף מנות לחם',
+                        breadString: ' יש להוסיף מנות לחם *',
                         breadCalculation: 2,
                 },
                 unit: {
@@ -74,7 +74,7 @@ const soybean = [
                         bread: 0.5,
                 },
                 bread: {
-                        breadString: '* יש להוסיף מנות לחם',
+                        breadString: ' יש להוסיף מנות לחם *',
                         breadCalculation: 3,
                 },
                 unit: {
