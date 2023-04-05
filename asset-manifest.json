@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/food-groups-site/static/css/main.7af41879.css",
-    "main.js": "/food-groups-site/static/js/main.677cf069.js",
+    "main.js": "/food-groups-site/static/js/main.daee9cb1.js",
     "static/js/787.660a768c.chunk.js": "/food-groups-site/static/js/787.660a768c.chunk.js",
     "static/media/Fat.jpg": "/food-groups-site/static/media/Fat.67af2f0c665338c1d8f2.jpg",
     "static/media/breads.jpg": "/food-groups-site/static/media/breads.b1c5313262b110b2cbb7.jpg",
@@ -18,11 +18,11 @@
     "static/media/milkGroup.jpg": "/food-groups-site/static/media/milkGroup.0a5c49f1cd9cad039e5b.jpg",
     "index.html": "/food-groups-site/index.html",
     "main.7af41879.css.map": "/food-groups-site/static/css/main.7af41879.css.map",
-    "main.677cf069.js.map": "/food-groups-site/static/js/main.677cf069.js.map",
+    "main.daee9cb1.js.map": "/food-groups-site/static/js/main.daee9cb1.js.map",
     "787.660a768c.chunk.js.map": "/food-groups-site/static/js/787.660a768c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7af41879.css",
-    "static/js/main.677cf069.js"
+    "static/js/main.daee9cb1.js"
   ]
 }
