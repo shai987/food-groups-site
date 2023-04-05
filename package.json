@@ -28,7 +28,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build && echo \"Header set Content-Security-Policy \\\"default-src 'none'; script-src 'nonce-ABC123' 'unsafe-inline' 'unsafe-eval' https://shai987.github.io/;\\\"\" > build/.htaccess",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
