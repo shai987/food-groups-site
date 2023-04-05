@@ -1,6 +1,7 @@
 // import react-router-dom
 import {
-        BrowserRouter as Router,
+        // BrowserRouter as Router,
+        HashRouter as Router,
         Routes,
         Navigate,
         Route,
@@ -84,7 +85,8 @@ const MyRouter = () => {
 
         return (
                 <>
-                        <Router>
+                        {/* <Router> */}
+                        <Router basename="/">
                                 {/* sticky position allows the menu to be displayed even when scrolling */}
                                 <AppBar position="sticky" sx={{ backgroundColor: '#333333' }}>
                                         <Container maxWidth="xl" sx={{ mr: '2px', ml: '2px', display: 'grid' }}>
