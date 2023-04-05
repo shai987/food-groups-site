@@ -13,24 +13,18 @@ import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types'
 // import css
 import '../assets/css/basic.css'
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Cards = (props) => {
         return (
                 <>
                         <Card sx={{ width: 300 }}>
                                 <LazyLoad height={200} once>
-                                        {/* <LazyLoadImage */}
-                                        {/* src={props.imageSrc} */}
                                         <CardMedia
                                                 image={props.imageSrc}
-                                                // width='300'
                                                 title={props.title}
                                                 alt={props.alt}
                                                 component='img'
-                                        // />
                                         />
-
                                 </LazyLoad>
                                 <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
