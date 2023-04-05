@@ -1,7 +1,7 @@
 {
   "name": "food-groups-site",
   "version": "0.1.0",
-  "homepage": "https://shai987.github.io",
+  "homepage": "https://shai987.github.io/food-groups-site",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
