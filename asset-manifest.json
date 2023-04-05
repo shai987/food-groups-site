@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/food-groups-site/static/css/main.7af41879.css",
+    "main.js": "/food-groups-site/static/js/main.677cf069.js",
+    "static/js/787.660a768c.chunk.js": "/food-groups-site/static/js/787.660a768c.chunk.js",
+    "static/media/Fat.jpg": "/food-groups-site/static/media/Fat.67af2f0c665338c1d8f2.jpg",
+    "static/media/breads.jpg": "/food-groups-site/static/media/breads.b1c5313262b110b2cbb7.jpg",
+    "static/media/CookedFoodsGB.jpg": "/food-groups-site/static/media/CookedFoodsGB.485a460a517773967586.jpg",
+    "static/media/SoyLite.jpg": "/food-groups-site/static/media/SoyLite.057c79040ad51151f2a1.jpg",
+    "static/media/variance.jpg": "/food-groups-site/static/media/variance.e088e41a4e4e4159958e.jpg",
+    "static/media/eggs.jpg": "/food-groups-site/static/media/eggs.4b96df45cd0a7b93d079.jpg",
+    "static/media/Meat.jpg": "/food-groups-site/static/media/Meat.a429acac8db13ef845c7.jpg",
+    "static/media/Vegetables.jpg": "/food-groups-site/static/media/Vegetables.d928798048b023f000b9.jpg",
+    "static/media/CookedFoodsPA.jpg": "/food-groups-site/static/media/CookedFoodsPA.0969e15e94a040aff9ec.jpg",
+    "static/media/Fruit.jpg": "/food-groups-site/static/media/Fruit.2c6fa466299a3bf6a1b3.jpg",
+    "static/media/sugar.jpg": "/food-groups-site/static/media/sugar.fbaa41e453cf49cb5b80.jpg",
+    "static/media/flour.jpg": "/food-groups-site/static/media/flour.3429f9b715db064b8fbb.jpg",
+    "static/media/milkGroup.jpg": "/food-groups-site/static/media/milkGroup.0a5c49f1cd9cad039e5b.jpg",
+    "index.html": "/food-groups-site/index.html",
+    "main.7af41879.css.map": "/food-groups-site/static/css/main.7af41879.css.map",
+    "main.677cf069.js.map": "/food-groups-site/static/js/main.677cf069.js.map",
+    "787.660a768c.chunk.js.map": "/food-groups-site/static/js/787.660a768c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7af41879.css",
+    "static/js/main.677cf069.js"
+  ]
+}
