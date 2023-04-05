@@ -6,7 +6,7 @@ const milk = [
                         value2: 0,
                         gram: 60,
                         sugar: 0,
-                        message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
+                        message: '.דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות) *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -33,7 +33,7 @@ const milk = [
                         value2: 0,
                         gram: 40,
                         sugar: 0,
-                        message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
+                        message: '.דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות) *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -60,7 +60,7 @@ const milk = [
                         value2: 0,
                         gram: 60,
                         sugar: 0,
-                        message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
+                        message: '.דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות) *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -90,7 +90,7 @@ const milk = [
                         value2: 5,
                         gram: 125,
                         sugar: 0,
-                        message: '* דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות).',
+                        message: '.דל בפחמימות ומכיל יותר חלבון ו/או שומן (120 קלוריות) *',
                 },
                 sugar: {
                         sugarCalculation: 0,
@@ -100,7 +100,7 @@ const milk = [
                 unit: {
                         gramString: '(גרם)',
                         measureString: '(חבילה/כף)',
-                        measures: ['חבילה', 'כף'],
+                        measures: ['חצי חבילה', 'כף'],
                 },
                 check: {
                         count: true,
@@ -258,7 +258,7 @@ const milk = [
                 sugar: {
                         sugarCalculation: 1,
                         sugarCalculationGram: 125,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(מ"ל)',
@@ -285,7 +285,7 @@ const milk = [
                 sugar: {
                         sugarCalculation: 1,
                         sugarCalculationGram: 150,
-                        sugarString: '* יש להוסיף מנות סוכר',
+                        sugarString: ' יש להוסיף מנות סוכר *',
                 },
                 unit: {
                         gramString: '(מ"ל)',

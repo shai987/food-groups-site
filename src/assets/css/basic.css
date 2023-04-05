@@ -2,15 +2,6 @@
         text-decoration: none;
 }
 
-.invalid input {
-        border: 1px solid #b40e0e;
-        background-color: #fddddd;
-}
-
-.error-text {
-        color: #b40e0e;
-}
-
 body {
         background-color: hsl(0, 0%, 95%);
         font-family: 'Varela Round', sans-serif;
@@ -19,14 +10,6 @@ body {
 
 .div1 {
         white-space: pre-wrap;
-}
-
-.div12 {
-        font-size: small;
-}
-
-.shai {
-        height: 140px;
 }
 
 input {

@@ -13,32 +13,38 @@ import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types'
 // import css
 import '../assets/css/basic.css'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Cards = (props) => {
         return (
                 <>
-                        <LazyLoad height={200} once>
-                                <Card sx={{ width: 300 }}>
+                        <Card sx={{ width: 300 }}>
+                                <LazyLoad height={200} once>
+                                        {/* <LazyLoadImage */}
+                                        {/* src={props.imageSrc} */}
                                         <CardMedia
                                                 image={props.imageSrc}
+                                                // width='300'
                                                 title={props.title}
                                                 alt={props.alt}
                                                 component='img'
+                                        // />
                                         />
-                                        <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
-                                                        {props.name}
-                                                </Typography>
-                                        </CardContent>
-                                        <CardActions>
-                                                <Link className='link' to={props.link}>
-                                                        <Button variant="contained" color="primary">
-                                                                מעבר לחישוב
-                                                        </Button>
-                                                </Link>
-                                        </CardActions>
-                                </Card>
-                        </LazyLoad>
+
+                                </LazyLoad>
+                                <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                                {props.name}
+                                        </Typography>
+                                </CardContent>
+                                <CardActions>
+                                        <Link className='link' to={props.link}>
+                                                <Button variant="contained" color="primary">
+                                                        מעבר לחישוב
+                                                </Button>
+                                        </Link>
+                                </CardActions>
+                        </Card>
                 </>
         );
 }

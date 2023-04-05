@@ -23,6 +23,7 @@ const Vegetable = () => {
         const calculateValue = (amount) => {
                 // Calculate count 
                 const count = (amount / type?.details?.value).toLocaleString(variables?.numberFormat);
+
                 // Match count with NEGLIGIBLE_NUMBER
                 const calculationCountFraction = ` ${count}`;
                 // Calculate count reasult using toFraction 
