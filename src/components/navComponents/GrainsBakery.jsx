@@ -18,7 +18,7 @@ const GrainsBakery = () => {
 
                         <br />
                         <div >
-                                <Grid container item xs={9}>
+                                <Grid container item xs={10}>
                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                         <Cards
                                                 imageSrc={require('../../assets/images/breads.jpg')}
