@@ -23,7 +23,6 @@ const Egg = () => {
         const calculateValue = (amount) => {
                 // Calculate count 
                 const count = (amount / product?.details?.value).toLocaleString(variables?.numberFormat);
-
                 // Match count with NEGLIGIBLE_NUMBER
                 const calculationCountFraction = ` ${count}`;
                 // Calculate count reasult using toFraction 
