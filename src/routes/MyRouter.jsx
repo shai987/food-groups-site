@@ -1,14 +1,13 @@
 // import react-router-dom
 import {
-        // BrowserRouter as Router,
         HashRouter as Router,
         Routes,
         Navigate,
         Route,
-        Link
+        Link,
 } from 'react-router-dom';
 // import libraries from material-ui
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
@@ -20,45 +19,47 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 // import icon from react-icons
 import { AiFillHome } from 'react-icons/ai';
-// import my components
-import HomepageContainer from '../components/homePage/HomepageContainer';
-import Footer from '../components/footer/Footer';
-import ScrollToTopPage from '../components/ScrollToTopPage';
-// GrainsBakery
-import GrainsBakery from '../components/navComponents/GrainsBakery';
-import Breads from '../components/Grains&Bakery/Breads';
-import CookedFoodsGB from "../components/Grains&Bakery/CookedFoodsGB";
-import Flour from "../components/Grains&Bakery/Flour";
-import Variance from "../components/Grains&Bakery/Variance";
-// LegumesAmylum
-import LegumesAmylum from '../components/navComponents/LegumesAmylum';
-import CookedFoodsPA from '../components/Legumes&Amylum/CookedFoodsPA';
-// FruitGroup
-import FruitGroup from '../components/navComponents/FruitGroup';
-import Fruit from '../components/Fruits/Fruit';
-// FatGroup
-import FatGroup from '../components/navComponents/FatGroup';
-import Fat from '../components/Fat/Fat';
-// MeatGroup
-import MeatGroup from '../components/navComponents/MeatGroup';
-import Meat from '../components/Meat&Substitutes/Meat';
-import Soybean from '../components/Meat&Substitutes/Soybean';
-import Lite from '../components/Meat&Substitutes/Lite';
-import Egg from '../components/Meat&Substitutes/Egg';
-// MilkGroup
-import MilkGroup from '../components/navComponents/MilkGroup';
-import Milk from '../components/Milk/Milk';
-// LowFatMilkGroup
-import LowFatMilkGroup from '../components/navComponents/LowFatMilkGroup';
-import LowFatMilk from '../components/LowFatMilk/LowFatMilk';
-// Vegetables
-import Vegetables from '../components/navComponents/Vegetables';
-import Vegetable from '../components/Vegetables/Vegetable';
-// SugarGroup
-import SugarGroup from '../components/navComponents/SugarGroup';
-import Sugar from '../components/Sugars/Sugar';
 // import css
 import '../assets/css/MyRouter.css';
+// import my components
+import Footer from '../components/footer/Footer';
+import ScrollToTopPage from '../components/ScrollToTopPage';
+import HomepageContainer from '../components/homePage/HomepageContainer';
+// const HomepageContainer = lazy(() => import('../components/homePage/HomepageContainer'));
+// GrainsBakery
+const GrainsBakery = lazy(() => import('../components/navComponents/GrainsBakery'));
+const Breads = lazy(() => import('../components/Grains&Bakery/Breads'));
+const CookedFoodsGB = lazy(() => import('../components/Grains&Bakery/CookedFoodsGB'));
+const Flour = lazy(() => import('../components/Grains&Bakery/Flour'));
+const Variance = lazy(() => import('../components/Grains&Bakery/Variance'));
+// LegumesAmylum
+const LegumesAmylum = lazy(() => import('../components/navComponents/LegumesAmylum'));
+const CookedFoodsPA = lazy(() => import('../components/Legumes&Amylum/CookedFoodsPA'));
+// FruitGroup
+const FruitGroup = lazy(() => import('../components/navComponents/FruitGroup'));
+const Fruit = lazy(() => import('../components/Fruits/Fruit'));
+// FatGroup
+const FatGroup = lazy(() => import('../components/navComponents/FatGroup'));
+const Fat = lazy(() => import('../components/Fat/Fat'));
+// MeatGroup
+const MeatGroup = lazy(() => import('../components/navComponents/MeatGroup'));
+const Meat = lazy(() => import('../components/Meat&Substitutes/Meat'));
+const Soybean = lazy(() => import('../components/Meat&Substitutes/Soybean'));
+const Lite = lazy(() => import('../components/Meat&Substitutes/Lite'));
+const Egg = lazy(() => import('../components/Meat&Substitutes/Egg'));
+// MilkGroup
+const MilkGroup = lazy(() => import('../components/navComponents/MilkGroup'));
+const Milk = lazy(() => import('../components/Milk/Milk'));
+// LowFatMilkGroup
+const LowFatMilkGroup = lazy(() => import('../components/navComponents/LowFatMilkGroup'));
+const LowFatMilk = lazy(() => import('../components/LowFatMilk/LowFatMilk'));
+// Vegetables
+const Vegetables = lazy(() => import('../components/navComponents/Vegetables'));
+const Vegetable = lazy(() => import('../components/Vegetables/Vegetable'));
+// SugarGroup
+const SugarGroup = lazy(() => import('../components/navComponents/SugarGroup'));
+const Sugar = lazy(() => import('../components/Sugars/Sugar'));
+
 
 const MyRouter = () => {
         const pages = [
@@ -74,6 +75,7 @@ const MyRouter = () => {
         ];
 
         const [nav, setNav] = useState(null);
+        // const [isPending, startTransition] = useTransition();
 
         const handleCloseNavMenu = () => {
                 setNav(null);
@@ -170,36 +172,38 @@ const MyRouter = () => {
                                                 </Toolbar>
                                         </Container>
                                 </AppBar>
-                                <Routes>
-                                        <Route path='/' element={<HomepageContainer />}></Route>
-                                        <Route path='/GrainsBakery' element={<GrainsBakery />}></Route>
-                                        <Route path='/Breads' element={<Breads />}></Route>
-                                        <Route path='/CookedFoodsGB' element={<CookedFoodsGB />}></Route>
-                                        <Route path='/Flour' element={<Flour />}></Route>
-                                        <Route path='/Variance' element={<Variance />}></Route>
-                                        <Route path='/LegumesAmylum' element={<LegumesAmylum />}></Route>
-                                        <Route path='/CookedFoodsPA' element={<CookedFoodsPA />}></Route>
-                                        <Route path='/FruitGroup' element={<FruitGroup />}></Route>
-                                        <Route path='/Fruit' element={<Fruit />}></Route>
-                                        <Route path='/FatGroup' element={<FatGroup />}></Route>
-                                        <Route path='/Fat' element={<Fat />}></Route>
-                                        <Route path='/MeatGroup' element={<MeatGroup />}></Route>
-                                        <Route path='/Meat' element={<Meat />}></Route>
-                                        <Route path='/Soybean' element={<Soybean />}></Route>
-                                        <Route path='/Lite' element={<Lite />}></Route>
-                                        <Route path='/Egg' element={<Egg />}></Route>
-                                        <Route path='/MilkGroup' element={<MilkGroup />}></Route>
-                                        <Route path='/Milk' element={<Milk />}></Route>
-                                        <Route path='/LowFatMilkGroup' element={<LowFatMilkGroup />}></Route>
-                                        <Route path='/LowFatMilk' element={<LowFatMilk />}></Route>
-                                        <Route path='/Vegetables' element={<Vegetables />}></Route>
-                                        <Route path='/Vegetable' element={<Vegetable />}></Route>
-                                        <Route path='/SugarGroup' element={<SugarGroup />}></Route>
-                                        <Route path='/Sugar' element={<Sugar />}></Route>
+                                <Suspense fallback={<h1>טוען...</h1>}>
+                                        <Routes>
+                                                <Route path='/' element={<HomepageContainer />}></Route>
+                                                <Route path='/GrainsBakery' element={<GrainsBakery />}></Route>
+                                                <Route path='/Breads' element={<Breads />}></Route>
+                                                <Route path='/CookedFoodsGB' element={<CookedFoodsGB />}></Route>
+                                                <Route path='/Flour' element={<Flour />}></Route>
+                                                <Route path='/Variance' element={<Variance />}></Route>
+                                                <Route path='/LegumesAmylum' element={<LegumesAmylum />}></Route>
+                                                <Route path='/CookedFoodsPA' element={<CookedFoodsPA />}></Route>
+                                                <Route path='/FruitGroup' element={<FruitGroup />}></Route>
+                                                <Route path='/Fruit' element={<Fruit />}></Route>
+                                                <Route path='/FatGroup' element={<FatGroup />}></Route>
+                                                <Route path='/Fat' element={<Fat />}></Route>
+                                                <Route path='/MeatGroup' element={<MeatGroup />}></Route>
+                                                <Route path='/Meat' element={<Meat />}></Route>
+                                                <Route path='/Soybean' element={<Soybean />}></Route>
+                                                <Route path='/Lite' element={<Lite />}></Route>
+                                                <Route path='/Egg' element={<Egg />}></Route>
+                                                <Route path='/MilkGroup' element={<MilkGroup />}></Route>
+                                                <Route path='/Milk' element={<Milk />}></Route>
+                                                <Route path='/LowFatMilkGroup' element={<LowFatMilkGroup />}></Route>
+                                                <Route path='/LowFatMilk' element={<LowFatMilk />}></Route>
+                                                <Route path='/Vegetables' element={<Vegetables />}></Route>
+                                                <Route path='/Vegetable' element={<Vegetable />}></Route>
+                                                <Route path='/SugarGroup' element={<SugarGroup />}></Route>
+                                                <Route path='/Sugar' element={<Sugar />}></Route>
 
-                                        {/* If the user go to not exsist path it would take him back to "/" */}
-                                        <Route path="*" element={<Navigate to="/" />}></Route>
-                                </Routes>
+                                                {/* If the user go to not exsist path it would take him back to "/" */}
+                                                <Route path="*" element={<Navigate to="/" />}></Route>
+                                        </Routes>
+                                </Suspense>
                                 <Footer />
                                 <ScrollToTopPage />
                         </Router >
