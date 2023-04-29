@@ -1,4 +1,5 @@
 import MyRouter from "./routes/MyRouter";
+import './assets/css/basic.css';
 
 const App = () => {
   return (
