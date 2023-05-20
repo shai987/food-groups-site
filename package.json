@@ -1,7 +1,10 @@
 {
   "name": "food-groups-site",
   "version": "0.1.0",
+  "description": "This project represents variety of food groups and calculate for you the amount of portions for each category by using React JS.",
   "homepage": "https://shai987.github.io/food-groups-site",
+  "author": "Shai Geffen",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
