@@ -1,5 +1,4 @@
-// import libraries from material-ui
-import { Grid } from '@mui/material';
+
 // import my components
 import Cards from '../Cards';
 // import css
@@ -15,16 +14,14 @@ const MilkGroup = () => {
                         <div>
                                 <h2>כל מנה מכילה 120 קלוריות, 10 גר' פחמימות, 6 גר' חלבון, 6 גר' שומן.</h2>
                         </div>
-                        <div >
-                                <Grid container item xs={10}>
-                                        <Cards
-                                                imageSrc={require('../../assets/images/milkGroup.jpg')}
-                                                title="מוצרי חלב"
-                                                alt="מוצרי חלב"
-                                                link='/Milk'
-                                                name="מוצרי חלב"
-                                        />
-                                </Grid>
+                        <div className='div-container'>
+                                <Cards
+                                        imageSrc={require('../../assets/images/milkGroup.jpg')}
+                                        title="מוצרי חלב"
+                                        alt="מוצרי חלב"
+                                        link='/Milk'
+                                        name="מוצרי חלב"
+                                />
                         </div>
                 </>
         )
