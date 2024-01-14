@@ -1,23 +1,37 @@
-.link {
-        text-decoration: none;
-        color: black;
-
+.link-nav {
+  text-decoration: none;
+  color: black;
 }
 
-.link:hover {
-        opacity: 0.8;
+.link-nav:hover {
+  opacity: 0.8;
 }
 
 .linkDefault {
-        text-decoration: none;
-        color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .linkDefault:hover {
-        opacity: 0.8;
+  opacity: 0.8;
 }
 
 .menu__icon {
-        font-size: 1.5rem;
-        color: white;
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media (min-width: 1485px) {
+  .linkDefault:hover {
+    opacity: 0.8;
+    border-bottom: 2px solid #ffce63;
+  }
+
+  .linkDefault:focus {
+    border-bottom: 2px solid #ffce63;
+  }
+
+  .linkDefault:active {
+    border-bottom: 2px solid #ffce63;
+  }
 }

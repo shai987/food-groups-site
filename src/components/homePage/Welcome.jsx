@@ -1,4 +1,3 @@
-import '../../assets/css/Welcome.css'
 const Welcome = () => {
 
         return (

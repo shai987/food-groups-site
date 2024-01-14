@@ -1,14 +1,12 @@
-import MyRouter from "./routes/MyRouter";
+import MyRouter from './routes/MyRouter';
 import './assets/css/basic.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <MyRouter />
-      </header>
+    <div>
+      <MyRouter />
     </div>
   );
-}
+};
 
 export default App;

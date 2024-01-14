@@ -39,19 +39,20 @@ cd food-groups-site
 npm install
 ```
 
-4. Run the Python file:
+4. Run the project:
 
 ```bash
 npm start
 ```
+
 This will start the React development server and the project will be accessible at http://localhost:3000.
 
 ## Author
 
 👤 **Shai Geffen**
 
-* Github: [@shai987](https://github.com/shai987)
-* LinkedIn: [@Shai Geffen](https://linkedin.com/in/shai-geffen-24373721a)
+- Github: [@shai987](https://github.com/shai987)
+- LinkedIn: [@Shai Geffen](https://linkedin.com/in/shai-geffen-24373721a)
 
 ## 🤝 Contributing
 
@@ -61,5 +62,6 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

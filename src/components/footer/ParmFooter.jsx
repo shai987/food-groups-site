@@ -1,12 +1,18 @@
 // import icons from react-icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+// import react-router-dom
+import { useLocation } from 'react-router-dom';
 // import css
 import '../../assets/css/ParmFooter.css';
 
 const ParmFooter = () => {
+        const location = useLocation();
+        const isHomePage = location.pathname === '/';
+        const isGrainsBakeryGroup = location.pathname === '/GrainsBakery';
+        const isMeatGroupGroup = location.pathname === '/MeatGroup';
         return (
                 <>
-                        <div className="footer">
+                        <div className={isHomePage ? 'footer-for-home' : isGrainsBakeryGroup ? 'special-group' : isMeatGroupGroup ? 'special-group' : 'footer'}>
                                 <div className="footer__text__icon">
                                         <p className='search_me'> חפשו אותי: </p>
                                         <a href="https://www.linkedin.com/in/shai-geffen-24373721a/" target="_blank" rel="noopener noreferrer">
@@ -21,7 +27,7 @@ const ParmFooter = () => {
                                         <p className="text-center" id='copyright__data'>© קרדיט לתוכן האתר, קורס דיאטטיקה האוניברסיטה העברית</p>
                                 </div>
 
-                        </div>
+                        </div >
                 </>
         );
 }
