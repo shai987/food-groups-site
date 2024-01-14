@@ -1,4 +1,5 @@
 import Welcome from "./Welcome";
+import '../../assets/css/HomepageContainer.css';
 
 const HomepageContainer = () => {
         return (
