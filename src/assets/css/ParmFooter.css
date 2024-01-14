@@ -1,36 +1,153 @@
-.footer {
-       margin-top: 1rem;
-       padding: 1rem;
-       background-color: #333333;
-       position: fixed;
-       bottom: 0;
-       left: 0;
-       width: 100%;
-       color: white;
+.footer,
+.footer-for-home,
+.special-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: #333333;
+  color: white;
+  padding: 1px;
+  bottom: 0;
+  width: 100vw;
 }
 
 /* just the icons */
 .footer__icon {
-       font-size: 2rem;
-       margin-left: 1rem;
-       color: white;
+  font-size: 2rem;
+  margin-left: 1rem;
+  color: white;
 }
 
 .search_me {
-       margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 /* text and icons */
 .footer__text__icon {
-       display: flex;
-       justify-content: center;
-       align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer__text__icon :hover {
-       opacity: 0.8;
+  opacity: 0.8;
+}
+
+.text-center {
+  margin: 0;
 }
 
 #copyright__data {
-       font-size: smaller;
+  font-size: smaller;
+}
+
+@media (min-width: 0px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: sticky;
+  }
+}
+
+@media (min-width: 320px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: sticky;
+  }
+}
+
+@media (min-width: 350px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: fixed;
+  }
+}
+
+@media (min-width: 375px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: fixed;
+  }
+}
+
+@media (min-width: 425px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: fixed;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: sticky;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: sticky;
+  }
+}
+
+@media (min-width: 1224px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: fixed;
+  }
+}
+
+@media (min-width: 1824px) {
+  .footer {
+    position: fixed;
+  }
+  .footer-for-home {
+    position: fixed;
+  }
+  .special-group {
+    position: fixed;
+  }
 }
