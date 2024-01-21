@@ -131,7 +131,7 @@ const LowFatMilk = () => {
                 <>
                         <FormFrame>
                                 <form onSubmit={handleSubmit}>
-                                        <h1>חבל דל שומן</h1>
+                                        <h1>חלב דל שומן</h1>
                                         <label>
                                                 חישוב לפי כמות או גרמים:
                                                 <input list="productType"
