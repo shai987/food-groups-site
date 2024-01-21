@@ -25,9 +25,7 @@ import '../assets/css/MyRouter.css';
 // import my components
 import Footer from '../components/footer/Footer';
 import ScrollToTopPage from '../components/ScrollToTopPage';
-// import HomepageContainer from '../components/homePage/HomepageContainer';
-
-
+// Homepage
 const HomepageContainer = lazy(() => import('../components/homePage/HomepageContainer'));
 // GrainsBakery
 const GrainsBakery = lazy(() => import('../components/navComponents/GrainsBakery'));
