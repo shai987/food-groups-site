@@ -24,7 +24,7 @@ const ParmFooter = () => {
                                 </div>
                                 <div className='copyright'>
                                         <p className="text-center" id='copyright__shai'>© כל הזכויות שמורות לשי גפן {' ' + new Date().getFullYear()}</p>
-                                        <p className="text-center" id='copyright__data'>© קרדיט לתוכן האתר, קורס דיאטטיקה האוניברסיטה העברית</p>
+                                        <p className="text-center" id='copyright__data'>הנתונים מבוססים על טבלאות של קבוצות תחליף</p>
                                 </div>
 
                         </div >

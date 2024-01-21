@@ -5,7 +5,7 @@
   </a>
 </p>
 
-> This project represents variety of food groups and calculate for you the amount of portions for each category by using React JS.
+> This project shows variety of food groups and calculate for you the amount of portions for each category by using React JS.
 
 ## Install
 
