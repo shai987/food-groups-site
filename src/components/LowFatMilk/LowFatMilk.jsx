@@ -8,7 +8,10 @@ import { variables } from '../variables';
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
+
 const LowFatMilk = () => {
+        const isFirefoxOrSafari = navigator.userAgent.toLowerCase().includes('firefox') || navigator.userAgent.toLowerCase().includes('safari');
+
         //  array of type calculation
         const types = ['כמות', 'גרם'];
 
@@ -175,12 +178,17 @@ const LowFatMilk = () => {
                                                 />
                                                 <datalist id="productName">
                                                         {
-                                                                products.map((product) => (
+                                                                !isFirefoxOrSafari && products.map((product) => (
                                                                         <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
                                                                                 {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
                                                                         </option>
-                                                                ))
-                                                        }
+                                                                ))}
+                                                        {
+                                                                isFirefoxOrSafari && products.map((product) => (
+                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                                {productType === types[0] ? `${product?.details?.productName} ${product?.unit?.measureString}` : `${product?.details?.productName} ${product?.unit?.gramString}`}
+                                                                        </option>
+                                                                ))}
                                                 </datalist>
                                         </label>
                                         <br />
