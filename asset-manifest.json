@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/food-groups-site/static/css/main.c543f25e.css",
-    "main.js": "/food-groups-site/static/js/main.3ecd5ab5.js",
+    "main.css": "/food-groups-site/static/css/main.ca3fe2d1.css",
+    "main.js": "/food-groups-site/static/js/main.b17e9e58.js",
     "static/css/730.2d7fbdb1.chunk.css": "/food-groups-site/static/css/730.2d7fbdb1.chunk.css",
     "static/js/730.256b8291.chunk.js": "/food-groups-site/static/js/730.256b8291.chunk.js",
     "static/js/848.fbad5a7a.chunk.js": "/food-groups-site/static/js/848.fbad5a7a.chunk.js",
@@ -36,7 +36,7 @@
     "static/js/866.d471e384.chunk.js": "/food-groups-site/static/js/866.d471e384.chunk.js",
     "static/js/703.528dd56d.chunk.js": "/food-groups-site/static/js/703.528dd56d.chunk.js",
     "static/css/597.d22d65c8.chunk.css": "/food-groups-site/static/css/597.d22d65c8.chunk.css",
-    "static/js/597.6381ef77.chunk.js": "/food-groups-site/static/js/597.6381ef77.chunk.js",
+    "static/js/597.2016dbaa.chunk.js": "/food-groups-site/static/js/597.2016dbaa.chunk.js",
     "static/js/170.2f6e7bf3.chunk.js": "/food-groups-site/static/js/170.2f6e7bf3.chunk.js",
     "static/css/75.d22d65c8.chunk.css": "/food-groups-site/static/css/75.d22d65c8.chunk.css",
     "static/js/75.d3891af0.chunk.js": "/food-groups-site/static/js/75.d3891af0.chunk.js",
@@ -60,8 +60,8 @@
     "static/media/sugar.jpg": "/food-groups-site/static/media/sugar.81d7f2fd325c1ecd6d43.jpg",
     "static/media/flour.jpg": "/food-groups-site/static/media/flour.669475c485d8ad7fb6cb.jpg",
     "index.html": "/food-groups-site/index.html",
-    "main.c543f25e.css.map": "/food-groups-site/static/css/main.c543f25e.css.map",
-    "main.3ecd5ab5.js.map": "/food-groups-site/static/js/main.3ecd5ab5.js.map",
+    "main.ca3fe2d1.css.map": "/food-groups-site/static/css/main.ca3fe2d1.css.map",
+    "main.b17e9e58.js.map": "/food-groups-site/static/js/main.b17e9e58.js.map",
     "730.2d7fbdb1.chunk.css.map": "/food-groups-site/static/css/730.2d7fbdb1.chunk.css.map",
     "730.256b8291.chunk.js.map": "/food-groups-site/static/js/730.256b8291.chunk.js.map",
     "848.fbad5a7a.chunk.js.map": "/food-groups-site/static/js/848.fbad5a7a.chunk.js.map",
@@ -96,7 +96,7 @@
     "866.d471e384.chunk.js.map": "/food-groups-site/static/js/866.d471e384.chunk.js.map",
     "703.528dd56d.chunk.js.map": "/food-groups-site/static/js/703.528dd56d.chunk.js.map",
     "597.d22d65c8.chunk.css.map": "/food-groups-site/static/css/597.d22d65c8.chunk.css.map",
-    "597.6381ef77.chunk.js.map": "/food-groups-site/static/js/597.6381ef77.chunk.js.map",
+    "597.2016dbaa.chunk.js.map": "/food-groups-site/static/js/597.2016dbaa.chunk.js.map",
     "170.2f6e7bf3.chunk.js.map": "/food-groups-site/static/js/170.2f6e7bf3.chunk.js.map",
     "75.d22d65c8.chunk.css.map": "/food-groups-site/static/css/75.d22d65c8.chunk.css.map",
     "75.d3891af0.chunk.js.map": "/food-groups-site/static/js/75.d3891af0.chunk.js.map",
@@ -107,7 +107,7 @@
     "737.b12d5835.chunk.js.map": "/food-groups-site/static/js/737.b12d5835.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c543f25e.css",
-    "static/js/main.3ecd5ab5.js"
+    "static/css/main.ca3fe2d1.css",
+    "static/js/main.b17e9e58.js"
   ]
 }
