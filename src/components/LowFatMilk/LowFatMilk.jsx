@@ -187,7 +187,6 @@ const LowFatMilk = () => {
                                                                 </datalist>
                                                         </>
                                                 )}
-
                                         </label>
                                         <br />
                                         <label htmlFor="productAmount">
