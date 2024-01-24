@@ -1,5 +1,8 @@
 // import icons from react-icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { TfiEmail } from "react-icons/tfi";
+// import { MdEmail } from "react-icons/md";
+
 // import react-router-dom
 import { useLocation } from 'react-router-dom';
 // import css
@@ -20,6 +23,9 @@ const ParmFooter = () => {
                                         </a>
                                         <a href="https://github.com/shai987" target="_blank" rel="noopener noreferrer">
                                                 <FaGithub className="footer__icon" />
+                                        </a>
+                                        <a href="mailto:shaigeffen33@gmail.com?subject=מוזמנים%20לשאול%20שאלות&body=שלום%20לצוות%20האתר%21" target="_blank" rel="noopener noreferrer">
+                                                <TfiEmail className="footer__icon" />
                                         </a>
                                 </div>
                                 <div className='copyright'>
