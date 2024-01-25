@@ -12,3 +12,8 @@ export const variables = {
   stringResult: 'קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר',
   stringAlert: 'הערך שהוזן אינו קיים',
 };
+
+export const userAgent = {
+  isFirefox: navigator.userAgent.toLowerCase().includes('firefox'),
+  isSafari: /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
+};

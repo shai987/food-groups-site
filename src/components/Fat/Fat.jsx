@@ -3,13 +3,17 @@ import { useState, useEffect } from 'react';
 // import service 
 import fats from '../../services/Fats/fats';
 // import variables 
-import { variables } from '../variables';
+import { variables, userAgent } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const Fat = () => {
+        // Use userAgent to manipulate in order to use different elements in different browsers
+        const isFirefox = userAgent.isFirefox;
+        const isSafari = userAgent.isSafari;
+
         //  array of type calculation
         const types = ['כמות', 'גרם'];
 
@@ -17,6 +21,7 @@ const Fat = () => {
         const [products] = useState(fats);
         const [productName, setProductName] = useState(fats[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
+        const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
         // Get the product object 
         const product = products.find(product => product?.details?.productName === productName);
         //  array of value calculation
@@ -38,6 +43,16 @@ const Fat = () => {
                         setProductValues(values[1]);
                 }
         }, [product]);
+
+        useEffect(() => {
+                // Add event listener on mount
+                window.addEventListener('resize', handleResize);
+
+                // Clean up the event listener on unmount
+                return () => {
+                        window.removeEventListener('resize', handleResize);
+                };
+        }, []);
 
         // My handlers
         const calculateValue = (productName, amount, productType, productValues) => {
@@ -113,7 +128,7 @@ const Fat = () => {
                         }
                 }
                 else {
-                        return alert('הערך שהוזן אינו קיים');
+                        return alert(variables.stringAlert);
                 }
         };
 
@@ -134,6 +149,10 @@ const Fat = () => {
                 setProductValues(event.target.value);
         };
 
+        const handleResize = () => {
+                setViewportWidth(window.innerWidth);
+        };
+
         // Clean input field when click it 
         const handleClear = (event) => {
                 event.target.value = "";
@@ -148,7 +167,7 @@ const Fat = () => {
                 }
                 catch (err) {
                         console.log(err.message);
-                        setResult('קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר');
+                        setResult(variables.stringResult);
                 }
         };
 
@@ -159,21 +178,39 @@ const Fat = () => {
                                         <h1>שומן</h1>
                                         <label>
                                                 חישוב לפי כמות או גרמים:
-                                                <input list="productType"
-                                                        defaultValue={productType}
-                                                        onChange={handleProductType}
-                                                        onClick={handleClear}
-                                                        onFocus={handleClear}
-                                                />
-                                                <datalist id="productType">
-                                                        {
-                                                                types.map((type) => (
-                                                                        <option key={type} name="productType" value={type}>
-                                                                                {type}
-                                                                        </option>
-                                                                ))
-                                                        }
-                                                </datalist>
+                                                {viewportWidth <= 600 || isSafari ? (
+                                                        <select
+                                                                name='productType'
+                                                                value={productType}
+                                                                onChange={handleProductType}
+                                                        >
+                                                                {
+                                                                        types.map((type) => (
+                                                                                <option key={type} name="productType" value={type}>
+                                                                                        {type}
+                                                                                </option>
+                                                                        ))
+                                                                }
+                                                        </select>
+                                                ) : (
+                                                        <>
+                                                                <input list="productType"
+                                                                        defaultValue={productType}
+                                                                        onChange={handleProductType}
+                                                                        onClick={handleClear}
+                                                                        onFocus={handleClear}
+                                                                />
+                                                                <datalist id="productType">
+                                                                        {
+                                                                                types.map((type) => (
+                                                                                        <option key={type} name="productType" value={type}>
+                                                                                                {type}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                </datalist>
+                                                        </>
+                                                )}
                                         </label>
                                         <br /><br />
                                         <label htmlFor="productAmount">
@@ -192,46 +229,108 @@ const Fat = () => {
                                         <br /><br />
                                         <label>
                                                 סוג המוצר:
-                                                <input list="productName"
-                                                        defaultValue={productName}
-                                                        onChange={handleProduct}
-                                                        onClick={handleClear}
-                                                        onFocus={handleClear}
-                                                />
-                                                <datalist id="productName">
-                                                        {
-                                                                products.map((product) => (
-                                                                        <option
-                                                                                key={product?.details?.productName}
-                                                                                name="productName"
-                                                                                value={product?.check?.gram && productType === types[1] ? product?.details?.productName
-                                                                                        : productType === types[0] ? product?.details?.productName
-                                                                                                : ''}>
-                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
-                                                                        </option>
-                                                                ))
-                                                        }
-                                                </datalist>
+                                                {viewportWidth <= 600 || isSafari ? (
+                                                        <select
+                                                                value={productName}
+                                                                onChange={handleProduct}
+                                                        >
+                                                                {products.map((product) => {
+                                                                        const shouldShowOption = (product?.check?.gram && productType === types[1])
+                                                                                || productType === types[0];
+                                                                        return shouldShowOption ? (
+                                                                                <option
+                                                                                        key={product?.details?.productName}
+                                                                                        value={product?.details?.productName}
+                                                                                >
+                                                                                        {
+                                                                                                productType === types[0]
+                                                                                                        ? `${product?.details?.productName} ${product?.unit?.measureString}`
+                                                                                                        : `${product?.details?.productName} ${product?.unit?.gramString}`
+                                                                                        }
+                                                                                </option>
+                                                                        ) : null;
+                                                                })}
+                                                        </select>
+                                                ) : (
+                                                        <>
+                                                                <input
+                                                                        list="productName"
+                                                                        defaultValue={productName}
+                                                                        onChange={handleProduct}
+                                                                        onClick={handleClear}
+                                                                        onFocus={handleClear}
+                                                                />
+                                                                <datalist id="productName">
+                                                                        {
+                                                                                !isFirefox && products.map((product) => (
+                                                                                        <option
+                                                                                                key={product?.details?.productName}
+                                                                                                name="productName"
+                                                                                                value={product?.check?.gram && productType === types[1] ? product?.details?.productName
+                                                                                                        : productType === types[0] ? product?.details?.productName
+                                                                                                                : ''}>
+                                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                        {
+                                                                                isFirefox && products.map((product) => {
+                                                                                        const shouldShowOption = (product?.check?.gram && productType === types[1])
+                                                                                                || productType === types[0];
+                                                                                        return shouldShowOption ? (
+                                                                                                <option
+                                                                                                        key={product?.details?.productName}
+                                                                                                        value={product?.details?.productName}
+                                                                                                >
+                                                                                                        {
+                                                                                                                productType === types[0]
+                                                                                                                        ? `${product?.details?.productName} ${product?.unit?.measureString}`
+                                                                                                                        : `${product?.details?.productName} ${product?.unit?.gramString}`
+                                                                                                        }
+                                                                                                </option>
+                                                                                        ) : null;
+                                                                                })
+                                                                        }
+                                                                </datalist>
+                                                        </>
+                                                )}
                                         </label>
                                         <br /><br />
                                         {product?.check?.value === true && productType === types[0] && <div>
                                                 <label>
                                                         בחירת סוג חישוב כמות
-                                                        <input list="productValues"
-                                                                value={productValues || ''}
-                                                                onChange={handleProductValues}
-                                                                onClick={handleClear}
-                                                                onFocus={handleClear}
-                                                        />
-                                                        <datalist id="productValues">
-                                                                {
-                                                                        values.map((value) => (
-                                                                                <option key={value} name="productValues" value={value || ''}>
-                                                                                        {value}
-                                                                                </option>
-                                                                        ))
-                                                                }
-                                                        </datalist>
+                                                        {viewportWidth <= 600 || isSafari ? (
+                                                                <select
+                                                                        value={productValues || ''}
+                                                                        onChange={handleProductValues}
+                                                                >
+                                                                        {
+                                                                                values.map((value) => (
+                                                                                        <option key={value} name="productValues" value={value || ''}>
+                                                                                                {value}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                </select>
+                                                        ) : (
+                                                                <>
+                                                                        <input list="productValues"
+                                                                                value={productValues || ''}
+                                                                                onChange={handleProductValues}
+                                                                                onClick={handleClear}
+                                                                                onFocus={handleClear}
+                                                                        />
+                                                                        <datalist id="productValues">
+                                                                                {
+                                                                                        values.map((value) => (
+                                                                                                <option key={value} name="productValues" value={value || ''}>
+                                                                                                        {value}
+                                                                                                </option>
+                                                                                        ))
+                                                                                }
+                                                                        </datalist>
+                                                                </>
+                                                        )}
                                                 </label>
                                         </div>}
                                         <br />
