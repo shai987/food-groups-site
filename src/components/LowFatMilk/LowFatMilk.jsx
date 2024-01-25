@@ -205,7 +205,7 @@ const LowFatMilk = () => {
                                         <br />
                                         <label>
                                                 סוג המוצר:
-                                                {(!isFirefox && viewportWidth <= 600) || isSafari ? (
+                                                {viewportWidth <= 600 || isSafari ? (
                                                         <select
                                                                 value={productName}
                                                                 onChange={handleProduct}

@@ -1,15 +1,19 @@
 // import react state
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import service 
 import flours from '../../services/Grains&Bakery/flours';
 // import variables 
-import { variables } from '../variables';
+import { variables, userAgent } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const Flour = () => {
+        // Use userAgent to manipulate in order to use different elements in different browsers
+        const isFirefox = userAgent.isFirefox;
+        const isSafari = userAgent.isSafari;
+
         //  array of type calculation
         const types = ['כמות', 'גרם'];
 
@@ -17,6 +21,7 @@ const Flour = () => {
         const [products] = useState(flours);
         const [productName, setProductName] = useState(flours[0]['details']['productName']);
         const [productType, setProductType] = useState(types[0]);
+        const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
@@ -24,6 +29,16 @@ const Flour = () => {
         const product = products.find(product => product?.details?.productName === productName);
         // Get array of type
         const type = types.find(type => type === productType);
+
+        useEffect(() => {
+                // Add event listener on mount
+                window.addEventListener('resize', handleResize);
+
+                // Clean up the event listener on unmount
+                return () => {
+                        window.removeEventListener('resize', handleResize);
+                };
+        }, []);
 
         // My handlers
         const calculateValue = (amount, productType) => {
@@ -48,7 +63,7 @@ const Flour = () => {
                                         : 'זניח';
                 }
                 else {
-                        return alert('הערך שהוזן אינו קיים');
+                        return alert(variables.stringAlert);
                 }
         };
 
@@ -64,6 +79,10 @@ const Flour = () => {
                 setProductType(event.target.value);
         };
 
+        const handleResize = () => {
+                setViewportWidth(window.innerWidth);
+        };
+
         // Clean input field when click it 
         const handleClear = (event) => {
                 event.target.value = "";
@@ -77,7 +96,7 @@ const Flour = () => {
                 }
                 catch (err) {
                         console.log(err.message);
-                        setResult('קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר');
+                        setResult(variables.stringResult);
                 }
         };
 
@@ -88,21 +107,39 @@ const Flour = () => {
                                         <h1>קמחים (לא מבושל)</h1>
                                         <label>
                                                 חישוב לפי כמות או גרמים:
-                                                <input list="productType"
-                                                        defaultValue={productType}
-                                                        onChange={handleProductType}
-                                                        onClick={handleClear}
-                                                        onFocus={handleClear}
-                                                />
-                                                <datalist id="productType">
-                                                        {
-                                                                types.map((type) => (
-                                                                        <option key={type} name="productType" value={type}>
-                                                                                {type}
-                                                                        </option>
-                                                                ))
-                                                        }
-                                                </datalist>
+                                                {viewportWidth <= 600 || isSafari ? (
+                                                        <select
+                                                                name='productType'
+                                                                value={productType}
+                                                                onChange={handleProductType}
+                                                        >
+                                                                {
+                                                                        types.map((type) => (
+                                                                                <option key={type} name="productType" value={type}>
+                                                                                        {type}
+                                                                                </option>
+                                                                        ))
+                                                                }
+                                                        </select>
+                                                ) : (
+                                                        <>
+                                                                <input list="productType"
+                                                                        defaultValue={productType}
+                                                                        onChange={handleProductType}
+                                                                        onClick={handleClear}
+                                                                        onFocus={handleClear}
+                                                                />
+                                                                <datalist id="productType">
+                                                                        {
+                                                                                types.map((type) => (
+                                                                                        <option key={type} name="productType" value={type}>
+                                                                                                {type}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                </datalist>
+                                                        </>
+                                                )}
                                         </label>
                                         <br /><br />
                                         <label htmlFor="productAmount">
@@ -121,21 +158,43 @@ const Flour = () => {
                                         <br /><br />
                                         <label>
                                                 סוג הקמח:
-                                                <input list="productName"
-                                                        defaultValue={productName}
-                                                        onChange={handleProduct}
-                                                        onClick={handleClear}
-                                                        onFocus={handleClear}
-                                                />
-                                                <datalist id="productName">
-                                                        {
-                                                                products.map((product) => (
-                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                                {productType === 'כמות' ? product?.unit?.measureString : product?.unit?.gramString}
+                                                {viewportWidth <= 600 || isSafari ? (
+                                                        <select
+                                                                value={productName}
+                                                                onChange={handleProduct}
+                                                        >
+                                                                {products.map((product) => (
+                                                                        <option key={product?.details?.productName} value={product?.details?.productName}>
+                                                                                {productType === types[0] ? `${product?.details?.productName} ${product?.unit?.measureString}` : `${product?.details?.productName} ${product?.unit?.gramString}`}
                                                                         </option>
-                                                                ))
-                                                        }
-                                                </datalist>
+                                                                ))}
+                                                        </select>
+                                                ) : (
+                                                        <>
+                                                                <input list="productName"
+                                                                        defaultValue={productName}
+                                                                        onChange={handleProduct}
+                                                                        onClick={handleClear}
+                                                                        onFocus={handleClear}
+                                                                />
+                                                                <datalist id="productName">
+                                                                        {
+                                                                                !isFirefox && products.map((product) => (
+                                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                        {
+                                                                                isFirefox && products.map((product) => (
+                                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
+                                                                                                {productType === types[0] ? `${product?.details?.productName} ${product?.unit?.measureString}` : `${product?.details?.productName} ${product?.unit?.gramString}`}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                </datalist>
+                                                        </>
+                                                )}
                                         </label>
                                         <br /><br />
                                         <div className='div1'>

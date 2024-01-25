@@ -1,23 +1,38 @@
 // import react state
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import service 
 import vegetables from '../../services/Vegetables/vegetables';
 // import variables 
-import { variables } from '../variables';
+import { variables, userAgent } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const Vegetable = () => {
+        // Use userAgent to manipulate in order to use different elements in different browsers
+        const isFirefox = userAgent.isFirefox;
+        const isSafari = userAgent.isSafari;
+
         // My states 
         const [typesName] = useState(vegetables);
         const [typeName, setTypeName] = useState(vegetables[0]['details']['typeName']);
+        const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
 
         // Get typeName object 
         const type = typesName.find(type => type?.details?.typeName === typeName);
+
+        useEffect(() => {
+                // Add event listener on mount
+                window.addEventListener('resize', handleResize);
+
+                // Clean up the event listener on unmount
+                return () => {
+                        window.removeEventListener('resize', handleResize);
+                };
+        }, []);
 
         // My handlers
         const calculateValue = (amount) => {
@@ -33,7 +48,7 @@ const Vegetable = () => {
                         return calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount : ' זניח';
                 }
                 else {
-                        return alert('הערך שהוזן אינו קיים');
+                        return alert(variables.stringAlert);
                 }
         };
 
@@ -43,6 +58,10 @@ const Vegetable = () => {
 
         const handleProductType = (event) => {
                 setTypeName(event.target.value);
+        };
+
+        const handleResize = () => {
+                setViewportWidth(window.innerWidth);
         };
 
         // Clean input field when click it 
@@ -58,7 +77,7 @@ const Vegetable = () => {
                 }
                 catch (err) {
                         console.log(err.message);
-                        setResult('קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר');
+                        setResult(variables.stringResult);
                 }
         };
 
@@ -69,21 +88,37 @@ const Vegetable = () => {
                                         <h1>ירקות</h1>
                                         <label>
                                                 חישוב לפי כמות:
-                                                <input list="typeName"
-                                                        defaultValue={typeName}
-                                                        onChange={handleProductType}
-                                                        onClick={handleClear}
-                                                        onFocus={handleClear}
-                                                />
-                                                <datalist id="typeName">
-                                                        {
-                                                                typesName.map((type) => (
+                                                {viewportWidth <= 600 || isSafari ? (
+                                                        <select
+                                                                value={typeName}
+                                                                onChange={handleProductType}
+                                                        >
+                                                                {typesName.map((type) => (
                                                                         <option key={type?.details?.typeName} name="typeName" value={type?.details?.typeName}>
                                                                                 {type?.details?.typeName}
                                                                         </option>
-                                                                ))
-                                                        }
-                                                </datalist>
+                                                                ))}
+                                                        </select>
+
+                                                ) : (
+                                                        <>
+                                                                <input list="typeName"
+                                                                        defaultValue={typeName}
+                                                                        onChange={handleProductType}
+                                                                        onClick={handleClear}
+                                                                        onFocus={handleClear}
+                                                                />
+                                                                <datalist id="typeName">
+                                                                        {
+                                                                                typesName.map((type) => (
+                                                                                        <option key={type?.details?.typeName} name="typeName" value={type?.details?.typeName}>
+                                                                                                {type?.details?.typeName}
+                                                                                        </option>
+                                                                                ))
+                                                                        }
+                                                                </datalist>
+                                                        </>
+                                                )}
                                         </label>
                                         <br /><br />
                                         <label htmlFor="productAmount">
@@ -92,8 +127,8 @@ const Vegetable = () => {
                                                         name='productAmount'
                                                         type="number"
                                                         id="productAmount"
-                                                        min="0.00000001"
-                                                        // max="1000"
+                                                        min="0"
+                                                        max="1000"
                                                         step="any"
                                                         value={productAmount}
                                                         onChange={handleAmount}
