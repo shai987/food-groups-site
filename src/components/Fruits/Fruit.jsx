@@ -1,19 +1,17 @@
 // import react states
 import { useState, useEffect } from 'react';
+// import from react-select
+import Select from 'react-select';
 // import service 
 import fruits from '../../services/Fruits/fruits';
 // import variables 
-import { variables, userAgent } from '../variables';
+import { variables, getMaxHeight } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const Fruit = () => {
-        // Use userAgent to manipulate in order to use different elements in different browsers
-        const isFirefox = userAgent.isFirefox;
-        const isSafari = userAgent.isSafari;
-
         //  array of type calculation
         const types = ['כמות', 'גרם'];
 
@@ -29,6 +27,7 @@ const Fruit = () => {
         const [productValues, setProductValues] = useState(values[0]);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
+        const [flag, setFlag] = useState(false);
 
         // Get array of type
         const type = types.find(type => type === productType);
@@ -77,6 +76,9 @@ const Fruit = () => {
                 // Calculate gram reasult using toFraction 
                 const calculationGram = ` ${variables?.fractionCalculation(gram)}`;
 
+                if (isNaN(productAmount)) {
+                        return alert(variables.stringProductAmount);
+                }
                 if (product && type && value) {
                         if (product?.check?.value) {
                                 if (productType === types[0]) {
@@ -88,9 +90,14 @@ const Fruit = () => {
                                         return calculationGramFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationGram : ' זניח';
                                 }
                         }
-                        else {
+                        else if (product?.check?.count) {
                                 return productType === types[0] && calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount
                                         : productType === types[1] && calculationGramFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationGram
+                                                : 'זניח';
+                        }
+                        else {
+                                return productType === types[0] ? ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName} `
+                                        : calculationGramFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationGram
                                                 : 'זניח';
                         }
                 }
@@ -103,6 +110,10 @@ const Fruit = () => {
                 setProductName(event.target.value);
         };
 
+        const handleProductPC = (selectedOption) => {
+                setProductName(selectedOption ? selectedOption.value : null);
+        };
+
         const handleAmount = (event) => {
                 setProductAmount(event.target.value);
         };
@@ -111,17 +122,20 @@ const Fruit = () => {
                 setProductType(event.target.value);
         };
 
+        const handleProductTypePC = (selectedOption) => {
+                setProductType(selectedOption ? selectedOption.value : null);
+        };
+
         const handleProductValues = (event) => {
                 setProductValues(event.target.value);
         };
 
-        const handleResize = () => {
-                setViewportWidth(window.innerWidth);
+        const handleProductValuesPC = (selectedOption) => {
+                setProductValues(selectedOption ? selectedOption.value : null);
         };
 
-        // Clean input field when click it 
-        const handleClear = (event) => {
-                event.target.value = "";
+        const handleResize = () => {
+                setViewportWidth(window.innerWidth);
         };
 
         const handleSubmit = (e) => {
@@ -130,6 +144,7 @@ const Fruit = () => {
 
                 try {
                         setResult(calculateValue(productAmount, productType, productValues));
+                        setFlag(true);
                 }
                 catch (err) {
                         console.log(err.message);
@@ -137,15 +152,41 @@ const Fruit = () => {
                 }
         };
 
+        const productsOptions = products.map((product) => {
+                const shouldShowOption = (product?.check?.count && productType === types[0])
+                        || productType === types[1];
+
+                return shouldShowOption ? (
+                        {
+                                value: product?.details?.productName,
+                                label: productType === types[0]
+                                        ? `${product?.details?.productName} ${product?.unit?.measureString}`
+                                        : `${product?.details?.productName} ${product?.unit?.gramString}`
+                        }
+                ) : null;
+        });
+
+        const filteredProductsOptions = productsOptions.filter(option => option !== null);
+        const typesOptions = types.map((type) => ({
+                value: type,
+                label: type
+        }));
+
+        const valuesOptions = values.map((value) => ({
+                value: value || '',
+                label: value
+        }));
+
         return (
                 <>
                         <FormFrame>
                                 <form onSubmit={handleSubmit}>
                                         <h1>פירות</h1>
-                                        <label>
+                                        <label id='productType'>
                                                 חישוב לפי כמות או גרמים:
-                                                {viewportWidth <= 600 || isSafari ? (
+                                                {viewportWidth <= 600 ? (
                                                         <select
+                                                                id='productType'
                                                                 name='productType'
                                                                 value={productType}
                                                                 onChange={handleProductType}
@@ -159,26 +200,19 @@ const Fruit = () => {
                                                                 }
                                                         </select>
                                                 ) : (
-                                                        <>
-                                                                <input list="productType"
-                                                                        defaultValue={productType}
-                                                                        onChange={handleProductType}
-                                                                        onClick={handleClear}
-                                                                        onFocus={handleClear}
-                                                                />
-                                                                <datalist id="productType">
-                                                                        {
-                                                                                types.map((type) => (
-                                                                                        <option key={type} name="productType" value={type}>
-                                                                                                {type}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                </datalist>
-                                                        </>
+                                                        <Select
+                                                                name='productType'
+                                                                id='productType'
+                                                                options={typesOptions}
+                                                                isSearchable
+                                                                isClearable
+                                                                noOptionsMessage={() => variables.stringSelectProductTypeNoOptionsMessage}
+                                                                placeholder={variables.stringSelect}
+                                                                value={typesOptions.find((option) => option.value === productType)}
+                                                                onChange={handleProductTypePC}
+                                                        />
                                                 )}
                                         </label>
-                                        <br />
                                         <label htmlFor="productAmount">
                                                 כמות נאכלת:
                                                 <input
@@ -192,10 +226,9 @@ const Fruit = () => {
                                                         onChange={handleAmount}
                                                 />
                                         </label>
-                                        <br />
                                         <label>
                                                 סוג הפרי:
-                                                {viewportWidth <= 600 || isSafari ? (
+                                                {viewportWidth <= 600 ? (
                                                         <select
                                                                 value={productName}
                                                                 onChange={handleProduct}
@@ -207,38 +240,28 @@ const Fruit = () => {
                                                                 ))}
                                                         </select>
                                                 ) : (
-                                                        <>
-                                                                <input list="productName"
-                                                                        defaultValue={productName}
-                                                                        onChange={handleProduct}
-                                                                        onClick={handleClear}
-                                                                        onFocus={handleClear}
-                                                                />
-                                                                <datalist id="productName">
-                                                                        {
-                                                                                !isFirefox && products.map((product) => (
-                                                                                        <option
-                                                                                                key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                        {
-                                                                                isFirefox && products.map((product) => (
-                                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                                                {productType === types[0] ? `${product?.details?.productName} ${product?.unit?.measureString}` : `${product?.details?.productName} ${product?.unit?.gramString}`}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                </datalist>
-                                                        </>
+                                                        <Select
+                                                                styles={{
+                                                                        menu: (provided) => ({
+                                                                                ...provided,
+                                                                                maxHeight: getMaxHeight(viewportWidth),
+                                                                                overflowY: 'auto',
+                                                                        }),
+                                                                }}
+                                                                options={filteredProductsOptions}
+                                                                isSearchable
+                                                                isClearable
+                                                                noOptionsMessage={() => variables.stringSelectProductNameNoOptionsMessage}
+                                                                placeholder={variables.stringSelect}
+                                                                value={filteredProductsOptions.find((option) => option.value === productName)}
+                                                                onChange={handleProductPC}
+                                                        />
                                                 )}
                                         </label>
-                                        <br />
                                         {product?.check?.value === true && productType === types[0] && <div>
                                                 <label>
                                                         בחירת סוג חישוב כמות
-                                                        {viewportWidth <= 600 || isSafari ? (
+                                                        {viewportWidth <= 600 ? (
                                                                 <select
                                                                         value={productValues || ''}
                                                                         onChange={handleProductValues}
@@ -252,30 +275,21 @@ const Fruit = () => {
                                                                         }
                                                                 </select>
                                                         ) : (
-                                                                <>
-                                                                        <input list="productValues"
-                                                                                value={productValues || ''}
-                                                                                onChange={handleProductValues}
-                                                                                onClick={handleClear}
-                                                                                onFocus={handleClear}
-                                                                        />
-                                                                        <datalist id="productValues">
-                                                                                {
-                                                                                        values.map((value) => (
-                                                                                                <option key={value} name="productValues" value={value || ''}>
-                                                                                                        {value}
-                                                                                                </option>
-                                                                                        ))
-                                                                                }
-                                                                        </datalist>
-                                                                </>
+                                                                <Select
+                                                                        options={valuesOptions}
+                                                                        isSearchable
+                                                                        isClearable
+                                                                        noOptionsMessage={() => variables.stringSelectProductNameNoOptionsMessage}
+                                                                        placeholder={variables.stringSelect}
+                                                                        value={valuesOptions.find((option) => option.value === productValues || '')}
+                                                                        onChange={handleProductValuesPC}
+                                                                />
                                                         )}
                                                 </label>
                                         </div>}
-                                        <br />
-                                        <div className='div1'>
-                                                מספר מנות:
-                                                <p className='result'>{result}</p>
+                                        <div className='div-result div-result-pc'>
+                                                {flag === true && 'מספר מנות:'}
+                                                <div className='result'>{result}</div>
                                         </div>
                                         <button type="submit">חשב</button>
                                 </form >

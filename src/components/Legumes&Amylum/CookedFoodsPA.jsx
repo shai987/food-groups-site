@@ -1,19 +1,17 @@
 // import react state
 import { useState, useEffect } from 'react';
+// import from react-select
+import Select from 'react-select';
 // import service 
 import cookedFoods from '../../services/Legumes&Amylum/cookedFoods';
 // import variables 
-import { variables, userAgent } from '../variables';
+import { variables, getMaxHeight } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const CookedFoodsPA = () => {
-        // Use userAgent to manipulate in order to use different elements in different browsers
-        const isFirefox = userAgent.isFirefox;
-        const isSafari = userAgent.isSafari;
-
         //  array of type calculation
         const types = ['כמות', 'גרם'];
 
@@ -24,7 +22,7 @@ const CookedFoodsPA = () => {
         const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
-
+        const [flag, setFlag] = useState(false);
         // Get the product object 
         const product = products.find(product => product?.details?.productName === productName);
         // Get array of type
@@ -65,6 +63,9 @@ const CookedFoodsPA = () => {
                 // Calculate gram fat reasult using toFraction 
                 const calculationGramFat = ` ${variables?.fractionCalculation(gram)}\n ${fatString0} ${variables?.fractionCalculation(gram)} ${fatString1}`;
 
+                if (isNaN(productAmount)) {
+                        return alert(variables.stringProductAmount);
+                }
                 if (product && type) {
                         if (product?.check?.gram && product?.check?.fat) {
                                 return productType === types[0] && calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCountFat
@@ -78,7 +79,7 @@ const CookedFoodsPA = () => {
                         }
                         else {
                                 return productType === types[1] ? ` לא ניתן לבצע חישוב לפי גרמים לערך ${productName} `
-                                        : calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCount
+                                        : calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCountFat
                                                 : 'זניח';
                         }
                 }
@@ -91,6 +92,10 @@ const CookedFoodsPA = () => {
                 setProductName(event.target.value);
         };
 
+        const handleProductPC = (selectedOption) => {
+                setProductName(selectedOption ? selectedOption.value : null);
+        };
+
         const handleAmount = (event) => {
                 setProductAmount(event.target.value);
         };
@@ -99,13 +104,12 @@ const CookedFoodsPA = () => {
                 setProductType(event.target.value);
         };
 
-        const handleResize = () => {
-                setViewportWidth(window.innerWidth);
+        const handleProductTypePC = (selectedOption) => {
+                setProductType(selectedOption ? selectedOption.value : null);
         };
 
-        // Clean input field when click it 
-        const handleClear = (event) => {
-                event.target.value = "";
+        const handleResize = () => {
+                setViewportWidth(window.innerWidth);
         };
 
         const handleSubmit = (e) => {
@@ -113,6 +117,7 @@ const CookedFoodsPA = () => {
                 e.preventDefault();
                 try {
                         setResult(calculateValue(productAmount, productType));
+                        setFlag(true);
                 }
                 catch (err) {
                         console.log(err.message);
@@ -120,15 +125,37 @@ const CookedFoodsPA = () => {
                 }
         };
 
+        const productsOptions = products.map((product) => {
+                const shouldShowOption = (product?.check?.gram && productType === types[1])
+                        || productType === types[0];
+
+                return shouldShowOption ? (
+                        {
+                                value: product?.details?.productName,
+                                label: productType === types[0]
+                                        ? `${product?.details?.productName} ${product?.unit?.measureString}`
+                                        : `${product?.details?.productName} ${product?.unit?.gramString}`
+                        }
+                ) : null;
+        });
+
+        const filteredProductsOptions = productsOptions.filter(option => option !== null);
+
+        const typesOptions = types.map((type) => ({
+                value: type,
+                label: type
+        }));
+
         return (
                 <>
                         <FormFrame>
                                 <form onSubmit={handleSubmit}>
                                         <h1>מזונות מבושלים (ללא שמן)</h1>
-                                        <label>
+                                        <label id='productType'>
                                                 חישוב לפי כמות או גרמים:
-                                                {viewportWidth <= 600 || isSafari ? (
+                                                {viewportWidth <= 600 ? (
                                                         <select
+                                                                id='productType'
                                                                 name='productType'
                                                                 value={productType}
                                                                 onChange={handleProductType}
@@ -142,26 +169,19 @@ const CookedFoodsPA = () => {
                                                                 }
                                                         </select>
                                                 ) : (
-                                                        <>
-                                                                <input list="productType"
-                                                                        defaultValue={productType}
-                                                                        onChange={handleProductType}
-                                                                        onClick={handleClear}
-                                                                        onFocus={handleClear}
-                                                                />
-                                                                <datalist id="productType">
-                                                                        {
-                                                                                types.map((type) => (
-                                                                                        <option key={type} name="productType" value={type}>
-                                                                                                {type}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                </datalist>
-                                                        </>
+                                                        <Select
+                                                                id='productType'
+                                                                name='productType'
+                                                                options={typesOptions}
+                                                                isSearchable
+                                                                isClearable
+                                                                noOptionsMessage={() => variables.stringSelectProductTypeNoOptionsMessage}
+                                                                placeholder={variables.stringSelect}
+                                                                value={typesOptions.find((option) => option.value === productType)}
+                                                                onChange={handleProductTypePC}
+                                                        />
                                                 )}
                                         </label>
-                                        <br />
                                         <label htmlFor="productAmount">
                                                 כמות נאכלת:
                                                 <input
@@ -175,10 +195,9 @@ const CookedFoodsPA = () => {
                                                         onChange={handleAmount}
                                                 />
                                         </label>
-                                        <br />
                                         <label>
                                                 סוג המזון המבושל:
-                                                {viewportWidth <= 600 || isSafari ? (
+                                                {viewportWidth <= 600 ? (
                                                         <select
                                                                 value={productName}
                                                                 onChange={handleProduct}
@@ -201,52 +220,27 @@ const CookedFoodsPA = () => {
                                                                 })}
                                                         </select>
                                                 ) : (
-                                                        <>
-                                                                <input list="productName"
-                                                                        defaultValue={productName}
-                                                                        onChange={handleProduct}
-                                                                        onClick={handleClear}
-                                                                        onFocus={handleClear}
-                                                                />
-                                                                <datalist id="productName">
-                                                                        {
-                                                                                !isFirefox && products.map((product) => (
-                                                                                        <option
-                                                                                                key={product?.details?.productName}
-                                                                                                name="productName"
-                                                                                                value={product?.check?.gram && productType === types[1] ? product?.details?.productName
-                                                                                                        : productType === types[0] ? product?.details?.productName
-                                                                                                                : ''}>
-                                                                                                {productType === types[0] ? product?.unit?.measureString : product?.unit?.gramString}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                        {
-                                                                                isFirefox && products.map((product) => {
-                                                                                        const shouldShowOption = (product?.check?.gram && productType === types[1])
-                                                                                                || productType === types[0];
-                                                                                        return shouldShowOption ? (
-                                                                                                <option
-                                                                                                        key={product?.details?.productName}
-                                                                                                        value={product?.details?.productName}
-                                                                                                >
-                                                                                                        {
-                                                                                                                productType === types[0]
-                                                                                                                        ? `${product?.details?.productName} ${product?.unit?.measureString}`
-                                                                                                                        : `${product?.details?.productName} ${product?.unit?.gramString}`
-                                                                                                        }
-                                                                                                </option>
-                                                                                        ) : null;
-                                                                                })
-                                                                        }
-                                                                </datalist>
-                                                        </>
+                                                        <Select
+                                                                styles={{
+                                                                        menu: (provided) => ({
+                                                                                ...provided,
+                                                                                maxHeight: getMaxHeight(viewportWidth),
+                                                                                overflowY: 'auto',
+                                                                        }),
+                                                                }}
+                                                                options={filteredProductsOptions}
+                                                                isSearchable
+                                                                isClearable
+                                                                noOptionsMessage={() => variables.stringSelectProductNameNoOptionsMessage}
+                                                                placeholder={variables.stringSelect}
+                                                                value={filteredProductsOptions.find((option) => option.value === productName)}
+                                                                onChange={handleProductPC}
+                                                        />
                                                 )}
                                         </label>
-                                        <br /><br />
-                                        <div className='div1'>
-                                                מספר מנות:
-                                                <p className='result'>{result}</p>
+                                        <div className='div-result'>
+                                                {flag === true && 'מספר מנות:'}
+                                                <div className='result'>{result}</div>
                                         </div>
                                         <button type="submit">חשב</button>
                                 </form >
