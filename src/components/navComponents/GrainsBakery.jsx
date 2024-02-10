@@ -32,10 +32,10 @@ const GrainsBakery = () => {
                                 />
                                 <Cards
                                         imageSrc={require('../../assets/images/flour.jpg')}
-                                        title="קמחים"
-                                        alt="קמחים"
+                                        title="קמח"
+                                        alt="קמח"
                                         link='/Flour'
-                                        name="קמחים"
+                                        name="קמח"
                                 />
                                 <Cards
                                         imageSrc={require('../../assets/images/variance.jpg')}

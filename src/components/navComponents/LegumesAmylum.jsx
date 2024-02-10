@@ -7,7 +7,7 @@ const LegumesAmylum = () => {
         return (
                 <>
                         <div>
-                                <h1> קבוצת עמילן/ קטניות</h1>
+                                <h1> קבוצת עמילן/קטניות</h1>
                         </div>
 
                         <div>

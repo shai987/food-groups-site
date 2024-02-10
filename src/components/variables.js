@@ -2,18 +2,37 @@
 import { toFraction } from 'fraction-parser';
 
 export const variables = {
-  // use for toLocaleString
+  // Use for toLocaleString
   numberFormat: { minimumFractionDigits: 2, maximumFractionDigits: 2 },
-  // use for toFraction
+  // Use for toFraction
   fractionFormat: { useUnicodeVulgar: true },
   fractionCalculation: (variable) =>
     toFraction(Number(variable) || 0, variables.fractionFormat),
-  NEGLIGIBLE_NUMBER: 0.25,
+  NEGLIGIBLE_NUMBER: 0.25, // זניח
   stringResult: 'קיימת בעיה, במקרה והיא חוזרת אנא פנה לבונה האתר',
-  stringAlert: 'הערך שהוזן אינו קיים',
+  stringAlert: 'נא לבחור פריט מן הרשימה',
+  stringProductAmount: 'יש להזין מספר',
+  stringSelect: 'יש ללחוץ על מנת לבחור...',
+  stringSelectProductTypeNoOptionsMessage: 'ניתן לחשב רק באמצעות כמות או גרם',
+  stringSelectProductNameNoOptionsMessage: 'הפריט לא נמצא ברשימה',
 };
 
-export const userAgent = {
-  isFirefox: navigator.userAgent.toLowerCase().includes('firefox'),
-  isSafari: /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
+// Use for select-react dropdown list
+export const getMaxHeight = (viewportWidth) => {
+  const maxHeightOptions = {
+    2560: 'none',
+    2400: '295px',
+    1745.45: '180px',
+    1536: '150px',
+  };
+
+  const viewportKeys = Object.keys(maxHeightOptions)
+    .map(parseFloat)
+    .sort((a, b) => b - a);
+
+  const selectedMaxHeight = viewportKeys.find(
+    (width) => viewportWidth >= width
+  );
+
+  return selectedMaxHeight ? maxHeightOptions[selectedMaxHeight] : 'none';
 };

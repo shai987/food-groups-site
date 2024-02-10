@@ -1,26 +1,24 @@
 // import react state
 import { useState, useEffect } from 'react';
+// import from react-select
+import Select from 'react-select';
 // import service 
 import soybean from '../../services/Meat&Substitutes/soybean';
 // import variables 
-import { variables, userAgent } from '../variables';
+import { variables } from '../variables';
 // import container 
 import FormFrame from '../FormFrame';
 // import css
 import '../../assets/css/basic.css';
 
 const Soybean = () => {
-        // Use userAgent to manipulate in order to use different elements in different browsers
-        const isFirefox = userAgent.isFirefox;
-        const isSafari = userAgent.isSafari;
-
         // My states 
         const [products] = useState(soybean);
         const [productName, setProductName] = useState(soybean[0]['details']['productName']);
         const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
         const [productAmount, setProductAmount] = useState(1);
         const [result, setResult] = useState('');
-
+        const [flag, setFlag] = useState(false);
         // Get the product object 
         const product = products.find(product => product?.details?.productName === productName);
 
@@ -52,6 +50,9 @@ const Soybean = () => {
                 // Calculate count bread reasult  
                 const calculationCountBread = ` ${variables?.fractionCalculation(count)}\n ${breadString0} ${variables?.fractionCalculation(countBread)} ${breadString1}`;
 
+                if (isNaN(productAmount)) {
+                        return alert(variables.stringProductAmount);
+                }
                 if (product) {
                         if (product?.check?.bread) {
                                 return calculationCountFraction >= variables?.NEGLIGIBLE_NUMBER ? calculationCountBread : ' זניח';
@@ -69,6 +70,10 @@ const Soybean = () => {
                 setProductName(event.target.value);
         };
 
+        const handleProductPC = (selectedOption) => {
+                setProductName(selectedOption ? selectedOption.value : null);
+        };
+
         const handleAmount = (event) => {
                 setProductAmount(event.target.value);
         };
@@ -77,22 +82,23 @@ const Soybean = () => {
                 setViewportWidth(window.innerWidth);
         };
 
-        // Clean input field when click it 
-        const handleClear = (event) => {
-                event.target.value = "";
-        };
-
         const handleSubmit = (e) => {
                 // Prevent reload the page
                 e.preventDefault();
                 try {
                         setResult(calculateValue(productAmount));
+                        setFlag(true);
                 }
                 catch (err) {
                         console.log(err.message);
                         setResult(variables.stringResult);
                 }
         };
+
+        const productsOptions = products.map((product) => ({
+                value: product?.details?.productName,
+                label: `${product?.details?.productName} ${product?.unit?.measureString}`
+        }));
 
         return (
                 <>
@@ -112,10 +118,9 @@ const Soybean = () => {
                                                         onChange={handleAmount}
                                                 />
                                         </label>
-                                        <br /><br />
                                         <label>
                                                 סוג המוצר:
-                                                {viewportWidth <= 600 || isSafari ? (
+                                                {viewportWidth <= 600 ? (
                                                         <select
                                                                 value={productName}
                                                                 onChange={handleProduct}
@@ -127,36 +132,20 @@ const Soybean = () => {
                                                                 ))}
                                                         </select>
                                                 ) : (
-                                                        <>
-                                                                <input list="productName"
-                                                                        defaultValue={productName}
-                                                                        onChange={handleProduct}
-                                                                        onClick={handleClear}
-                                                                        onFocus={handleClear}
-                                                                />
-                                                                <datalist id="productName">
-                                                                        {
-                                                                                !isFirefox && products.map((product) => (
-                                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                                                {product?.unit?.measureString}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                        {
-                                                                                isFirefox && products.map((product) => (
-                                                                                        <option key={product?.details?.productName} name="productName" value={product?.details?.productName}>
-                                                                                                {`${product?.details?.productName} ${product?.unit?.measureString}`}
-                                                                                        </option>
-                                                                                ))
-                                                                        }
-                                                                </datalist>
-                                                        </>
+                                                        <Select
+                                                                options={productsOptions}
+                                                                isSearchable
+                                                                isClearable
+                                                                noOptionsMessage={() => variables.stringSelectProductNameNoOptionsMessage}
+                                                                placeholder={variables.stringSelect}
+                                                                value={productsOptions.find((option) => option.value === productName)}
+                                                                onChange={handleProductPC}
+                                                        />
                                                 )}
                                         </label>
-                                        <br /><br />
-                                        <div className='div1'>
-                                                מספר מנות:
-                                                <p className='result'>{result}</p>
+                                        <div className='div-result div-result-pc'>
+                                                {flag === true && 'מספר מנות:'}
+                                                <div className='result'>{result}</div>
                                         </div>
                                         <button type="submit">חשב</button>
                                 </form >
