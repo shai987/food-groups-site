@@ -9,16 +9,16 @@ const Vegetables = () => {
                         <div>
                                 <h1>קבוצת הירקות</h1>
                         </div>
-
                         <div>
+
                                 <h2>כל מנה מכילה 24 קלוריות בממוצע, 5 גרם פחמימות ו-1 גרם חלבון.</h2>
                                 <h3>מנת ירק היא: כוס ירק טרי / 2 כוסות ירקות עליים / חצי כוס ירק מבושל / 1/2 כוס מיץ ירק (כ-100 גרם) </h3>
                         </div>
                         <div className='div-container'>
                                 <Cards
                                         imageSrc={require('../../assets/images/Vegetables.jpg')}
-                                        title="תמונת ירקות"
-                                        alt="תמונת ירקות"
+                                        title="ירקות"
+                                        alt="ירקות"
                                         link='/Vegetable'
                                         name="ירקות"
                                 />
